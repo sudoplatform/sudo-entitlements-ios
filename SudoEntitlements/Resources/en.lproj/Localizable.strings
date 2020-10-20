@@ -1,0 +1,28 @@
+/* 
+  Copyright © 2020 Anonyome Labs, Inc. All rights reserved.
+
+  SPDX-License-Identifier: Apache-2.0
+
+*/
+
+// MARK: - Errors: Client
+
+"entitlements.errors.invalidConfig" = "There was an issue with the configuration file. Please check that a valid configuration is included in the bundle";
+"entitlements.errors.notSignedIn" = "Not signed in";
+
+// MARK: - Errors: Service
+
+"entitlements.errors.ambiguousEntitlementsError" = "User has been assigned ambiguous entitlements";
+
+// MARK: - Errors: SudoPlatformError
+
+"entitlements.errors.serviceError" = "Service error has occurred";
+"entitlements.errors.decodingError" = "A decoding error has occurred";
+"entitlements.errors.environmentError" = "An environment error has occurred";
+"entitlements.errors.policyFailed" = "A policy has failed";
+"entitlements.errors.invalidTokenError" = "An invalid token error has occurred";
+"entitlements.errors.accountLockedError" = "Account is locked";
+"entitlements.errors.identityInsufficient" = "Identity is insufficient";
+"entitlements.errors.identityNotVerified" = "Identity is not verified";
+"entitlements.errors.unknownTimezone" = "Unknown time zone";
+"entitlements.errors.invalidArgument" = "Invalid argument";

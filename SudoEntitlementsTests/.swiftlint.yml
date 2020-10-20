@@ -1,0 +1,4 @@
+# Disabled Rule identifiers 
+disabled_rules:
+  - type_name
+
