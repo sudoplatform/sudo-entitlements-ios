@@ -1,7 +1,7 @@
 #
 source 'https://github.com/CocoaPods/Specs.git'
 
-platform :ios, '11.0'
+platform :ios, '13.0'
 
 workspace 'SudoEntitlements'
 use_frameworks!
@@ -21,13 +21,12 @@ target 'SudoEntitlements' do
   podspec :name => 'SudoEntitlements'
 
   target 'SudoEntitlementsTests' do
-    inherit! :search_paths
     podspec :name => 'SudoEntitlements'
   end
 
   target 'SudoEntitlementsIntegrationTests' do
-    inherit! :search_paths
     podspec :name => 'SudoEntitlements'
+    pod 'SudoConfigManager', '~> 1.3'
   end
 end
 

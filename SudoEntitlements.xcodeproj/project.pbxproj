@@ -7,11 +7,11 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		1244C2A559FB013CE27F952D /* Pods_SudoEntitlements_SudoEntitlementsIntegrationTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 782F02D60F11D938FE4B0AE8 /* Pods_SudoEntitlements_SudoEntitlementsIntegrationTests.framework */; };
 		365666D122808B159FDFDE0D /* Pods_TestApp.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FBCB8F0D47E7979005F9FBC2 /* Pods_TestApp.framework */; };
 		5D1C74082537F53300FC76CF /* SudoEntitlementsIntegrationTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D1C74072537F53300FC76CF /* SudoEntitlementsIntegrationTests.swift */; };
 		5D1C740A2537F53300FC76CF /* SudoEntitlements.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5DA1AAFD24F78EBC003B29CA /* SudoEntitlements.framework */; };
 		5D1C74142537F58D00FC76CF /* BaseIntegrationTestCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D1C74132537F58D00FC76CF /* BaseIntegrationTestCase.swift */; };
-		5D1C74912538EADF00FC76CF /* AnyError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D1C74902538EADF00FC76CF /* AnyError.swift */; };
 		5D408F2024F791F300259E5F /* RedeemEntitlementsUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D408EF824F791F300259E5F /* RedeemEntitlementsUseCase.swift */; };
 		5D408F2124F791F300259E5F /* GetEntitlementsUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D408EFD24F791F300259E5F /* GetEntitlementsUseCase.swift */; };
 		5D408F2224F791F300259E5F /* SudoLogger+Entitlements.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D408F0224F791F300259E5F /* SudoLogger+Entitlements.swift */; };
@@ -28,6 +28,7 @@
 		5D408F3124F791F300259E5F /* DefaultSudoEntitlementsClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D408F1C24F791F300259E5F /* DefaultSudoEntitlementsClient.swift */; };
 		5D408F3224F791F300259E5F /* SudoEntitlementsError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D408F1E24F791F300259E5F /* SudoEntitlementsError.swift */; };
 		5D408F3324F791F300259E5F /* SudoEntitlementsClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D408F1F24F791F300259E5F /* SudoEntitlementsClient.swift */; };
+		5D71DBE4255B6D87005007C3 /* AnyError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D71DBE3255B6D87005007C3 /* AnyError.swift */; };
 		5DA1AB0E24F78EBC003B29CA /* SudoEntitlements.h in Headers */ = {isa = PBXBuildFile; fileRef = 5DA1AB0024F78EBC003B29CA /* SudoEntitlements.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		5DA1EB49253CD66200D75F13 /* util in Resources */ = {isa = PBXBuildFile; fileRef = 5DA1EB48253CD66100D75F13 /* util */; };
 		5F3413A324F870F9002942AB /* CachePolicy.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F3413A224F870F9002942AB /* CachePolicy.swift */; };
@@ -67,14 +68,13 @@
 		5F34167A24F8C6B6002942AB /* Array+OperationConvenience.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F34158224F89493002942AB /* Array+OperationConvenience.swift */; };
 		5F34167D24F8C6BC002942AB /* AnyError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F34158724F89493002942AB /* AnyError.swift */; };
 		5F34168024F8CD72002942AB /* GraphQLResultWorker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F34167F24F8CD72002942AB /* GraphQLResultWorker.swift */; };
-		5F3AB9F8BED0D09C3736D387 /* Pods_SudoEntitlementsTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 35FFBF193D8F832C7BDA0372 /* Pods_SudoEntitlementsTests.framework */; };
 		84F809FC253D17CA001E3F3C /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84F809FB253D17CA001E3F3C /* AppDelegate.swift */; };
 		84F80A00253D17CA001E3F3C /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84F809FF253D17CA001E3F3C /* ViewController.swift */; };
 		84F80A03253D17CA001E3F3C /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 84F80A01253D17CA001E3F3C /* Main.storyboard */; };
 		84F80A05253D17D0001E3F3C /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 84F80A04253D17D0001E3F3C /* Assets.xcassets */; };
 		84F80A08253D17D0001E3F3C /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 84F80A06253D17D0001E3F3C /* LaunchScreen.storyboard */; };
-		BD55CBA50B169628E949B8D9 /* Pods_SudoEntitlementsIntegrationTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 645CE0C3C33A3B5286CB4334 /* Pods_SudoEntitlementsIntegrationTests.framework */; };
 		C87456E4397C5A4D7E932C2F /* Pods_SudoEntitlements.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2F57E0CA99A3055D79683329 /* Pods_SudoEntitlements.framework */; };
+		F998836B2D0CE783CED2E42C /* Pods_SudoEntitlements_SudoEntitlementsTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 37DB30C4351A58B4F0104849 /* Pods_SudoEntitlements_SudoEntitlementsTests.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -106,7 +106,9 @@
 		221599B724F23A4287159751 /* Pods-SudoEntitlements.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SudoEntitlements.release.xcconfig"; path = "Target Support Files/Pods-SudoEntitlements/Pods-SudoEntitlements.release.xcconfig"; sourceTree = "<group>"; };
 		2784B8C52DC91EFBC48B5900 /* Pods-SudoEntitlementsIntegrationTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SudoEntitlementsIntegrationTests.debug.xcconfig"; path = "Target Support Files/Pods-SudoEntitlementsIntegrationTests/Pods-SudoEntitlementsIntegrationTests.debug.xcconfig"; sourceTree = "<group>"; };
 		2F57E0CA99A3055D79683329 /* Pods_SudoEntitlements.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_SudoEntitlements.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		35FFBF193D8F832C7BDA0372 /* Pods_SudoEntitlementsTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_SudoEntitlementsTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		37DB30C4351A58B4F0104849 /* Pods_SudoEntitlements_SudoEntitlementsTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_SudoEntitlements_SudoEntitlementsTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		39A44A8012BDEDF8415A9A70 /* Pods-SudoEntitlements-SudoEntitlementsTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SudoEntitlements-SudoEntitlementsTests.release.xcconfig"; path = "Target Support Files/Pods-SudoEntitlements-SudoEntitlementsTests/Pods-SudoEntitlements-SudoEntitlementsTests.release.xcconfig"; sourceTree = "<group>"; };
+		3CF7677704847224092F81E0 /* Pods-SudoEntitlements-SudoEntitlementsTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SudoEntitlements-SudoEntitlementsTests.debug.xcconfig"; path = "Target Support Files/Pods-SudoEntitlements-SudoEntitlementsTests/Pods-SudoEntitlements-SudoEntitlementsTests.debug.xcconfig"; sourceTree = "<group>"; };
 		4571715FB5AD30F8502255C4 /* Pods-SudoEntitlementsTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SudoEntitlementsTests.release.xcconfig"; path = "Target Support Files/Pods-SudoEntitlementsTests/Pods-SudoEntitlementsTests.release.xcconfig"; sourceTree = "<group>"; };
 		50914117BDCBC10400649F34 /* Pods-SudoEntitlementsIntegrationTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SudoEntitlementsIntegrationTests.release.xcconfig"; path = "Target Support Files/Pods-SudoEntitlementsIntegrationTests/Pods-SudoEntitlementsIntegrationTests.release.xcconfig"; sourceTree = "<group>"; };
 		59AD06B4DB2965C3B126C6FB /* Pods-SudoEntitlementsTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SudoEntitlementsTests.debug.xcconfig"; path = "Target Support Files/Pods-SudoEntitlementsTests/Pods-SudoEntitlementsTests.debug.xcconfig"; sourceTree = "<group>"; };
@@ -114,7 +116,6 @@
 		5D1C74072537F53300FC76CF /* SudoEntitlementsIntegrationTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SudoEntitlementsIntegrationTests.swift; sourceTree = "<group>"; };
 		5D1C74092537F53300FC76CF /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		5D1C74132537F58D00FC76CF /* BaseIntegrationTestCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseIntegrationTestCase.swift; sourceTree = "<group>"; };
-		5D1C74902538EADF00FC76CF /* AnyError.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AnyError.swift; sourceTree = "<group>"; };
 		5D408EF824F791F300259E5F /* RedeemEntitlementsUseCase.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RedeemEntitlementsUseCase.swift; sourceTree = "<group>"; };
 		5D408EFD24F791F300259E5F /* GetEntitlementsUseCase.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GetEntitlementsUseCase.swift; sourceTree = "<group>"; };
 		5D408F0224F791F300259E5F /* SudoLogger+Entitlements.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "SudoLogger+Entitlements.swift"; sourceTree = "<group>"; };
@@ -131,6 +132,7 @@
 		5D408F1C24F791F300259E5F /* DefaultSudoEntitlementsClient.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DefaultSudoEntitlementsClient.swift; sourceTree = "<group>"; };
 		5D408F1E24F791F300259E5F /* SudoEntitlementsError.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SudoEntitlementsError.swift; sourceTree = "<group>"; };
 		5D408F1F24F791F300259E5F /* SudoEntitlementsClient.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SudoEntitlementsClient.swift; sourceTree = "<group>"; };
+		5D71DBE3255B6D87005007C3 /* AnyError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnyError.swift; sourceTree = "<group>"; };
 		5DA1AAFD24F78EBC003B29CA /* SudoEntitlements.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = SudoEntitlements.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		5DA1AB0024F78EBC003B29CA /* SudoEntitlements.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SudoEntitlements.h; sourceTree = "<group>"; };
 		5DA1AB0124F78EBC003B29CA /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -174,7 +176,8 @@
 		5F34165A24F8C3D0002942AB /* SudoEntitlements.podspec */ = {isa = PBXFileReference; lastKnownFileType = text; path = SudoEntitlements.podspec; sourceTree = "<group>"; };
 		5F34165B24F8C3D0002942AB /* Gemfile */ = {isa = PBXFileReference; lastKnownFileType = text; path = Gemfile; sourceTree = "<group>"; };
 		5F34167F24F8CD72002942AB /* GraphQLResultWorker.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GraphQLResultWorker.swift; sourceTree = "<group>"; };
-		645CE0C3C33A3B5286CB4334 /* Pods_SudoEntitlementsIntegrationTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_SudoEntitlementsIntegrationTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		633AEB061E3256956C4FA2D2 /* Pods-SudoEntitlements-SudoEntitlementsIntegrationTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SudoEntitlements-SudoEntitlementsIntegrationTests.debug.xcconfig"; path = "Target Support Files/Pods-SudoEntitlements-SudoEntitlementsIntegrationTests/Pods-SudoEntitlements-SudoEntitlementsIntegrationTests.debug.xcconfig"; sourceTree = "<group>"; };
+		782F02D60F11D938FE4B0AE8 /* Pods_SudoEntitlements_SudoEntitlementsIntegrationTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_SudoEntitlements_SudoEntitlementsIntegrationTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		84F809F9253D17CA001E3F3C /* TestApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TestApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		84F809FB253D17CA001E3F3C /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		84F809FF253D17CA001E3F3C /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -183,6 +186,7 @@
 		84F80A07253D17D0001E3F3C /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		84F80A09253D17D0001E3F3C /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		A50D708A3E2E89EECA478ADF /* Pods-TestApp.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TestApp.release.xcconfig"; path = "Target Support Files/Pods-TestApp/Pods-TestApp.release.xcconfig"; sourceTree = "<group>"; };
+		ABF7E0FBAD1A3FBABB96C510 /* Pods-SudoEntitlements-SudoEntitlementsIntegrationTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SudoEntitlements-SudoEntitlementsIntegrationTests.release.xcconfig"; path = "Target Support Files/Pods-SudoEntitlements-SudoEntitlementsIntegrationTests/Pods-SudoEntitlements-SudoEntitlementsIntegrationTests.release.xcconfig"; sourceTree = "<group>"; };
 		B334B79A3B033DD108ABFD80 /* Pods-SudoEntitlements.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SudoEntitlements.debug.xcconfig"; path = "Target Support Files/Pods-SudoEntitlements/Pods-SudoEntitlements.debug.xcconfig"; sourceTree = "<group>"; };
 		FBCB8F0D47E7979005F9FBC2 /* Pods_TestApp.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_TestApp.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
@@ -192,7 +196,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				BD55CBA50B169628E949B8D9 /* Pods_SudoEntitlementsIntegrationTests.framework in Frameworks */,
+				1244C2A559FB013CE27F952D /* Pods_SudoEntitlements_SudoEntitlementsIntegrationTests.framework in Frameworks */,
 				5D1C740A2537F53300FC76CF /* SudoEntitlements.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -209,7 +213,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				5F3AB9F8BED0D09C3736D387 /* Pods_SudoEntitlementsTests.framework in Frameworks */,
+				F998836B2D0CE783CED2E42C /* Pods_SudoEntitlements_SudoEntitlementsTests.framework in Frameworks */,
 				5F34164024F8BDE9002942AB /* SudoEntitlements.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -229,7 +233,7 @@
 			isa = PBXGroup;
 			children = (
 				5D1C748B2538EA4D00FC76CF /* Test */,
-				5D1C74962538EAE300FC76CF /* Utility */,
+				5D71DBE2255B6D57005007C3 /* Utility */,
 				5D1C74092537F53300FC76CF /* Info.plist */,
 			);
 			path = SudoEntitlementsIntegrationTests;
@@ -242,14 +246,6 @@
 				5D1C74072537F53300FC76CF /* SudoEntitlementsIntegrationTests.swift */,
 			);
 			path = Test;
-			sourceTree = "<group>";
-		};
-		5D1C74962538EAE300FC76CF /* Utility */ = {
-			isa = PBXGroup;
-			children = (
-				5D1C74902538EADF00FC76CF /* AnyError.swift */,
-			);
-			path = Utility;
 			sourceTree = "<group>";
 		};
 		5D408EF224F791F300259E5F /* Source */ = {
@@ -344,6 +340,14 @@
 				5D408F1E24F791F300259E5F /* SudoEntitlementsError.swift */,
 			);
 			path = Errors;
+			sourceTree = "<group>";
+		};
+		5D71DBE2255B6D57005007C3 /* Utility */ = {
+			isa = PBXGroup;
+			children = (
+				5D71DBE3255B6D87005007C3 /* AnyError.swift */,
+			);
+			path = Utility;
 			sourceTree = "<group>";
 		};
 		5DA1AAF324F78EBC003B29CA = {
@@ -636,6 +640,10 @@
 		9B3A681727EE6A43F800E34A /* Pods */ = {
 			isa = PBXGroup;
 			children = (
+				633AEB061E3256956C4FA2D2 /* Pods-SudoEntitlements-SudoEntitlementsIntegrationTests.debug.xcconfig */,
+				ABF7E0FBAD1A3FBABB96C510 /* Pods-SudoEntitlements-SudoEntitlementsIntegrationTests.release.xcconfig */,
+				3CF7677704847224092F81E0 /* Pods-SudoEntitlements-SudoEntitlementsTests.debug.xcconfig */,
+				39A44A8012BDEDF8415A9A70 /* Pods-SudoEntitlements-SudoEntitlementsTests.release.xcconfig */,
 				B334B79A3B033DD108ABFD80 /* Pods-SudoEntitlements.debug.xcconfig */,
 				221599B724F23A4287159751 /* Pods-SudoEntitlements.release.xcconfig */,
 				2784B8C52DC91EFBC48B5900 /* Pods-SudoEntitlementsIntegrationTests.debug.xcconfig */,
@@ -652,8 +660,8 @@
 			isa = PBXGroup;
 			children = (
 				2F57E0CA99A3055D79683329 /* Pods_SudoEntitlements.framework */,
-				645CE0C3C33A3B5286CB4334 /* Pods_SudoEntitlementsIntegrationTests.framework */,
-				35FFBF193D8F832C7BDA0372 /* Pods_SudoEntitlementsTests.framework */,
+				782F02D60F11D938FE4B0AE8 /* Pods_SudoEntitlements_SudoEntitlementsIntegrationTests.framework */,
+				37DB30C4351A58B4F0104849 /* Pods_SudoEntitlements_SudoEntitlementsTests.framework */,
 				FBCB8F0D47E7979005F9FBC2 /* Pods_TestApp.framework */,
 			);
 			name = Frameworks;
@@ -761,7 +769,7 @@
 			isa = PBXProject;
 			attributes = {
 				LastSwiftUpdateCheck = 1150;
-				LastUpgradeCheck = 1160;
+				LastUpgradeCheck = 1210;
 				ORGANIZATIONNAME = "Anonyome Labs";
 				TargetAttributes = {
 					5D1C74042537F53300FC76CF = {
@@ -916,7 +924,7 @@
 			outputFileListPaths = (
 			);
 			outputPaths = (
-				"$(DERIVED_FILE_DIR)/Pods-SudoEntitlementsTests-checkManifestLockResult.txt",
+				"$(DERIVED_FILE_DIR)/Pods-SudoEntitlements-SudoEntitlementsTests-checkManifestLockResult.txt",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
@@ -956,7 +964,7 @@
 			outputFileListPaths = (
 			);
 			outputPaths = (
-				"$(DERIVED_FILE_DIR)/Pods-SudoEntitlementsIntegrationTests-checkManifestLockResult.txt",
+				"$(DERIVED_FILE_DIR)/Pods-SudoEntitlements-SudoEntitlementsIntegrationTests-checkManifestLockResult.txt",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
@@ -991,15 +999,15 @@
 			files = (
 			);
 			inputFileListPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-SudoEntitlementsTests/Pods-SudoEntitlementsTests-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+				"${PODS_ROOT}/Target Support Files/Pods-SudoEntitlements-SudoEntitlementsTests/Pods-SudoEntitlements-SudoEntitlementsTests-frameworks-${CONFIGURATION}-input-files.xcfilelist",
 			);
 			name = "[CP] Embed Pods Frameworks";
 			outputFileListPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-SudoEntitlementsTests/Pods-SudoEntitlementsTests-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+				"${PODS_ROOT}/Target Support Files/Pods-SudoEntitlements-SudoEntitlementsTests/Pods-SudoEntitlements-SudoEntitlementsTests-frameworks-${CONFIGURATION}-output-files.xcfilelist",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-SudoEntitlementsTests/Pods-SudoEntitlementsTests-frameworks.sh\"\n";
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-SudoEntitlements-SudoEntitlementsTests/Pods-SudoEntitlements-SudoEntitlementsTests-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 		F9572E8CF72AD42E41CE356B /* [CP] Embed Pods Frameworks */ = {
@@ -1008,15 +1016,15 @@
 			files = (
 			);
 			inputFileListPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-SudoEntitlementsIntegrationTests/Pods-SudoEntitlementsIntegrationTests-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+				"${PODS_ROOT}/Target Support Files/Pods-SudoEntitlements-SudoEntitlementsIntegrationTests/Pods-SudoEntitlements-SudoEntitlementsIntegrationTests-frameworks-${CONFIGURATION}-input-files.xcfilelist",
 			);
 			name = "[CP] Embed Pods Frameworks";
 			outputFileListPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-SudoEntitlementsIntegrationTests/Pods-SudoEntitlementsIntegrationTests-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+				"${PODS_ROOT}/Target Support Files/Pods-SudoEntitlements-SudoEntitlementsIntegrationTests/Pods-SudoEntitlements-SudoEntitlementsIntegrationTests-frameworks-${CONFIGURATION}-output-files.xcfilelist",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-SudoEntitlementsIntegrationTests/Pods-SudoEntitlementsIntegrationTests-frameworks.sh\"\n";
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-SudoEntitlements-SudoEntitlementsIntegrationTests/Pods-SudoEntitlements-SudoEntitlementsIntegrationTests-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 /* End PBXShellScriptBuildPhase section */
@@ -1026,7 +1034,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				5D1C74912538EADF00FC76CF /* AnyError.swift in Sources */,
+				5D71DBE4255B6D87005007C3 /* AnyError.swift in Sources */,
 				5D1C74142537F58D00FC76CF /* BaseIntegrationTestCase.swift in Sources */,
 				5D1C74082537F53300FC76CF /* SudoEntitlementsIntegrationTests.swift in Sources */,
 			);
@@ -1149,13 +1157,13 @@
 /* Begin XCBuildConfiguration section */
 		5D1C740D2537F53300FC76CF /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 2784B8C52DC91EFBC48B5900 /* Pods-SudoEntitlementsIntegrationTests.debug.xcconfig */;
+			baseConfigurationReference = 633AEB061E3256956C4FA2D2 /* Pods-SudoEntitlements-SudoEntitlementsIntegrationTests.debug.xcconfig */;
 			buildSettings = {
 				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = UU2W43R8JA;
 				INFOPLIST_FILE = SudoEntitlementsIntegrationTests/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -1172,13 +1180,13 @@
 		};
 		5D1C740E2537F53300FC76CF /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 50914117BDCBC10400649F34 /* Pods-SudoEntitlementsIntegrationTests.release.xcconfig */;
+			baseConfigurationReference = ABF7E0FBAD1A3FBABB96C510 /* Pods-SudoEntitlements-SudoEntitlementsIntegrationTests.release.xcconfig */;
 			buildSettings = {
 				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = UU2W43R8JA;
 				INFOPLIST_FILE = SudoEntitlementsIntegrationTests/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -1219,6 +1227,7 @@
 				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
 				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
 				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
 				CLANG_WARN_STRICT_PROTOTYPES = YES;
 				CLANG_WARN_SUSPICIOUS_MOVE = YES;
@@ -1244,7 +1253,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 13.6;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
 				MTL_FAST_MATH = YES;
 				ONLY_ACTIVE_ARCH = YES;
@@ -1282,6 +1291,7 @@
 				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
 				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
 				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
 				CLANG_WARN_STRICT_PROTOTYPES = YES;
 				CLANG_WARN_SUSPICIOUS_MOVE = YES;
@@ -1301,7 +1311,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 13.6;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				MTL_FAST_MATH = YES;
 				SDKROOT = iphoneos;
@@ -1324,7 +1334,7 @@
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
 				INFOPLIST_FILE = SudoEntitlements/Info.plist;
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
-				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -1350,7 +1360,7 @@
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
 				INFOPLIST_FILE = SudoEntitlements/Info.plist;
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
-				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -1367,11 +1377,11 @@
 		};
 		5F34164424F8BDE9002942AB /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 59AD06B4DB2965C3B126C6FB /* Pods-SudoEntitlementsTests.debug.xcconfig */;
+			baseConfigurationReference = 3CF7677704847224092F81E0 /* Pods-SudoEntitlements-SudoEntitlementsTests.debug.xcconfig */;
 			buildSettings = {
 				CODE_SIGN_STYLE = Automatic;
 				INFOPLIST_FILE = SudoEntitlementsTests/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -1387,11 +1397,11 @@
 		};
 		5F34164524F8BDE9002942AB /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 4571715FB5AD30F8502255C4 /* Pods-SudoEntitlementsTests.release.xcconfig */;
+			baseConfigurationReference = 39A44A8012BDEDF8415A9A70 /* Pods-SudoEntitlements-SudoEntitlementsTests.release.xcconfig */;
 			buildSettings = {
 				CODE_SIGN_STYLE = Automatic;
 				INFOPLIST_FILE = SudoEntitlementsTests/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -1410,10 +1420,15 @@
 			baseConfigurationReference = 0BA682856AADA5A3CA46C87C /* Pods-TestApp.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				AWS_ACCESS_KEY_ID = "";
+				AWS_SECRET_ACCESS_KEY = "";
+				AWS_SESSION_TOKEN = "";
 				CODE_SIGN_STYLE = Automatic;
+				DEFAULT_ENTITLEMENTS_SET_FOR_TEST_USERS = "";
 				DEVELOPMENT_TEAM = UU2W43R8JA;
 				INFOPLIST_FILE = TestApp/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
+				INTEGRATION_TEST_ENTITLEMENTS_SET_AVAILABLE = "";
+				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -1430,10 +1445,15 @@
 			baseConfigurationReference = A50D708A3E2E89EECA478ADF /* Pods-TestApp.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				AWS_ACCESS_KEY_ID = "";
+				AWS_SECRET_ACCESS_KEY = "";
+				AWS_SESSION_TOKEN = "";
 				CODE_SIGN_STYLE = Automatic;
+				DEFAULT_ENTITLEMENTS_SET_FOR_TEST_USERS = "";
 				DEVELOPMENT_TEAM = UU2W43R8JA;
 				INFOPLIST_FILE = TestApp/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
+				INTEGRATION_TEST_ENTITLEMENTS_SET_AVAILABLE = "";
+				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",

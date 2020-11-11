@@ -9,7 +9,6 @@ import UIKit
 import SudoUser
 
 class MockSudoUserClient: SudoUserClient {
-
     var version: String = "version"
 
     func isRegistered() -> Bool {
@@ -155,5 +154,12 @@ class MockSudoUserClient: SudoUserClient {
 
     func deregisterSignInStatusObserver(id: String) {
         // Do Nothing.
+    }
+
+    func processFederatedSignInTokens(url: URL) throws {
+    }
+
+    func getRefreshTokenExpiry() throws -> Date? {
+        return nil
     }
 }
