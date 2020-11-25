@@ -1159,7 +1159,6 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 633AEB061E3256956C4FA2D2 /* Pods-SudoEntitlements-SudoEntitlementsIntegrationTests.debug.xcconfig */;
 			buildSettings = {
-				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = UU2W43R8JA;
 				INFOPLIST_FILE = SudoEntitlementsIntegrationTests/Info.plist;
@@ -1182,7 +1181,6 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = ABF7E0FBAD1A3FBABB96C510 /* Pods-SudoEntitlements-SudoEntitlementsIntegrationTests.release.xcconfig */;
 			buildSettings = {
-				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = UU2W43R8JA;
 				INFOPLIST_FILE = SudoEntitlementsIntegrationTests/Info.plist;
