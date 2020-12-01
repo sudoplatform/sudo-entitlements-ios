@@ -6,7 +6,6 @@
 
 import SudoUser
 import SudoLogging
-import SudoProfiles
 
 /// Generic type associated with API completion/closures. Generic type O is the expected output result in a success case.
 public typealias ClientCompletion<O> = (Swift.Result<O, Error>) -> Void
