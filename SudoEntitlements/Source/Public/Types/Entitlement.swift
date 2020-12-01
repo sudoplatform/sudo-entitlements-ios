@@ -10,17 +10,21 @@ import Foundation
 /// A representation of a single entitlement possessed by a user.
 ///
 public struct Entitlement: Equatable {
+
+    // MARK: - Properties
     
     /// Name of the entitlement.
-    public let name: String
+    public var name: String
 
     /// Human readable description of the entitlement.
-    public let description: String?
+    public var description: String?
 
     /// The quantity of the entitlement.
-    public let value: Int
+    public var value: Int
 
-    public init(name: String, description: String?, value: Int) {
+    /// MARK: - Lifecycle
+
+    public init(name: String, description: String? = nil, value: Int) {
         self.name = name
         self.description = description
         self.value = value

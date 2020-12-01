@@ -1,7 +1,7 @@
 #
 Pod::Spec.new do |spec|
   spec.name                  = 'SudoEntitlements'
-  spec.version               = '1.1.1'
+  spec.version               = '1.2.0'
   spec.author                = { 'Sudo Platform Engineering' => 'sudoplatform-engineering@anonyome.com' }
   spec.homepage              = 'https://sudoplatform.com'
 

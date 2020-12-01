@@ -90,20 +90,6 @@
       "symbol": "SudoEntitlementsError.unknownTimezone",
       "symbol_kind": "source.lang.swift.decl.enumelement",
       "warning": "undocumented"
-    },
-    {
-      "file": "/Users/anonyome/builds/c2dfa4ea/0/platform/entitlements/sudo-entitlements-ios/sudo-entitlements-ios-gh/SudoEntitlements/Source/Public/Types/Entitlement.swift",
-      "line": 23,
-      "symbol": "Entitlement.init(name:description:value:)",
-      "symbol_kind": "source.lang.swift.decl.function.method.instance",
-      "warning": "undocumented"
-    },
-    {
-      "file": "/Users/anonyome/builds/c2dfa4ea/0/platform/entitlements/sudo-entitlements-ios/sudo-entitlements-ios-gh/SudoEntitlements/Source/Public/Types/EntitlementsSet.swift",
-      "line": 34,
-      "symbol": "EntitlementsSet.init(name:description:entitlements:version:created:updated:)",
-      "symbol_kind": "source.lang.swift.decl.function.method.instance",
-      "warning": "undocumented"
     }
   ],
   "source_directory": "/Users/anonyome/builds/c2dfa4ea/0/platform/entitlements/sudo-entitlements-ios/sudo-entitlements-ios-gh"
