@@ -23,10 +23,21 @@ public protocol SudoEntitlementsClient: class {
     
     // MARK: - Queries
 
+    /// Get the current set of entitlements and their consumption for the user
+    /// - Returns:
+    ///   - Success: The set of entitlements the user currently has and consumption information for
+    ///     the user and its sub-resource consumers, if any
+    ///   - Failure: `SudoEntitlementsError`
+    func getEntitlementsConsumption(completion: @escaping ClientCompletion<EntitlementsConsumption>)
+
     /// Get the current set of entitlements for the user.
+    ///
+    /// Deprecated: Use `getEntitlementsConsumption` instead
+    ///
     /// - Returns:
     ///   - Success: The set of entitlements the user currently has or nil if user has no entitlements
     ///   - Failure: `SudoEntitlementsError`.
+    @available(*, deprecated)
     func getEntitlements(completion: @escaping ClientCompletion<EntitlementsSet?>)
 
     // MARK: - Mutations

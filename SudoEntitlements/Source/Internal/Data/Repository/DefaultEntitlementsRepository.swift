@@ -33,6 +33,27 @@ class DefaultEntitlementsRepository: EntitlementsRepository {
     }
     
     /// Get the users current set of entitlements
+    func getEntitlementsConsumption(completion: @escaping ClientCompletion<EntitlementsConsumption>) {
+        let query = GetEntitlementsConsumptionQuery()
+        let operation = operationFactory.generateQueryOperation(query: query, appSyncClient: appSyncClient, logger: logger)
+        let completionObserver = PlatformBlockObserver(finishHandler: { [unowned operation] _, errors in
+            if let error = errors.first {
+                completion(.failure(error))
+                return
+            }
+            guard let graphQLResult = operation.result?.getEntitlementsConsumption else {
+                completion(.failure(SudoEntitlementsError.serviceError))
+                return
+            }
+            let transformer = EntitlementsTransformer()
+            let result = transformer.transform(graphQLResult)
+            completion(.success(result))
+        })
+        operation.addObserver(completionObserver)
+        queue.addOperation(operation)
+    }
+
+    /// Get the users current set of entitlements
     func getEntitlements(completion: @escaping ClientCompletion<EntitlementsSet?>) {
         let query = GetEntitlementsQuery()
         let operation = operationFactory.generateQueryOperation(query: query, appSyncClient: appSyncClient, logger: logger)

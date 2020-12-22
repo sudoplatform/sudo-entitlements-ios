@@ -9,6 +9,50 @@ import UIKit
 import SudoUser
 
 class MockSudoUserClient: SudoUserClient {
+    func registerWithDeviceCheck(token: Data, buildType: String, vendorId: UUID?, registrationId: String?, completion: @escaping (Result<String, Error>) -> Void) throws {
+        // Do nothing
+    }
+    
+    func refreshTokens(refreshToken: String, completion: @escaping (Result<AuthenticationTokens, Error>) -> Void) throws {
+        // Do nothing
+    }
+    
+    func globalSignOut(completion: @escaping (Result<Void, Error>) -> Void) throws {
+        // Do nothing
+    }
+    
+    func register(challenge: RegistrationChallenge, vendorId: UUID?, registrationId: String?, completion: @escaping (Result<String, Error>) -> Void) throws {
+        // Do nothing
+    }
+    
+    func registerWithAuthenticationProvider(authenticationProvider: AuthenticationProvider, registrationId: String?, completion: @escaping (Result<String, Error>) -> Void) throws {
+        // Do nothing
+    }
+    
+    func deregister(completion: @escaping (Result<String, Error>) -> Void) throws {
+        // Do nothing
+    }
+    
+    func signInWithKey(completion: @escaping (Result<AuthenticationTokens, Error>) -> Void) throws {
+        // Do nothing
+    }
+    
+    func signInWithAuthenticationProvider(authenticationProvider: AuthenticationProvider, completion: @escaping (Result<AuthenticationTokens, Error>) -> Void) throws {
+        // Do nothing
+    }
+    
+    func presentFederatedSignInUI(navigationController: UINavigationController, completion: @escaping (Result<AuthenticationTokens, Error>) -> Void) throws {
+        // Do nothing
+    }
+    
+    func presentFederatedSignOutUI(navigationController: UINavigationController, completion: @escaping (Result<Void, Error>) -> Void) throws {
+        // Do nothing
+    }
+    
+    func processFederatedSignInTokens(url: URL) throws -> Bool {
+        return false
+    }
+    
     var version: String = "version"
 
     func isRegistered() -> Bool {
@@ -39,42 +83,6 @@ class MockSudoUserClient: SudoUserClient {
     }
 
     func reset() throws {
-        // Do Nothing.
-    }
-
-    func getDeviceCheckChallenge(deviceToken: Data, buildType: String, completion: @escaping (GetRegistrationChallengesResult) -> Void) throws {
-        // Do Nothing.
-    }
-
-    func register(challenge: RegistrationChallenge, vendorId: UUID?, registrationId: String?, completion: @escaping (RegisterResult) -> Void) throws {
-        // Do Nothing.
-    }
-
-    func registerWithAuthenticationProvider(
-        authenticationProvider: AuthenticationProvider,
-        registrationId: String?,
-        completion: @escaping (RegisterResult) -> Void
-    ) throws {
-        // Do Nothing.
-    }
-
-    func deregister(completion: @escaping (DeregisterResult) -> Void) throws {
-        // Do Nothing.
-    }
-
-    func signInWithKey(completion: @escaping (SignInResult) -> Void) throws {
-        // Do Nothing.
-    }
-
-    func signInWithAuthenticationProvider(authenticationProvider: AuthenticationProvider, completion: @escaping (SignInResult) -> Void) throws {
-        // Do Nothing.
-    }
-
-    func presentFederatedSignInUI(navigationController: UINavigationController, completion: @escaping (SignInResult) -> Void) throws {
-        // Do Nothing.
-    }
-
-    func presentFederatedSignOutUI(navigationController: UINavigationController, completion: @escaping (ApiResult) -> Void) throws {
         // Do Nothing.
     }
 
@@ -110,10 +118,6 @@ class MockSudoUserClient: SudoUserClient {
         // Do Nothing.
     }
 
-    func globalSignOut(completion: @escaping (ApiResult) -> Void) throws {
-        // Do Nothing.
-    }
-
     func getCachedIdentityId() -> String? {
         return nil
     }
@@ -123,20 +127,6 @@ class MockSudoUserClient: SudoUserClient {
     }
 
     func storeTokens(tokens: AuthenticationTokens) throws {
-        // Do Nothing.
-    }
-
-    func refreshTokens(refreshToken: String, completion: @escaping (SignInResult) -> Void) throws {
-        // Do Nothing.
-    }
-
-    func registerWithDeviceCheck(
-        token: Data,
-        buildType: String,
-        vendorId: UUID?,
-        registrationId: String?,
-        completion: @escaping (RegisterResult) -> Void
-    ) throws {
         // Do Nothing.
     }
 
@@ -157,6 +147,7 @@ class MockSudoUserClient: SudoUserClient {
     }
 
     func processFederatedSignInTokens(url: URL) throws {
+        // Do nothing
     }
 
     func getRefreshTokenExpiry() throws -> Date? {

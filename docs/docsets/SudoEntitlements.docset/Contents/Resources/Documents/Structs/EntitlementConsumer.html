@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
   <head>
-    <title>Entitlement Structure Reference</title>
+    <title>EntitlementConsumer Structure Reference</title>
     <link rel="stylesheet" type="text/css" href="../css/jazzy.css" />
     <link rel="stylesheet" type="text/css" href="../css/highlight.css" />
     <meta charset="utf-8">
@@ -14,9 +14,9 @@
   </head>
   <body>
 
-    <a name="//apple_ref/swift/Struct/Entitlement" class="dashAnchor"></a>
+    <a name="//apple_ref/swift/Struct/EntitlementConsumer" class="dashAnchor"></a>
 
-    <a title="Entitlement Structure Reference"></a>
+    <a title="EntitlementConsumer Structure Reference"></a>
 
     <header class="header">
       <p class="header-col header-col--primary">
@@ -38,7 +38,7 @@
     <p class="breadcrumbs">
       <a class="breadcrumb" href="../index.html">SudoEntitlements Reference</a>
       <img class="carat" src="../img/carat.png" />
-      Entitlement Structure Reference
+      EntitlementConsumer Structure Reference
     </p>
 
     <div class="content-wrapper">
@@ -116,14 +116,14 @@
 
         <section class="section">
           <div class="section-content top-matter">
-            <h1>Entitlement</h1>
+            <h1>EntitlementConsumer</h1>
               <div class="declaration">
                 <div class="language">
-                  <pre class="highlight swift"><code><span class="kd">public</span> <span class="kd">struct</span> <span class="kt">Entitlement</span> <span class="p">:</span> <span class="kt">Equatable</span></code></pre>
+                  <pre class="highlight swift"><code><span class="kd">public</span> <span class="kd">struct</span> <span class="kt">EntitlementConsumer</span> <span class="p">:</span> <span class="kt">Equatable</span></code></pre>
 
                 </div>
               </div>
-            <p>A representation of a single entitlement possessed by a user.</p>
+            <p>A representation of the sub-user level consuming resource of an entitlement</p>
 
           </div>
         </section>
@@ -144,9 +144,9 @@
                 <li class="item">
                   <div>
                     <code>
-                    <a name="/s:16SudoEntitlements11EntitlementV4nameSSvp"></a>
-                    <a name="//apple_ref/swift/Property/name" class="dashAnchor"></a>
-                    <a class="token" href="#/s:16SudoEntitlements11EntitlementV4nameSSvp">name</a>
+                    <a name="/s:16SudoEntitlements19EntitlementConsumerV2idSSvp"></a>
+                    <a name="//apple_ref/swift/Property/id" class="dashAnchor"></a>
+                    <a class="token" href="#/s:16SudoEntitlements19EntitlementConsumerV2idSSvp">id</a>
                     </code>
                   </div>
                   <div class="height-container">
@@ -154,14 +154,14 @@
                     <section class="section">
                       <div class="pointer"></div>
                       <div class="abstract">
-                        <p>Name of the entitlement.</p>
+                        <p>ID of the resource consuming an entitlement</p>
 
                       </div>
                       <div class="declaration">
                         <h4>Declaration</h4>
                         <div class="language">
                           <p class="aside-title">Swift</p>
-                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="k">var</span> <span class="nv">name</span><span class="p">:</span> <span class="kt">String</span></code></pre>
+                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="k">var</span> <span class="nv">id</span><span class="p">:</span> <span class="kt">String</span></code></pre>
 
                         </div>
                       </div>
@@ -171,9 +171,9 @@
                 <li class="item">
                   <div>
                     <code>
-                    <a name="/s:16SudoEntitlements11EntitlementV11descriptionSSSgvp"></a>
-                    <a name="//apple_ref/swift/Property/description" class="dashAnchor"></a>
-                    <a class="token" href="#/s:16SudoEntitlements11EntitlementV11descriptionSSSgvp">description</a>
+                    <a name="/s:16SudoEntitlements19EntitlementConsumerV6issuerSSvp"></a>
+                    <a name="//apple_ref/swift/Property/issuer" class="dashAnchor"></a>
+                    <a class="token" href="#/s:16SudoEntitlements19EntitlementConsumerV6issuerSSvp">issuer</a>
                     </code>
                   </div>
                   <div class="height-container">
@@ -181,41 +181,14 @@
                     <section class="section">
                       <div class="pointer"></div>
                       <div class="abstract">
-                        <p>Human readable description of the entitlement.</p>
+                        <p>Issuer of the ID of the consumer. For example <code>sudoplatform.sudoservice</code> for a Sudo ID</p>
 
                       </div>
                       <div class="declaration">
                         <h4>Declaration</h4>
                         <div class="language">
                           <p class="aside-title">Swift</p>
-                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="k">var</span> <span class="nv">description</span><span class="p">:</span> <span class="kt">String</span><span class="p">?</span></code></pre>
-
-                        </div>
-                      </div>
-                    </section>
-                  </div>
-                </li>
-                <li class="item">
-                  <div>
-                    <code>
-                    <a name="/s:16SudoEntitlements11EntitlementV5valueSivp"></a>
-                    <a name="//apple_ref/swift/Property/value" class="dashAnchor"></a>
-                    <a class="token" href="#/s:16SudoEntitlements11EntitlementV5valueSivp">value</a>
-                    </code>
-                  </div>
-                  <div class="height-container">
-                    <div class="pointer-container"></div>
-                    <section class="section">
-                      <div class="pointer"></div>
-                      <div class="abstract">
-                        <p>The quantity of the entitlement.</p>
-
-                      </div>
-                      <div class="declaration">
-                        <h4>Declaration</h4>
-                        <div class="language">
-                          <p class="aside-title">Swift</p>
-                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="k">var</span> <span class="nv">value</span><span class="p">:</span> <span class="kt">Int</span></code></pre>
+                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="k">var</span> <span class="nv">issuer</span><span class="p">:</span> <span class="kt">String</span></code></pre>
 
                         </div>
                       </div>

@@ -9,6 +9,11 @@
 /* Begin PBXBuildFile section */
 		1244C2A559FB013CE27F952D /* Pods_SudoEntitlements_SudoEntitlementsIntegrationTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 782F02D60F11D938FE4B0AE8 /* Pods_SudoEntitlements_SudoEntitlementsIntegrationTests.framework */; };
 		365666D122808B159FDFDE0D /* Pods_TestApp.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FBCB8F0D47E7979005F9FBC2 /* Pods_TestApp.framework */; };
+		5D193EC3258FE76C0044DDED /* EntitlementConsumer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D193EC2258FE76C0044DDED /* EntitlementConsumer.swift */; };
+		5D193EC9258FE7EC0044DDED /* EntitlementConsumption.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D193EC8258FE7EC0044DDED /* EntitlementConsumption.swift */; };
+		5D193ECF258FE9580044DDED /* UserEntitlements.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D193ECE258FE9580044DDED /* UserEntitlements.swift */; };
+		5D193ED5258FEF5E0044DDED /* EntitlementsConsumption.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D193ED4258FEF5E0044DDED /* EntitlementsConsumption.swift */; };
+		5D193EFE258FF82C0044DDED /* GetEntitlementsConsumptionUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D193EFD258FF82C0044DDED /* GetEntitlementsConsumptionUseCase.swift */; };
 		5D1C74082537F53300FC76CF /* SudoEntitlementsIntegrationTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D1C74072537F53300FC76CF /* SudoEntitlementsIntegrationTests.swift */; };
 		5D1C740A2537F53300FC76CF /* SudoEntitlements.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5DA1AAFD24F78EBC003B29CA /* SudoEntitlements.framework */; };
 		5D1C74142537F58D00FC76CF /* BaseIntegrationTestCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D1C74132537F58D00FC76CF /* BaseIntegrationTestCase.swift */; };
@@ -29,6 +34,9 @@
 		5D408F3224F791F300259E5F /* SudoEntitlementsError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D408F1E24F791F300259E5F /* SudoEntitlementsError.swift */; };
 		5D408F3324F791F300259E5F /* SudoEntitlementsClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D408F1F24F791F300259E5F /* SudoEntitlementsClient.swift */; };
 		5D71DBE4255B6D87005007C3 /* AnyError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D71DBE3255B6D87005007C3 /* AnyError.swift */; };
+		5D8434652591494400FA607E /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D8434642591494400FA607E /* Constants.swift */; };
+		5D84346B259149A100FA607E /* VersionUtilities.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D84346A259149A100FA607E /* VersionUtilities.swift */; };
+		5D84347125914C5300FA607E /* VersionUtilitiesTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D84347025914C5300FA607E /* VersionUtilitiesTest.swift */; };
 		5DA1AB0E24F78EBC003B29CA /* SudoEntitlements.h in Headers */ = {isa = PBXBuildFile; fileRef = 5DA1AB0024F78EBC003B29CA /* SudoEntitlements.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		5DA1EB49253CD66200D75F13 /* util in Resources */ = {isa = PBXBuildFile; fileRef = 5DA1EB48253CD66100D75F13 /* util */; };
 		5F3413A324F870F9002942AB /* CachePolicy.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F3413A224F870F9002942AB /* CachePolicy.swift */; };
@@ -111,6 +119,11 @@
 		4571715FB5AD30F8502255C4 /* Pods-SudoEntitlementsTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SudoEntitlementsTests.release.xcconfig"; path = "Target Support Files/Pods-SudoEntitlementsTests/Pods-SudoEntitlementsTests.release.xcconfig"; sourceTree = "<group>"; };
 		50914117BDCBC10400649F34 /* Pods-SudoEntitlementsIntegrationTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SudoEntitlementsIntegrationTests.release.xcconfig"; path = "Target Support Files/Pods-SudoEntitlementsIntegrationTests/Pods-SudoEntitlementsIntegrationTests.release.xcconfig"; sourceTree = "<group>"; };
 		59AD06B4DB2965C3B126C6FB /* Pods-SudoEntitlementsTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SudoEntitlementsTests.debug.xcconfig"; path = "Target Support Files/Pods-SudoEntitlementsTests/Pods-SudoEntitlementsTests.debug.xcconfig"; sourceTree = "<group>"; };
+		5D193EC2258FE76C0044DDED /* EntitlementConsumer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EntitlementConsumer.swift; sourceTree = "<group>"; };
+		5D193EC8258FE7EC0044DDED /* EntitlementConsumption.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EntitlementConsumption.swift; sourceTree = "<group>"; };
+		5D193ECE258FE9580044DDED /* UserEntitlements.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserEntitlements.swift; sourceTree = "<group>"; };
+		5D193ED4258FEF5E0044DDED /* EntitlementsConsumption.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EntitlementsConsumption.swift; sourceTree = "<group>"; };
+		5D193EFD258FF82C0044DDED /* GetEntitlementsConsumptionUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetEntitlementsConsumptionUseCase.swift; sourceTree = "<group>"; };
 		5D1C74052537F53300FC76CF /* SudoEntitlementsIntegrationTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = SudoEntitlementsIntegrationTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		5D1C74072537F53300FC76CF /* SudoEntitlementsIntegrationTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SudoEntitlementsIntegrationTests.swift; sourceTree = "<group>"; };
 		5D1C74092537F53300FC76CF /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -132,6 +145,9 @@
 		5D408F1E24F791F300259E5F /* SudoEntitlementsError.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SudoEntitlementsError.swift; sourceTree = "<group>"; };
 		5D408F1F24F791F300259E5F /* SudoEntitlementsClient.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SudoEntitlementsClient.swift; sourceTree = "<group>"; };
 		5D71DBE3255B6D87005007C3 /* AnyError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnyError.swift; sourceTree = "<group>"; };
+		5D8434642591494400FA607E /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
+		5D84346A259149A100FA607E /* VersionUtilities.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VersionUtilities.swift; sourceTree = "<group>"; };
+		5D84347025914C5300FA607E /* VersionUtilitiesTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VersionUtilitiesTest.swift; sourceTree = "<group>"; };
 		5DA1AAFD24F78EBC003B29CA /* SudoEntitlements.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = SudoEntitlements.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		5DA1AB0024F78EBC003B29CA /* SudoEntitlements.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SudoEntitlements.h; sourceTree = "<group>"; };
 		5DA1AB0124F78EBC003B29CA /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -269,6 +285,7 @@
 		5D408EF524F791F300259E5F /* Use Cases */ = {
 			isa = PBXGroup;
 			children = (
+				5D193EFD258FF82C0044DDED /* GetEntitlementsConsumptionUseCase.swift */,
 				5D408EFD24F791F300259E5F /* GetEntitlementsUseCase.swift */,
 				5D408EF824F791F300259E5F /* RedeemEntitlementsUseCase.swift */,
 				5D408F1724F791F300259E5F /* UseCaseFactory.swift */,
@@ -316,6 +333,7 @@
 			children = (
 				5D408F1D24F791F300259E5F /* Errors */,
 				5D408F1924F791F300259E5F /* Types */,
+				5D8434592591486C00FA607E /* Utility */,
 				5D408F1C24F791F300259E5F /* DefaultSudoEntitlementsClient.swift */,
 				5D408F1F24F791F300259E5F /* SudoEntitlementsClient.swift */,
 			);
@@ -327,7 +345,11 @@
 			children = (
 				5F3413A224F870F9002942AB /* CachePolicy.swift */,
 				5D408F1A24F791F300259E5F /* Entitlement.swift */,
+				5D193EC2258FE76C0044DDED /* EntitlementConsumer.swift */,
+				5D193EC8258FE7EC0044DDED /* EntitlementConsumption.swift */,
+				5D193ED4258FEF5E0044DDED /* EntitlementsConsumption.swift */,
 				5D408F1B24F791F300259E5F /* EntitlementsSet.swift */,
+				5D193ECE258FE9580044DDED /* UserEntitlements.swift */,
 			);
 			path = Types;
 			sourceTree = "<group>";
@@ -344,6 +366,15 @@
 			isa = PBXGroup;
 			children = (
 				5D71DBE3255B6D87005007C3 /* AnyError.swift */,
+			);
+			path = Utility;
+			sourceTree = "<group>";
+		};
+		5D8434592591486C00FA607E /* Utility */ = {
+			isa = PBXGroup;
+			children = (
+				5D8434642591494400FA607E /* Constants.swift */,
+				5D84346A259149A100FA607E /* VersionUtilities.swift */,
 			);
 			path = Utility;
 			sourceTree = "<group>";
@@ -529,6 +560,7 @@
 				5F34157824F89493002942AB /* GetEntitlementsTest.swift */,
 				5F34157224F89493002942AB /* LifecycleTests.swift */,
 				5F34156C24F89493002942AB /* SudoEntitlementsErrorTests.swift */,
+				5D84347025914C5300FA607E /* VersionUtilitiesTest.swift */,
 			);
 			path = Public;
 			sourceTree = "<group>";
@@ -1043,13 +1075,18 @@
 			files = (
 				5D408F2724F791F300259E5F /* Bundle+Static.swift in Sources */,
 				5F3413A324F870F9002942AB /* CachePolicy.swift in Sources */,
+				5D8434652591494400FA607E /* Constants.swift in Sources */,
 				5D408F2324F791F300259E5F /* Date+MillisecondsSinceEpoch.swift in Sources */,
 				5F34161324F89EDF002942AB /* DefaultEntitlementsRepository.swift in Sources */,
 				5D408F3124F791F300259E5F /* DefaultSudoEntitlementsClient.swift in Sources */,
 				5D408F2F24F791F300259E5F /* Entitlement.swift in Sources */,
+				5D193EC3258FE76C0044DDED /* EntitlementConsumer.swift in Sources */,
+				5D193EC9258FE7EC0044DDED /* EntitlementConsumption.swift in Sources */,
+				5D193ED5258FEF5E0044DDED /* EntitlementsConsumption.swift in Sources */,
 				5F34161124F89931002942AB /* EntitlementsRepository.swift in Sources */,
 				5D408F3024F791F300259E5F /* EntitlementsSet.swift in Sources */,
 				5D408F2B24F791F300259E5F /* EntitlementsTransformer.swift in Sources */,
+				5D193EFE258FF82C0044DDED /* GetEntitlementsConsumptionUseCase.swift in Sources */,
 				5D408F2124F791F300259E5F /* GetEntitlementsUseCase.swift in Sources */,
 				5D408F2A24F791F300259E5F /* GraphQLAPI.swift in Sources */,
 				5F34168024F8CD72002942AB /* GraphQLResultWorker.swift in Sources */,
@@ -1062,6 +1099,8 @@
 				5D408F3224F791F300259E5F /* SudoEntitlementsError.swift in Sources */,
 				5D408F2224F791F300259E5F /* SudoLogger+Entitlements.swift in Sources */,
 				5D408F2E24F791F300259E5F /* UseCaseFactory.swift in Sources */,
+				5D193ECF258FE9580044DDED /* UserEntitlements.swift in Sources */,
+				5D84346B259149A100FA607E /* VersionUtilities.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1090,6 +1129,7 @@
 				5F34166F24F8C692002942AB /* MockSudoUserClient.swift in Sources */,
 				5F34167024F8C692002942AB /* MockUseCaseFactory.swift in Sources */,
 				5F34166524F8C67D002942AB /* SudoEntitlementsErrorTests.swift in Sources */,
+				5D84347125914C5300FA607E /* VersionUtilitiesTest.swift in Sources */,
 				5F34167824F8C6B6002942AB /* XCTestCase+Utility.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

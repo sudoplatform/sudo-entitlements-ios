@@ -16,13 +16,15 @@
 
 // MARK: - Errors: SudoPlatformError
 
-"entitlements.errors.serviceError" = "Service error has occurred";
+"entitlements.errors.accountLockedError" = "Account is locked";
 "entitlements.errors.decodingError" = "A decoding error has occurred";
 "entitlements.errors.environmentError" = "An environment error has occurred";
-"entitlements.errors.policyFailed" = "A policy has failed";
-"entitlements.errors.invalidTokenError" = "An invalid token error has occurred";
-"entitlements.errors.accountLockedError" = "Account is locked";
 "entitlements.errors.identityInsufficient" = "Identity is insufficient";
 "entitlements.errors.identityNotVerified" = "Identity is not verified";
-"entitlements.errors.unknownTimezone" = "Unknown time zone";
 "entitlements.errors.invalidArgument" = "Invalid argument";
+"entitlements.errors.invalidTokenError" = "An invalid token error has occurred";
+"entitlements.errors.insufficientEntitlementsError" = "Insufficient entitlements to perform operation";
+"entitlements.errors.noEntitlementsError" = "No entitlements assigned to user";
+"entitlements.errors.policyFailed" = "A policy has failed";
+"entitlements.errors.serviceError" = "Service error has occurred";
+"entitlements.errors.unknownTimezone" = "Unknown time zone";

@@ -15,6 +15,14 @@ class MockEntitlementsRepository: EntitlementsRepository, Resetable {
         resetCallCount += 1
     }
 
+    var getEntitlementsConsumptionCallCount = 0
+    var getEntitlementsConsumptionResult: Result<EntitlementsConsumption, Error> = .failure(AnyError("Please add base result to `MockEntitlementsRepository.getEntitlementsConsumption`"))
+
+    func getEntitlementsConsumption(completion: @escaping ClientCompletion<EntitlementsConsumption>) {
+        getEntitlementsConsumptionCallCount += 1
+        completion(getEntitlementsConsumptionResult)
+    }
+
     var getEntitlementsCallCount = 0
     var getEntitlementsResult: Result<EntitlementsSet?, Error> = .failure(AnyError("Please add base result to `MockEntitlementsRepository.getEntitlements`"))
 

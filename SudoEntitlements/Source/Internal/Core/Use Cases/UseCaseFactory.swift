@@ -19,6 +19,10 @@ class UseCaseFactory {
         return RedeemEntitlementsUseCase(repository: repository)
     }
 
+    func generateGetEntitlementsConsumptionUseCase() -> GetEntitlementsConsumptionUseCase {
+        return GetEntitlementsConsumptionUseCase(repository: repository)
+    }
+
     func generateGetEntitlementsUseCase() -> GetEntitlementsUseCase {
         return GetEntitlementsUseCase(repository: repository)
     }

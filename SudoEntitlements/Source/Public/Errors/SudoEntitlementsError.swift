@@ -24,16 +24,18 @@ public enum SudoEntitlementsError: Error, Equatable, LocalizedError {
     /**
       * This section contains wrapped erros from `SudoPlatformError`.
      */
-    case serviceError
+    case accountLockedError
     case decodingError
     case environmentError
-    case policyFailed
-    case invalidTokenError
-    case accountLockedError
     case identityInsufficient
     case identityNotVerified
+    case insufficientEntitlementsError
     case internalError(_ cause: String?)
     case invalidArgument(_ msg: String?)
+    case invalidTokenError
+    case noEntitlementsError
+    case policyFailed
+    case serviceError
     case unknownTimezone
 
     // MARK: - Lifecycle
@@ -59,64 +61,72 @@ public enum SudoEntitlementsError: Error, Equatable, LocalizedError {
     /// Initialize a `SudoEntitlementsError` from a `SudoPlatformError`.
     init(platformError error: SudoPlatformError) {
         switch error {
-        case .serviceError:
-            self = .serviceError
+        case .accountLockedError:
+            self = .accountLockedError
         case .decodingError:
             self = .decodingError
         case .environmentError:
             self = .environmentError
-        case .policyFailed:
-            self = .policyFailed
-        case .invalidTokenError:
-            self = .invalidTokenError
-        case .accountLockedError:
-            self = .accountLockedError
         case .identityInsufficient:
             self = .identityInsufficient
         case .identityNotVerified:
             self = .identityNotVerified
         case let .internalError(cause):
             self = .internalError(cause)
-        case .unknownTimezone:
-            self = .unknownTimezone
+        case .insufficientEntitlementsError:
+            self = .insufficientEntitlementsError
         case .invalidArgument(let msg):
             self = .invalidArgument(msg)
+        case .invalidTokenError:
+            self = .invalidTokenError
+        case .noEntitlementsError:
+            self = .noEntitlementsError
+        case .policyFailed:
+            self = .policyFailed
+        case .serviceError:
+            self = .serviceError
+        case .unknownTimezone:
+            self = .unknownTimezone
         }
     }
 
     public var errorDescription: String? {
         switch self {
-        case .invalidConfig:
-            return L10n.Entitlements.Errors.invalidConfig
-        case .notSignedIn:
-            return L10n.Entitlements.Errors.notSignedIn
-        case .serviceError:
-            return L10n.Entitlements.Errors.serviceError
+        case .accountLockedError:
+            return L10n.Entitlements.Errors.accountLockedError
+        case .ambiguousEntitlements:
+            return L10n.Entitlements.Errors.ambiguousEntitlementsError
         case .decodingError:
             return L10n.Entitlements.Errors.decodingError
         case .environmentError:
             return L10n.Entitlements.Errors.environmentError
-        case .policyFailed:
-            return L10n.Entitlements.Errors.policyFailed
-        case .invalidTokenError:
-            return L10n.Entitlements.Errors.invalidTokenError
-        case .accountLockedError:
-            return L10n.Entitlements.Errors.accountLockedError
         case .identityInsufficient:
             return L10n.Entitlements.Errors.identityInsufficient
         case .identityNotVerified:
             return L10n.Entitlements.Errors.identityNotVerified
-        case .ambiguousEntitlements:
-            return L10n.Entitlements.Errors.ambiguousEntitlementsError
+        case .insufficientEntitlementsError:
+            return L10n.Entitlements.Errors.insufficientEntitlementsError
         case let .internalError(cause):
             return cause ?? "Internal Error"
-        case .unknownTimezone:
-            return L10n.Entitlements.Errors.unknownTimezone
         case .invalidArgument(let msg):
             // Breaks all localization rules but good enough for here
             return msg != nil
                 ? L10n.Entitlements.Errors.invalidArgument + ": \(msg!)"
                 : L10n.Entitlements.Errors.invalidArgument
+        case .invalidConfig:
+            return L10n.Entitlements.Errors.invalidConfig
+        case .invalidTokenError:
+            return L10n.Entitlements.Errors.invalidTokenError
+        case .noEntitlementsError:
+            return L10n.Entitlements.Errors.noEntitlementsError
+        case .notSignedIn:
+            return L10n.Entitlements.Errors.notSignedIn
+        case .policyFailed:
+            return L10n.Entitlements.Errors.policyFailed
+        case .serviceError:
+            return L10n.Entitlements.Errors.serviceError
+        case .unknownTimezone:
+            return L10n.Entitlements.Errors.unknownTimezone
         }
     }
 }

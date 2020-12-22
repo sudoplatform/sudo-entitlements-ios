@@ -22,11 +22,17 @@ public struct Entitlement: Equatable {
     /// The quantity of the entitlement.
     public var value: Int
 
-    /// MARK: - Lifecycle
+    // MARK: - Lifecycle
 
     public init(name: String, description: String? = nil, value: Int) {
         self.name = name
         self.description = description
         self.value = value
+    }
+    
+    public init(_ original: Entitlement) {
+        self.name = original.name
+        self.description = original.description
+        self.value = original.value
     }
 }
