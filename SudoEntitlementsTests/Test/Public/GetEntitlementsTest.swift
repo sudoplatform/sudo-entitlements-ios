@@ -9,6 +9,13 @@ import XCTest
 
 class GetEntitlementsTest: BaseTestCase {
 
+    // MARK: - Lifecycle
+
+    override func setUp() {
+        super.setUp()
+        mockUserClient.isSignedInReturn = true
+    }
+
     // MARK: - Tests
 
     func test_getEntitlements_CreatesGetUseCase() {

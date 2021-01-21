@@ -114,6 +114,34 @@ class DefaultEntitlementsRepositoryTests: XCTestCase {
         }
     }
 
+    // MARK: - Tests: getEntitlementsConsumption
+
+    func test_getEntitlementsConsumption_ConstructsOperation() {
+        instanceUnderTest.queue.isSuspended = true
+        instanceUnderTest.getEntitlementsConsumption { _ in }
+        XCTAssertEqual(instanceUnderTest.queue.operationCount, 1)
+        guard let operation = instanceUnderTest.queue.operations.first(whereType: PlatformQueryOperation<GetEntitlementsConsumptionQuery>.self) else {
+            return XCTFail("Expected operation not found")
+        }
+        XCTAssertEqual(operation.cachePolicy, .remoteOnly)
+    }
+
+    func test_getEntitlementsConsumption_RespectsOperationFailure() {
+        mockOperationFactory.getEntitlementsConsumptionOperation =
+            MockGetEntitlementsConsumptionQuery(error: AnyError("Get Failed"))
+        waitUntil { done in
+            self.instanceUnderTest.getEntitlementsConsumption { result in
+                defer { done() }
+                switch result {
+                case let .failure(error as AnyError):
+                    XCTAssertEqual(error, AnyError("Get Failed"))
+                default:
+                    XCTFail("Unexpected result: \(result)")
+                }
+            }
+        }
+    }
+
     // MARK: - Tests: redeemEntitlements
 
     func test_redeemEntitlements_ConstructsOperation() {

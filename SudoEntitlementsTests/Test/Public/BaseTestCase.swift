@@ -6,6 +6,7 @@
 
 import XCTest
 @testable import SudoEntitlements
+import SudoUser
 import AWSAppSync
 
 class BaseTestCase: XCTestCase {

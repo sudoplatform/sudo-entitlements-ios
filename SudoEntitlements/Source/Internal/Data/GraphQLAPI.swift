@@ -184,7 +184,7 @@ internal final class GetEntitlementsQuery: GraphQLQuery {
 
 internal final class GetEntitlementsConsumptionQuery: GraphQLQuery {
   internal static let operationString =
-    "query GetEntitlementsConsumption {\n  getEntitlementsConsumption {\n    __typename\n    entitlements {\n      __typename\n      version\n      entitlementsSetName\n      entitlements {\n        __typename\n        name\n        description\n        value\n      }\n    }\n    consumption {\n      __typename\n      consumer {\n        __typename\n        id\n        issuer\n      }\n      name\n      value\n      consumed\n      available\n    }\n  }\n}"
+    "query GetEntitlementsConsumption {\n  getEntitlementsConsumption {\n    __typename\n    entitlements {\n      __typename\n      version\n      entitlementsSetName\n      entitlements {\n        __typename\n        name\n        description\n        value\n      }\n    }\n    consumption {\n      __typename\n      consumer {\n        __typename\n        id\n        issuer\n      }\n      name\n      value\n      consumed\n      available\n      firstConsumedAtEpochMs\n      lastConsumedAtEpochMs\n    }\n  }\n}"
 
   internal init() {
   }
@@ -385,6 +385,8 @@ internal final class GetEntitlementsConsumptionQuery: GraphQLQuery {
           GraphQLField("value", type: .nonNull(.scalar(Int.self))),
           GraphQLField("consumed", type: .nonNull(.scalar(Int.self))),
           GraphQLField("available", type: .nonNull(.scalar(Int.self))),
+          GraphQLField("firstConsumedAtEpochMs", type: .scalar(Double.self)),
+          GraphQLField("lastConsumedAtEpochMs", type: .scalar(Double.self)),
         ]
 
         internal var snapshot: Snapshot
@@ -393,8 +395,8 @@ internal final class GetEntitlementsConsumptionQuery: GraphQLQuery {
           self.snapshot = snapshot
         }
 
-        internal init(consumer: Consumer? = nil, name: String, value: Int, consumed: Int, available: Int) {
-          self.init(snapshot: ["__typename": "EntitlementConsumption", "consumer": consumer.flatMap { $0.snapshot }, "name": name, "value": value, "consumed": consumed, "available": available])
+        internal init(consumer: Consumer? = nil, name: String, value: Int, consumed: Int, available: Int, firstConsumedAtEpochMs: Double? = nil, lastConsumedAtEpochMs: Double? = nil) {
+          self.init(snapshot: ["__typename": "EntitlementConsumption", "consumer": consumer.flatMap { $0.snapshot }, "name": name, "value": value, "consumed": consumed, "available": available, "firstConsumedAtEpochMs": firstConsumedAtEpochMs, "lastConsumedAtEpochMs": lastConsumedAtEpochMs])
         }
 
         internal var __typename: String {
@@ -448,6 +450,24 @@ internal final class GetEntitlementsConsumptionQuery: GraphQLQuery {
           }
           set {
             snapshot.updateValue(newValue, forKey: "available")
+          }
+        }
+
+        internal var firstConsumedAtEpochMs: Double? {
+          get {
+            return snapshot["firstConsumedAtEpochMs"] as? Double
+          }
+          set {
+            snapshot.updateValue(newValue, forKey: "firstConsumedAtEpochMs")
+          }
+        }
+
+        internal var lastConsumedAtEpochMs: Double? {
+          get {
+            return snapshot["lastConsumedAtEpochMs"] as? Double
+          }
+          set {
+            snapshot.updateValue(newValue, forKey: "lastConsumedAtEpochMs")
           }
         }
 

@@ -14,6 +14,8 @@ import SudoLogging
 class MockOperationFactory: OperationFactory {
 
     var getEntitlementsOperation: MockQueryOperation<GetEntitlementsQuery>?
+    
+    var getEntitlementsConsumptionOperation: MockQueryOperation<GetEntitlementsConsumptionQuery>?
 
     var generateQueryLastProperties: (query: AnyObject, cachePolicy: SudoEntitlements.CachePolicy)?
 
@@ -27,6 +29,11 @@ class MockOperationFactory: OperationFactory {
         switch query.self {
         case is GetEntitlementsQuery:
             guard let op = getEntitlementsOperation else {
+                return super.generateQueryOperation(query: query, appSyncClient: appSyncClient, cachePolicy: cachePolicy, logger: logger)
+            }
+            return op as! PlatformQueryOperation<Query>
+        case is GetEntitlementsConsumptionQuery:
+            guard let op = getEntitlementsConsumptionOperation else {
                 return super.generateQueryOperation(query: query, appSyncClient: appSyncClient, cachePolicy: cachePolicy, logger: logger)
             }
             return op as! PlatformQueryOperation<Query>
@@ -136,6 +143,17 @@ class MockGetEntitlementsQuery: MockQueryOperation<GetEntitlementsQuery> {
     init(error: Error? = nil, result: GetEntitlementsQuery.Data? = nil) {
         let appSyncClient = MockAWSAppSyncClientGenerator.generateClient()
         let query = GetEntitlementsQuery()
+        super.init(appSyncClient: appSyncClient, query: query, cachePolicy: .remoteOnly, logger: .testLogger)
+        self.error = error
+        mockResult = result
+    }
+}
+
+class MockGetEntitlementsConsumptionQuery: MockQueryOperation<GetEntitlementsConsumptionQuery> {
+
+    init(error: Error? = nil, result: GetEntitlementsConsumptionQuery.Data? = nil) {
+        let appSyncClient = MockAWSAppSyncClientGenerator.generateClient()
+        let query = GetEntitlementsConsumptionQuery()
         super.init(appSyncClient: appSyncClient, query: query, cachePolicy: .remoteOnly, logger: .testLogger)
         self.error = error
         mockResult = result

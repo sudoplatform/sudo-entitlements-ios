@@ -121,14 +121,14 @@
     },
     {
       "file": "/Users/anonyome/builds/c2dfa4ea/0/platform/entitlements/sudo-entitlements-ios/sudo-entitlements-ios-gh/SudoEntitlements/Source/Public/Types/EntitlementConsumption.swift",
-      "line": 36,
-      "symbol": "EntitlementConsumption.init(name:consumer:value:consumed:available:)",
+      "line": 42,
+      "symbol": "EntitlementConsumption.init(name:consumer:value:consumed:available:firstConsumedAtEpochMs:lastConsumedAtEpochMs:)",
       "symbol_kind": "source.lang.swift.decl.function.method.instance",
       "warning": "undocumented"
     },
     {
       "file": "/Users/anonyome/builds/c2dfa4ea/0/platform/entitlements/sudo-entitlements-ios/sudo-entitlements-ios-gh/SudoEntitlements/Source/Public/Types/EntitlementConsumption.swift",
-      "line": 44,
+      "line": 60,
       "symbol": "EntitlementConsumption.init(_:)",
       "symbol_kind": "source.lang.swift.decl.function.method.instance",
       "warning": "undocumented"

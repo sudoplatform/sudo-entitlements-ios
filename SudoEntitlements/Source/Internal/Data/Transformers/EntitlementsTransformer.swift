@@ -33,7 +33,10 @@ struct EntitlementsTransformer {
                     issuer: $0.consumer!.issuer),
                 value: $0.value,
                 consumed: $0.consumed,
-                available: $0.available)
+                available: $0.available,
+                firstConsumedAtEpochMs: $0.firstConsumedAtEpochMs,
+                lastConsumedAtEpochMs: $0.lastConsumedAtEpochMs
+            )
         }
     }
 

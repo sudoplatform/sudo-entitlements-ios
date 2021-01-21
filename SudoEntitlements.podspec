@@ -1,7 +1,7 @@
 #
 Pod::Spec.new do |spec|
   spec.name                  = 'SudoEntitlements'
-  spec.version               = '2.0.0'
+  spec.version               = '2.1.0'
   spec.author                = { 'Sudo Platform Engineering' => 'sudoplatform-engineering@anonyome.com' }
   spec.homepage              = 'https://sudoplatform.com'
 
@@ -15,7 +15,7 @@ Pod::Spec.new do |spec|
   spec.swift_version         = '5.0'
 
   spec.dependency 'AWSAppSync', '~> 3.1'
-  spec.dependency 'SudoUser', '~> 8.0'
+  spec.dependency 'SudoUser', '~> 9.0'
   spec.dependency 'SudoLogging', '~> 0.3'
   spec.dependency 'SudoKeyManager', '~> 1.2'
   spec.dependency 'SudoOperations', '~> 4.0'
