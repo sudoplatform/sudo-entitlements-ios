@@ -33,6 +33,7 @@
 		5D408F3124F791F300259E5F /* DefaultSudoEntitlementsClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D408F1C24F791F300259E5F /* DefaultSudoEntitlementsClient.swift */; };
 		5D408F3224F791F300259E5F /* SudoEntitlementsError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D408F1E24F791F300259E5F /* SudoEntitlementsError.swift */; };
 		5D408F3324F791F300259E5F /* SudoEntitlementsClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D408F1F24F791F300259E5F /* SudoEntitlementsClient.swift */; };
+		5D70213025EF399300A4379D /* ConfigNotFoundTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D70212F25EF399300A4379D /* ConfigNotFoundTest.swift */; };
 		5D71DBE4255B6D87005007C3 /* AnyError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D71DBE3255B6D87005007C3 /* AnyError.swift */; };
 		5D8434652591494400FA607E /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D8434642591494400FA607E /* Constants.swift */; };
 		5D84346B259149A100FA607E /* VersionUtilities.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D84346A259149A100FA607E /* VersionUtilities.swift */; };
@@ -144,6 +145,7 @@
 		5D408F1C24F791F300259E5F /* DefaultSudoEntitlementsClient.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DefaultSudoEntitlementsClient.swift; sourceTree = "<group>"; };
 		5D408F1E24F791F300259E5F /* SudoEntitlementsError.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SudoEntitlementsError.swift; sourceTree = "<group>"; };
 		5D408F1F24F791F300259E5F /* SudoEntitlementsClient.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SudoEntitlementsClient.swift; sourceTree = "<group>"; };
+		5D70212F25EF399300A4379D /* ConfigNotFoundTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConfigNotFoundTest.swift; sourceTree = "<group>"; };
 		5D71DBE3255B6D87005007C3 /* AnyError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnyError.swift; sourceTree = "<group>"; };
 		5D8434642591494400FA607E /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 		5D84346A259149A100FA607E /* VersionUtilities.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VersionUtilities.swift; sourceTree = "<group>"; };
@@ -557,6 +559,7 @@
 			isa = PBXGroup;
 			children = (
 				5F34157A24F89493002942AB /* BaseTestCase.swift */,
+				5D70212F25EF399300A4379D /* ConfigNotFoundTest.swift */,
 				5F34157824F89493002942AB /* GetEntitlementsTest.swift */,
 				5F34157224F89493002942AB /* LifecycleTests.swift */,
 				5F34156C24F89493002942AB /* SudoEntitlementsErrorTests.swift */,
@@ -1111,6 +1114,7 @@
 				5F34167D24F8C6BC002942AB /* AnyError.swift in Sources */,
 				5F34167A24F8C6B6002942AB /* Array+OperationConvenience.swift in Sources */,
 				5F34166724F8C67D002942AB /* BaseTestCase.swift in Sources */,
+				5D70213025EF399300A4379D /* ConfigNotFoundTest.swift in Sources */,
 				5F34167324F8C69B002942AB /* Date+MillisecondsSinceEpochTests.swift in Sources */,
 				5F34167524F8C6AA002942AB /* DefaultDomainRepositoryTests.swift in Sources */,
 				5F34167924F8C6B6002942AB /* Error+Equality.swift in Sources */,
@@ -1414,6 +1418,7 @@
 			baseConfigurationReference = 3CF7677704847224092F81E0 /* Pods-SudoEntitlements-SudoEntitlementsTests.debug.xcconfig */;
 			buildSettings = {
 				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = UU2W43R8JA;
 				INFOPLIST_FILE = SudoEntitlementsTests/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -1434,6 +1439,7 @@
 			baseConfigurationReference = 39A44A8012BDEDF8415A9A70 /* Pods-SudoEntitlements-SudoEntitlementsTests.release.xcconfig */;
 			buildSettings = {
 				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = UU2W43R8JA;
 				INFOPLIST_FILE = SudoEntitlementsTests/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				LD_RUNPATH_SEARCH_PATHS = (

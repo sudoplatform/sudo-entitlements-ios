@@ -29,6 +29,7 @@ internal enum L10n {
         internal static let serviceError = L10n.tr("Localizable", "entitlements.errors.serviceError")
         internal static let unknownTimezone = L10n.tr("Localizable", "entitlements.errors.unknownTimezone")
         internal static let invalidArgument = L10n.tr("Localizable", "entitlements.errors.invalidArgument")
+        internal static let entitlementsServiceConfigNotFound = L10n.tr("Localizable", "entitlements.errors.entitlementsServiceConfigNotFound")
       }
     }
 }

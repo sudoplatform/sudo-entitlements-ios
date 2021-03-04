@@ -17,14 +17,17 @@ public enum SudoEntitlementsError: Error, Equatable, LocalizedError {
     case invalidConfig
     /// User is not signed in.
     case notSignedIn
-    case ambiguousEntitlements
+
+    /// The configuration related to Entitlements Service is not found in the provided configuration file
+    /// This may indicate that the Entitlemetns Service is not deployed into your runtime instance or the
+    /// configuration file that you are using is invalid..
+    case entitlementsServiceConfigNotFound
 
     // MARK: - SudoPlatformError
 
-    /**
-      * This section contains wrapped erros from `SudoPlatformError`.
-     */
+    /// This section contains wrapped erros from `SudoPlatformError`.
     case accountLockedError
+    case ambiguousEntitlements
     case decodingError
     case environmentError
     case identityInsufficient
@@ -127,6 +130,9 @@ public enum SudoEntitlementsError: Error, Equatable, LocalizedError {
             return L10n.Entitlements.Errors.serviceError
         case .unknownTimezone:
             return L10n.Entitlements.Errors.unknownTimezone
+        case .entitlementsServiceConfigNotFound:
+            return L10n.Entitlements.Errors.entitlementsServiceConfigNotFound
+
         }
     }
 }

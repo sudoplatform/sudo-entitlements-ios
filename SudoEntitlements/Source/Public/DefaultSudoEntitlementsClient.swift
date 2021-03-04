@@ -9,9 +9,21 @@ import SudoApiClient
 import SudoLogging
 import SudoOperations
 import SudoUser
+import SudoConfigManager
 
 /// Default Client API Endpoint for interacting with the Entitlements Service.
 public class DefaultSudoEntitlementsClient: SudoEntitlementsClient {
+
+    /// Configuration parameter names.
+    public struct Config {
+
+        /// Configuration namespace.
+        struct Namespace {
+
+            /// Entitlements service related configuration.
+            static let entitlementsService = "entitlementsService"
+        }
+    }
 
     /// App sync client for peforming operations against the entitlements service.
     let appSyncClient: AWSAppSyncClient
@@ -41,9 +53,19 @@ public class DefaultSudoEntitlementsClient: SudoEntitlementsClient {
     /// Throws:
     ///     - `SudoEntitlementsError` if invalid config.
     public convenience init(userClient: SudoUserClient) throws {
+        guard let configManager = SudoConfigManagerFactory.instance.getConfigManager(name: SudoConfigManagerFactory.Constants.defaultConfigManagerName),
+              let _ = configManager.getConfigSet(namespace: "apiService") else {
+            throw SudoEntitlementsError.invalidConfig
+        }
+
+        guard let _ = configManager.getConfigSet(namespace: Config.Namespace.entitlementsService) else {
+            throw SudoEntitlementsError.entitlementsServiceConfigNotFound
+        }
+
         guard let appSyncClient = try ApiClientManager.instance?.getClient(sudoUserClient: userClient) else {
             throw SudoEntitlementsError.invalidConfig
         }
+
         let repository = DefaultEntitlementsRepository(appSyncClient: appSyncClient)
         self.init(
             appSyncClient: appSyncClient,
@@ -56,8 +78,7 @@ public class DefaultSudoEntitlementsClient: SudoEntitlementsClient {
     /// Initialize an instance of `DefaultSudoEntitlementsClient`.
     ///
     /// This is used internally for injection and mock testing.
-    init(
-        appSyncClient: AWSAppSyncClient,
+    init(appSyncClient: AWSAppSyncClient,
         userClient: SudoUserClient,
         useCaseFactory: UseCaseFactory,
         repository: EntitlementsRepository,

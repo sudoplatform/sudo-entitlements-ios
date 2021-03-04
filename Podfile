@@ -23,7 +23,6 @@ target 'SudoEntitlements' do
 
   target 'SudoEntitlementsIntegrationTests' do
     podspec :name => 'SudoEntitlements'
-    pod 'SudoConfigManager', '~> 1.3'
   end
 end
 

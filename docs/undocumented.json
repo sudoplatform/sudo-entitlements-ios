@@ -2,91 +2,91 @@
   "warnings": [
     {
       "file": "/Users/anonyome/builds/c2dfa4ea/0/platform/entitlements/sudo-entitlements-ios/sudo-entitlements-ios-gh/SudoEntitlements/Source/Public/Errors/SudoEntitlementsError.swift",
-      "line": 20,
+      "line": 30,
       "symbol": "SudoEntitlementsError.ambiguousEntitlements",
       "symbol_kind": "source.lang.swift.decl.enumelement",
       "warning": "undocumented"
     },
     {
       "file": "/Users/anonyome/builds/c2dfa4ea/0/platform/entitlements/sudo-entitlements-ios/sudo-entitlements-ios-gh/SudoEntitlements/Source/Public/Errors/SudoEntitlementsError.swift",
-      "line": 28,
+      "line": 31,
       "symbol": "SudoEntitlementsError.decodingError",
       "symbol_kind": "source.lang.swift.decl.enumelement",
       "warning": "undocumented"
     },
     {
       "file": "/Users/anonyome/builds/c2dfa4ea/0/platform/entitlements/sudo-entitlements-ios/sudo-entitlements-ios-gh/SudoEntitlements/Source/Public/Errors/SudoEntitlementsError.swift",
-      "line": 29,
+      "line": 32,
       "symbol": "SudoEntitlementsError.environmentError",
       "symbol_kind": "source.lang.swift.decl.enumelement",
       "warning": "undocumented"
     },
     {
       "file": "/Users/anonyome/builds/c2dfa4ea/0/platform/entitlements/sudo-entitlements-ios/sudo-entitlements-ios-gh/SudoEntitlements/Source/Public/Errors/SudoEntitlementsError.swift",
-      "line": 30,
+      "line": 33,
       "symbol": "SudoEntitlementsError.identityInsufficient",
       "symbol_kind": "source.lang.swift.decl.enumelement",
       "warning": "undocumented"
     },
     {
       "file": "/Users/anonyome/builds/c2dfa4ea/0/platform/entitlements/sudo-entitlements-ios/sudo-entitlements-ios-gh/SudoEntitlements/Source/Public/Errors/SudoEntitlementsError.swift",
-      "line": 31,
+      "line": 34,
       "symbol": "SudoEntitlementsError.identityNotVerified",
       "symbol_kind": "source.lang.swift.decl.enumelement",
       "warning": "undocumented"
     },
     {
       "file": "/Users/anonyome/builds/c2dfa4ea/0/platform/entitlements/sudo-entitlements-ios/sudo-entitlements-ios-gh/SudoEntitlements/Source/Public/Errors/SudoEntitlementsError.swift",
-      "line": 32,
+      "line": 35,
       "symbol": "SudoEntitlementsError.insufficientEntitlementsError",
       "symbol_kind": "source.lang.swift.decl.enumelement",
       "warning": "undocumented"
     },
     {
       "file": "/Users/anonyome/builds/c2dfa4ea/0/platform/entitlements/sudo-entitlements-ios/sudo-entitlements-ios-gh/SudoEntitlements/Source/Public/Errors/SudoEntitlementsError.swift",
-      "line": 33,
+      "line": 36,
       "symbol": "SudoEntitlementsError.internalError(_:)",
       "symbol_kind": "source.lang.swift.decl.enumelement",
       "warning": "undocumented"
     },
     {
       "file": "/Users/anonyome/builds/c2dfa4ea/0/platform/entitlements/sudo-entitlements-ios/sudo-entitlements-ios-gh/SudoEntitlements/Source/Public/Errors/SudoEntitlementsError.swift",
-      "line": 34,
+      "line": 37,
       "symbol": "SudoEntitlementsError.invalidArgument(_:)",
       "symbol_kind": "source.lang.swift.decl.enumelement",
       "warning": "undocumented"
     },
     {
       "file": "/Users/anonyome/builds/c2dfa4ea/0/platform/entitlements/sudo-entitlements-ios/sudo-entitlements-ios-gh/SudoEntitlements/Source/Public/Errors/SudoEntitlementsError.swift",
-      "line": 35,
+      "line": 38,
       "symbol": "SudoEntitlementsError.invalidTokenError",
       "symbol_kind": "source.lang.swift.decl.enumelement",
       "warning": "undocumented"
     },
     {
       "file": "/Users/anonyome/builds/c2dfa4ea/0/platform/entitlements/sudo-entitlements-ios/sudo-entitlements-ios-gh/SudoEntitlements/Source/Public/Errors/SudoEntitlementsError.swift",
-      "line": 36,
+      "line": 39,
       "symbol": "SudoEntitlementsError.noEntitlementsError",
       "symbol_kind": "source.lang.swift.decl.enumelement",
       "warning": "undocumented"
     },
     {
       "file": "/Users/anonyome/builds/c2dfa4ea/0/platform/entitlements/sudo-entitlements-ios/sudo-entitlements-ios-gh/SudoEntitlements/Source/Public/Errors/SudoEntitlementsError.swift",
-      "line": 37,
+      "line": 40,
       "symbol": "SudoEntitlementsError.policyFailed",
       "symbol_kind": "source.lang.swift.decl.enumelement",
       "warning": "undocumented"
     },
     {
       "file": "/Users/anonyome/builds/c2dfa4ea/0/platform/entitlements/sudo-entitlements-ios/sudo-entitlements-ios-gh/SudoEntitlements/Source/Public/Errors/SudoEntitlementsError.swift",
-      "line": 38,
+      "line": 41,
       "symbol": "SudoEntitlementsError.serviceError",
       "symbol_kind": "source.lang.swift.decl.enumelement",
       "warning": "undocumented"
     },
     {
       "file": "/Users/anonyome/builds/c2dfa4ea/0/platform/entitlements/sudo-entitlements-ios/sudo-entitlements-ios-gh/SudoEntitlements/Source/Public/Errors/SudoEntitlementsError.swift",
-      "line": 39,
+      "line": 42,
       "symbol": "SudoEntitlementsError.unknownTimezone",
       "symbol_kind": "source.lang.swift.decl.enumelement",
       "warning": "undocumented"

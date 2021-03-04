@@ -28,3 +28,4 @@
 "entitlements.errors.policyFailed" = "A policy has failed";
 "entitlements.errors.serviceError" = "Service error has occurred";
 "entitlements.errors.unknownTimezone" = "Unknown time zone";
+"entitlements.errors.entitlementsServiceConfigNotFound" = "Entitlements service configuration not found";
