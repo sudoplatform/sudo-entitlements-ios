@@ -8,11 +8,12 @@ import Foundation
 import AWSAppSync
 import SudoLogging
 import SudoOperations
+import SudoApiClient
 
 class DefaultEntitlementsRepository: EntitlementsRepository {
 
-    /// App sync client for peforming operations against the entitlements service.
-    var appSyncClient: AWSAppSyncClient
+    /// GraphQL client for peforming operations against the entitlements service.
+    var graphQLClient: SudoApiClient
 
     /// Used to log diagnostic and error information.
     var logger: Logger
@@ -23,8 +24,8 @@ class DefaultEntitlementsRepository: EntitlementsRepository {
     /// Operation queue for enqueuing asynchronous tasks.
     var queue = PlatformOperationQueue()
 
-    init(appSyncClient: AWSAppSyncClient, logger: Logger = .entitlementsSDKLogger) {
-        self.appSyncClient = appSyncClient
+    init(graphQLClient: SudoApiClient, logger: Logger = .entitlementsSDKLogger) {
+        self.graphQLClient = graphQLClient
         self.logger = logger
     }
 
@@ -35,10 +36,14 @@ class DefaultEntitlementsRepository: EntitlementsRepository {
     /// Get the users current set of entitlements
     func getEntitlementsConsumption(completion: @escaping ClientCompletion<EntitlementsConsumption>) {
         let query = GetEntitlementsConsumptionQuery()
-        let operation = operationFactory.generateQueryOperation(query: query, appSyncClient: appSyncClient, logger: logger)
+        let operation = operationFactory.generateQueryOperation(query: query, graphQLClient: graphQLClient, logger: logger)
         let completionObserver = PlatformBlockObserver(finishHandler: { [unowned operation] _, errors in
             if let error = errors.first {
-                completion(.failure(error))
+                if error is ApiOperationError {
+                    completion(.failure(SudoEntitlementsError.fromApiOperationError(error: error)))
+                } else {
+                    completion(.failure(error))
+                }
                 return
             }
             guard let graphQLResult = operation.result?.getEntitlementsConsumption else {
@@ -56,10 +61,14 @@ class DefaultEntitlementsRepository: EntitlementsRepository {
     /// Get the users current set of entitlements
     func getEntitlements(completion: @escaping ClientCompletion<EntitlementsSet?>) {
         let query = GetEntitlementsQuery()
-        let operation = operationFactory.generateQueryOperation(query: query, appSyncClient: appSyncClient, logger: logger)
+        let operation = operationFactory.generateQueryOperation(query: query, graphQLClient: graphQLClient, logger: logger)
         let completionObserver = PlatformBlockObserver(finishHandler: { [unowned operation] _, errors in
             if let error = errors.first {
-                completion(.failure(error))
+                if error is ApiOperationError {
+                    completion(.failure(SudoEntitlementsError.fromApiOperationError(error: error)))
+                } else {
+                    completion(.failure(error))
+                }
                 return
             }
             guard let graphQLResult = operation.result?.getEntitlements else {
@@ -77,10 +86,14 @@ class DefaultEntitlementsRepository: EntitlementsRepository {
     /// Redeem the entitlements the user is allowed
     func redeemEntitlements(completion: @escaping ClientCompletion<EntitlementsSet>) {
         let mutation = RedeemEntitlementsMutation()
-        let operation = operationFactory.generateMutationOperation(mutation: mutation, appSyncClient: appSyncClient, logger: logger)
+        let operation = operationFactory.generateMutationOperation(mutation: mutation, graphQLClient: graphQLClient, logger: logger)
         let completionObserver = PlatformBlockObserver(finishHandler: { [unowned operation] _, errors in
             if let error = errors.first {
-                completion(.failure(error))
+                if error is ApiOperationError {
+                    completion(.failure(SudoEntitlementsError.fromApiOperationError(error: error)))
+                } else {
+                    completion(.failure(error))
+                }
                 return
             }
             guard let graphQLResult = operation.result?.redeemEntitlements else {

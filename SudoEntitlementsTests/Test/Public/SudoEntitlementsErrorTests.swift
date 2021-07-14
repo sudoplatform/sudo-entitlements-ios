@@ -45,18 +45,6 @@ class SudoEntitlementsErrorTests: XCTestCase {
         XCTAssertEqual(error, .serviceError)
     }
 
-    func test_init_sudoPlatformError_DecodingError() {
-        let sudoPlatformError: SudoPlatformError = .decodingError
-        let error = SudoEntitlementsError(platformError: sudoPlatformError)
-        XCTAssertEqual(error, .decodingError)
-    }
-
-    func test_init_sudoPlatformError_EnvironmentError() {
-        let sudoPlatformError: SudoPlatformError = .environmentError
-        let error = SudoEntitlementsError(platformError: sudoPlatformError)
-        XCTAssertEqual(error, .environmentError)
-    }
-
     func test_init_sudoPlatformError_PolicyFailed() {
         let sudoPlatformError: SudoPlatformError = .policyFailed
         let error = SudoEntitlementsError(platformError: sudoPlatformError)
@@ -67,30 +55,6 @@ class SudoEntitlementsErrorTests: XCTestCase {
         let sudoPlatformError: SudoPlatformError = .invalidTokenError
         let error = SudoEntitlementsError(platformError: sudoPlatformError)
         XCTAssertEqual(error, .invalidTokenError)
-    }
-
-    func test_init_sudoPlatformError_AccountLockedError() {
-        let sudoPlatformError: SudoPlatformError = .accountLockedError
-        let error = SudoEntitlementsError(platformError: sudoPlatformError)
-        XCTAssertEqual(error, .accountLockedError)
-    }
-
-    func test_init_sudoPlatformError_IdentityInsufficient() {
-        let sudoPlatformError: SudoPlatformError = .identityInsufficient
-        let error = SudoEntitlementsError(platformError: sudoPlatformError)
-        XCTAssertEqual(error, .identityInsufficient)
-    }
-
-    func test_init_sudoPlatformError_identityNotVerified() {
-        let sudoPlatformError: SudoPlatformError = .identityNotVerified
-        let error = SudoEntitlementsError(platformError: sudoPlatformError)
-        XCTAssertEqual(error, .identityNotVerified)
-    }
-
-    func test_init_sudoPlatformError_unknownTimezone() {
-        let sudoPlatformError: SudoPlatformError = .unknownTimezone
-        let error = SudoEntitlementsError(platformError: sudoPlatformError)
-        XCTAssertEqual(error, .unknownTimezone)
     }
 
     func test_init_sudoPlatformError_internalError_RespectsNil() {
@@ -137,18 +101,6 @@ class SudoEntitlementsErrorTests: XCTestCase {
         XCTAssertEqual(errorDescription, L10Ndescription)
     }
 
-    func test_errorDescription_DecodingError() {
-        let L10Ndescription = L10n.Entitlements.Errors.decodingError
-        let errorDescription = SudoEntitlementsError.decodingError.errorDescription
-        XCTAssertEqual(errorDescription, L10Ndescription)
-    }
-
-    func test_errorDescription_EnvironmentError() {
-        let L10Ndescription = L10n.Entitlements.Errors.environmentError
-        let errorDescription = SudoEntitlementsError.environmentError.errorDescription
-        XCTAssertEqual(errorDescription, L10Ndescription)
-    }
-
     func test_errorDescription_PolicyFailed() {
         let L10Ndescription = L10n.Entitlements.Errors.policyFailed
         let errorDescription = SudoEntitlementsError.policyFailed.errorDescription
@@ -158,24 +110,6 @@ class SudoEntitlementsErrorTests: XCTestCase {
     func test_errorDescription_InvalidTokenError() {
         let L10Ndescription = L10n.Entitlements.Errors.invalidTokenError
         let errorDescription = SudoEntitlementsError.invalidTokenError.errorDescription
-        XCTAssertEqual(errorDescription, L10Ndescription)
-    }
-
-    func test_errorDescription_AccountLockedError() {
-        let L10Ndescription = L10n.Entitlements.Errors.accountLockedError
-        let errorDescription = SudoEntitlementsError.accountLockedError.errorDescription
-        XCTAssertEqual(errorDescription, L10Ndescription)
-    }
-
-    func test_errorDescription_IdentityInsufficient() {
-        let L10Ndescription = L10n.Entitlements.Errors.identityInsufficient
-        let errorDescription = SudoEntitlementsError.identityInsufficient.errorDescription
-        XCTAssertEqual(errorDescription, L10Ndescription)
-    }
-
-    func test_errorDescription_IdentityNotVerified() {
-        let L10Ndescription = L10n.Entitlements.Errors.identityNotVerified
-        let errorDescription = SudoEntitlementsError.identityNotVerified.errorDescription
         XCTAssertEqual(errorDescription, L10Ndescription)
     }
 
@@ -203,11 +137,4 @@ class SudoEntitlementsErrorTests: XCTestCase {
         XCTAssertEqual(errorDescription, expectedDescription)
     }
 
-    // MARK: - Tests: Misc
-
-    func test_localizedDescriptionRespected() {
-        let expectedDescription = L10n.Entitlements.Errors.accountLockedError
-        let actualDescription = (SudoEntitlementsError.accountLockedError as Error).localizedDescription
-        XCTAssertEqual(expectedDescription, actualDescription)
-    }
 }

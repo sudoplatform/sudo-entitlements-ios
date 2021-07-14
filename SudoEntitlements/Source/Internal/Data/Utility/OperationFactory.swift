@@ -8,17 +8,18 @@ import Foundation
 import AWSAppSync
 import SudoOperations
 import SudoLogging
+import SudoApiClient
 
 class OperationFactory {
 
     func generateQueryOperation<Query: GraphQLQuery>(
         query: Query,
-        appSyncClient: AWSAppSyncClient,
+        graphQLClient: SudoApiClient,
         cachePolicy: CachePolicy = CachePolicy.remoteOnly,
         logger: Logger
     ) -> PlatformQueryOperation<Query> {
         return PlatformQueryOperation(
-            appSyncClient: appSyncClient,
+            graphQLClient: graphQLClient,
             serviceErrorTransformations: [SudoEntitlementsError.init(graphQLError:)],
             query: query,
             cachePolicy: cachePolicy.toSudoOperationsCachePolicy(),
@@ -29,11 +30,11 @@ class OperationFactory {
         mutation: Mutation,
         optimisticUpdate: OptimisticResponseBlock? = nil,
         optimisticCleanup: OptimisticCleanupBlock? = nil,
-        appSyncClient: AWSAppSyncClient,
+        graphQLClient: SudoApiClient,
         logger: Logger
     ) -> PlatformMutationOperation<Mutation> {
         return PlatformMutationOperation(
-            appSyncClient: appSyncClient,
+            graphQLClient: graphQLClient,
             serviceErrorTransformations: [SudoEntitlementsError.init(graphQLError:)],
             mutation: mutation,
             optimisticUpdate: optimisticUpdate,

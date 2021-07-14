@@ -9,6 +9,7 @@
 import SudoOperations
 import AWSAppSync
 import SudoLogging
+import SudoApiClient
 @testable import SudoEntitlements
 
 class MockOperationFactory: OperationFactory {
@@ -21,7 +22,7 @@ class MockOperationFactory: OperationFactory {
 
     override func generateQueryOperation<Query>(
         query: Query,
-        appSyncClient: AWSAppSyncClient,
+        graphQLClient: SudoApiClient,
         cachePolicy: SudoEntitlements.CachePolicy,
         logger: Logger
     ) -> PlatformQueryOperation<Query> where Query: GraphQLQuery {
@@ -29,16 +30,16 @@ class MockOperationFactory: OperationFactory {
         switch query.self {
         case is GetEntitlementsQuery:
             guard let op = getEntitlementsOperation else {
-                return super.generateQueryOperation(query: query, appSyncClient: appSyncClient, cachePolicy: cachePolicy, logger: logger)
+                return super.generateQueryOperation(query: query, graphQLClient: graphQLClient, cachePolicy: cachePolicy, logger: logger)
             }
             return op as! PlatformQueryOperation<Query>
         case is GetEntitlementsConsumptionQuery:
             guard let op = getEntitlementsConsumptionOperation else {
-                return super.generateQueryOperation(query: query, appSyncClient: appSyncClient, cachePolicy: cachePolicy, logger: logger)
+                return super.generateQueryOperation(query: query, graphQLClient: graphQLClient, cachePolicy: cachePolicy, logger: logger)
             }
             return op as! PlatformQueryOperation<Query>
         default:
-            return super.generateQueryOperation(query: query, appSyncClient: appSyncClient, cachePolicy: cachePolicy, logger: logger)
+            return super.generateQueryOperation(query: query, graphQLClient: graphQLClient, cachePolicy: cachePolicy, logger: logger)
         }
     }
 
@@ -50,7 +51,7 @@ class MockOperationFactory: OperationFactory {
         mutation: Mutation,
         optimisticUpdate: OptimisticResponseBlock? = nil,
         optimisticCleanup: OptimisticCleanupBlock? = nil,
-        appSyncClient: AWSAppSyncClient,
+        graphQLClient: SudoApiClient,
         logger: Logger
     ) -> PlatformMutationOperation<Mutation> where Mutation: GraphQLMutation {
         generateMutationLastProperty = mutation
@@ -61,7 +62,7 @@ class MockOperationFactory: OperationFactory {
                     mutation: mutation,
                     optimisticUpdate: optimisticUpdate,
                     optimisticCleanup: optimisticCleanup,
-                    appSyncClient: appSyncClient,
+                    graphQLClient: graphQLClient,
                     logger: logger
                 )
             }
@@ -71,7 +72,7 @@ class MockOperationFactory: OperationFactory {
                 mutation: mutation,
                 optimisticUpdate: optimisticUpdate,
                 optimisticCleanup: optimisticCleanup,
-                appSyncClient: appSyncClient,
+                graphQLClient: graphQLClient,
                 logger: logger
             )
         }
@@ -105,9 +106,9 @@ class MockMutationOperation<Mutation: GraphQLMutation>: PlatformMutationOperatio
 class MockRedeemEntitlementsOperation: MockMutationOperation<RedeemEntitlementsMutation> {
 
     init(error: Error? = nil, result: RedeemEntitlementsMutation.Data? = nil) {
-        let appSyncClient = MockAWSAppSyncClientGenerator.generateClient()
+        let graphQLClient = MockAWSAppSyncClientGenerator.generateClient()
         let mutation = RedeemEntitlementsMutation()
-        super.init(appSyncClient: appSyncClient, mutation: mutation, logger: .testLogger)
+        super.init(graphQLClient: graphQLClient, mutation: mutation, logger: .testLogger)
         self.error = error
         mockResult = result
     }
@@ -141,9 +142,9 @@ class MockQueryOperation<Query: GraphQLQuery>: PlatformQueryOperation<Query> {
 class MockGetEntitlementsQuery: MockQueryOperation<GetEntitlementsQuery> {
 
     init(error: Error? = nil, result: GetEntitlementsQuery.Data? = nil) {
-        let appSyncClient = MockAWSAppSyncClientGenerator.generateClient()
+        let graphQLClient = MockAWSAppSyncClientGenerator.generateClient()
         let query = GetEntitlementsQuery()
-        super.init(appSyncClient: appSyncClient, query: query, cachePolicy: .remoteOnly, logger: .testLogger)
+        super.init(graphQLClient: graphQLClient, query: query, cachePolicy: .remoteOnly, logger: .testLogger)
         self.error = error
         mockResult = result
     }
@@ -152,9 +153,9 @@ class MockGetEntitlementsQuery: MockQueryOperation<GetEntitlementsQuery> {
 class MockGetEntitlementsConsumptionQuery: MockQueryOperation<GetEntitlementsConsumptionQuery> {
 
     init(error: Error? = nil, result: GetEntitlementsConsumptionQuery.Data? = nil) {
-        let appSyncClient = MockAWSAppSyncClientGenerator.generateClient()
+        let graphQLClient = MockAWSAppSyncClientGenerator.generateClient()
         let query = GetEntitlementsConsumptionQuery()
-        super.init(appSyncClient: appSyncClient, query: query, cachePolicy: .remoteOnly, logger: .testLogger)
+        super.init(graphQLClient: graphQLClient, query: query, cachePolicy: .remoteOnly, logger: .testLogger)
         self.error = error
         mockResult = result
     }

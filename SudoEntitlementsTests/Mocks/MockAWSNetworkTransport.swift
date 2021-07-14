@@ -10,6 +10,7 @@ import Foundation
 import AWSS3
 import AWSAppSync
 import SudoLogging
+import SudoApiClient
 
 struct MockAWSAppSyncServiceConfigProvider: AWSAppSyncServiceConfigProvider {
     var endpoint = URL(string: "https://resource-id.appsync-api.us-west-2.amazonaws.com/graphql")!
@@ -90,18 +91,19 @@ class MockBlockingAWSNetworkTransport: MockAWSNetworkTransport {
 }
 
 struct MockAWSAppSyncClientGenerator {
-    typealias Result = (client: AWSAppSyncClient, transport: MockAWSNetworkTransport)
+    typealias Result = (client: SudoApiClient, transport: MockAWSNetworkTransport)
     static func generate(transport: MockAWSNetworkTransport = MockAWSNetworkTransport()) throws -> Self.Result {
         let mockProvider = MockAWSAppSyncServiceConfigProvider()
         let appSyncConfig = AWSAppSyncClientConfiguration(appSyncServiceConfig: mockProvider, networkTransport: transport)
         let appSyncClient = try AWSAppSyncClient(appSyncConfig: appSyncConfig)
-        return (appSyncClient, transport)
+        let graphQLClient = try SudoApiClient(appSyncClient: appSyncClient)
+        return (graphQLClient, transport)
     }
 
-    static func generateClient(transport: MockAWSNetworkTransport = MockAWSNetworkTransport()) -> AWSAppSyncClient {
+    static func generateClient(transport: MockAWSNetworkTransport = MockAWSNetworkTransport()) -> SudoApiClient {
         let mockProvider = MockAWSAppSyncServiceConfigProvider()
         let appSyncConfig = AWSAppSyncClientConfiguration(appSyncServiceConfig: mockProvider, networkTransport: transport)
         let appSyncClient = try! AWSAppSyncClient(appSyncConfig: appSyncConfig)
-        return appSyncClient
+        return try! SudoApiClient(appSyncClient: appSyncClient)
     }
 }

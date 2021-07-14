@@ -29,3 +29,12 @@
 "entitlements.errors.serviceError" = "Service error has occurred";
 "entitlements.errors.unknownTimezone" = "Unknown time zone";
 "entitlements.errors.entitlementsServiceConfigNotFound" = "Entitlements service configuration not found";
+"entitlements.errors.errors.invalidInput" = "Invalid input provided to API";
+"entitlements.errors.errors.limitExceeded" = "API limit exceeded";
+"entitlements.errors.errors.notAuthorized" = "User is not authorized to perform the requested operation";
+"entitlements.errors.errors.versionMismatch" = "The version of the resource being updated does not match the current version";
+"entitlements.errors.errors.requestFailed" = "The request failed due to connectivity or server error";
+"entitlements.errors.errors.rateLimitExceeded" = "API rate limit exceeded";
+"entitlements.errors.errors.graphQLError" = "Unknown GraphQL error was returned";
+"entitlements.errors.errors.fatalError" = "Unexpected fatal error occurred";
+

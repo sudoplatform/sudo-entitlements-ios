@@ -8,6 +8,7 @@ import XCTest
 import AWSAppSync
 import SudoLogging
 import SudoOperations
+import SudoApiClient
 @testable import SudoEntitlements
 
 class DefaultEntitlementsRepositoryTests: XCTestCase {
@@ -18,14 +19,14 @@ class DefaultEntitlementsRepositoryTests: XCTestCase {
 
     var mockOperationFactory: MockOperationFactory!
 
-    var appSyncClient: AWSAppSyncClient!
+    var graphQLClient: SudoApiClient!
 
     // MARK: - Lifecycle
 
     override func setUp() {
         mockOperationFactory = MockOperationFactory()
-        appSyncClient = MockAWSAppSyncClientGenerator.generateClient()
-        instanceUnderTest = DefaultEntitlementsRepository(appSyncClient: appSyncClient, logger: .testLogger)
+        graphQLClient = MockAWSAppSyncClientGenerator.generateClient()
+        instanceUnderTest = DefaultEntitlementsRepository(graphQLClient: graphQLClient, logger: .testLogger)
         instanceUnderTest.operationFactory = mockOperationFactory
     }
 
@@ -33,8 +34,8 @@ class DefaultEntitlementsRepositoryTests: XCTestCase {
 
     func test_initializer() {
         let logger = Logger.testLogger
-        let instanceUnderTest = DefaultEntitlementsRepository(appSyncClient: appSyncClient, logger: logger)
-        XCTAssertTrue(instanceUnderTest.appSyncClient === appSyncClient)
+        let instanceUnderTest = DefaultEntitlementsRepository(graphQLClient: graphQLClient, logger: logger)
+        XCTAssertTrue(instanceUnderTest.graphQLClient === graphQLClient)
         XCTAssertTrue(instanceUnderTest.logger === logger)
     }
 

@@ -25,8 +25,8 @@ public class DefaultSudoEntitlementsClient: SudoEntitlementsClient {
         }
     }
 
-    /// App sync client for peforming operations against the entitlements service.
-    let appSyncClient: AWSAppSyncClient
+    /// GraphQL client for peforming operations against the entitlements service.
+    let graphQLClient: SudoApiClient
 
     /// Used to log diagnostic and error information.
     let logger: Logger
@@ -62,13 +62,13 @@ public class DefaultSudoEntitlementsClient: SudoEntitlementsClient {
             throw SudoEntitlementsError.entitlementsServiceConfigNotFound
         }
 
-        guard let appSyncClient = try ApiClientManager.instance?.getClient(sudoUserClient: userClient) else {
+        guard let graphQLClient = try SudoApiClientManager.instance?.getClient(sudoUserClient: userClient) else {
             throw SudoEntitlementsError.invalidConfig
         }
 
-        let repository = DefaultEntitlementsRepository(appSyncClient: appSyncClient)
+        let repository = DefaultEntitlementsRepository(graphQLClient: graphQLClient)
         self.init(
-            appSyncClient: appSyncClient,
+            graphQLClient: graphQLClient,
             userClient: userClient,
             useCaseFactory: UseCaseFactory(repository: repository),
             repository: repository
@@ -78,13 +78,13 @@ public class DefaultSudoEntitlementsClient: SudoEntitlementsClient {
     /// Initialize an instance of `DefaultSudoEntitlementsClient`.
     ///
     /// This is used internally for injection and mock testing.
-    init(appSyncClient: AWSAppSyncClient,
+    init(graphQLClient: SudoApiClient,
         userClient: SudoUserClient,
         useCaseFactory: UseCaseFactory,
         repository: EntitlementsRepository,
         logger: Logger = .entitlementsSDKLogger
     ) {
-        self.appSyncClient = appSyncClient
+        self.graphQLClient = graphQLClient
         self.logger = logger
         self.useCaseFactory = useCaseFactory
         self.repository = repository
@@ -93,7 +93,7 @@ public class DefaultSudoEntitlementsClient: SudoEntitlementsClient {
 
     public func reset() throws {
         allResetables.forEach { $0.reset() }
-        try self.appSyncClient.clearCaches(options: .init(clearQueries: true, clearMutations: true, clearSubscriptions: false))
+        try self.graphQLClient.clearCaches(options: .init(clearQueries: true, clearMutations: true, clearSubscriptions: false))
     }
 
     public func redeemEntitlements(completion: @escaping ClientCompletion<EntitlementsSet>) {

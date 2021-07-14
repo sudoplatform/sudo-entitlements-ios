@@ -14,7 +14,7 @@ public typealias ClientCompletion<O> = (Swift.Result<O, Error>) -> Void
 ///
 /// It is recommended to code to this interface, rather than the implementation class (`DefaultSudoEntitlementsClient`) as
 /// the implementation class is only meant to be used for initializing an instance of the client.
-public protocol SudoEntitlementsClient: class {
+public protocol SudoEntitlementsClient: AnyObject {
 
     // MARK: - Lifecycle
     

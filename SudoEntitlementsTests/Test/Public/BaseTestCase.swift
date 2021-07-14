@@ -8,6 +8,7 @@ import XCTest
 @testable import SudoEntitlements
 import SudoUser
 import AWSAppSync
+import SudoApiClient
 
 class BaseTestCase: XCTestCase {
 
@@ -15,7 +16,7 @@ class BaseTestCase: XCTestCase {
 
     var instanceUnderTest: SudoEntitlementsClient!
 
-    var appSyncClient: AWSAppSyncClient!
+    var graphQLClient: SudoApiClient!
     var mockUserClient: MockSudoUserClient!
     var mockUseCaseFactory: MockUseCaseFactory!
     var mockEntitlementsRepository: MockEntitlementsRepository!
@@ -24,12 +25,12 @@ class BaseTestCase: XCTestCase {
 
     override func setUp() {
         super.setUp()
-        appSyncClient = MockAWSAppSyncClientGenerator.generateClient()
+        graphQLClient = MockAWSAppSyncClientGenerator.generateClient()
         mockUserClient = MockSudoUserClient()
         mockEntitlementsRepository = MockEntitlementsRepository()
         mockUseCaseFactory = MockUseCaseFactory(repository: mockEntitlementsRepository)
         instanceUnderTest = DefaultSudoEntitlementsClient(
-            appSyncClient: appSyncClient,
+            graphQLClient: graphQLClient,
             userClient: mockUserClient,
             useCaseFactory: mockUseCaseFactory,
             repository: mockEntitlementsRepository,

@@ -6,7 +6,7 @@
 
 import Foundation
 
-protocol EntitlementsRepository: class, Resetable {
+protocol EntitlementsRepository: AnyObject, Resetable {
 
     /// Get the users current set of entitlements and their consumption
     func getEntitlementsConsumption(completion: @escaping ClientCompletion<EntitlementsConsumption>)
