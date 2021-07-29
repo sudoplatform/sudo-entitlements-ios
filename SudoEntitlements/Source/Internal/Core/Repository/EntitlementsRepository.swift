@@ -14,6 +14,9 @@ protocol EntitlementsRepository: AnyObject, Resetable {
     /// Get the users current set of entitlements
     func getEntitlements(completion: @escaping ClientCompletion<EntitlementsSet?>)
 
+    /// Get the users external ID
+    func getExternalId(completion: @escaping ClientCompletion<String>)
+
     /// Redeem the entitlements the user is allowed
     func redeemEntitlements(completion: @escaping ClientCompletion<EntitlementsSet>)
 }

@@ -522,6 +522,41 @@ internal final class GetEntitlementsConsumptionQuery: GraphQLQuery {
   }
 }
 
+internal final class GetExternalIdQuery: GraphQLQuery {
+  internal static let operationString =
+    "query GetExternalId {\n  getExternalId\n}"
+
+  internal init() {
+  }
+
+  internal struct Data: GraphQLSelectionSet {
+    internal static let possibleTypes = ["Query"]
+
+    internal static let selections: [GraphQLSelection] = [
+      GraphQLField("getExternalId", type: .nonNull(.scalar(String.self))),
+    ]
+
+    internal var snapshot: Snapshot
+
+    internal init(snapshot: Snapshot) {
+      self.snapshot = snapshot
+    }
+
+    internal init(getExternalId: String) {
+      self.init(snapshot: ["__typename": "Query", "getExternalId": getExternalId])
+    }
+
+    internal var getExternalId: String {
+      get {
+        return snapshot["getExternalId"]! as! String
+      }
+      set {
+        snapshot.updateValue(newValue, forKey: "getExternalId")
+      }
+    }
+  }
+}
+
 internal final class RedeemEntitlementsMutation: GraphQLMutation {
   internal static let operationString =
     "mutation RedeemEntitlements {\n  redeemEntitlements {\n    __typename\n    createdAtEpochMs\n    updatedAtEpochMs\n    version\n    name\n    description\n    entitlements {\n      __typename\n      name\n      description\n      value\n    }\n  }\n}"

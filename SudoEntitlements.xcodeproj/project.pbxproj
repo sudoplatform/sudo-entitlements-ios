@@ -40,6 +40,10 @@
 		5D84347125914C5300FA607E /* VersionUtilitiesTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D84347025914C5300FA607E /* VersionUtilitiesTest.swift */; };
 		5DA1AB0E24F78EBC003B29CA /* SudoEntitlements.h in Headers */ = {isa = PBXBuildFile; fileRef = 5DA1AB0024F78EBC003B29CA /* SudoEntitlements.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		5DA1EB49253CD66200D75F13 /* util in Resources */ = {isa = PBXBuildFile; fileRef = 5DA1EB48253CD66100D75F13 /* util */; };
+		5DDFF39A26B1425600CBCC12 /* GetExternalIdUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5DDFF39926B1425600CBCC12 /* GetExternalIdUseCase.swift */; };
+		5DDFF39E26B158F300CBCC12 /* MockGetEntitlementsConsumptionUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5DDFF39D26B158F300CBCC12 /* MockGetEntitlementsConsumptionUseCase.swift */; };
+		5DDFF3A026B1590100CBCC12 /* MockGetExternalIdUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5DDFF39F26B1590100CBCC12 /* MockGetExternalIdUseCase.swift */; };
+		5DDFF3A226B15C0D00CBCC12 /* GetExternalIdTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5DDFF3A126B15C0D00CBCC12 /* GetExternalIdTests.swift */; };
 		5F3413A324F870F9002942AB /* CachePolicy.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F3413A224F870F9002942AB /* CachePolicy.swift */; };
 		5F3413AC24F8865C002942AB /* Strings.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F3413AB24F8865C002942AB /* Strings.swift */; };
 		5F3413B524F8933A002942AB /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 5F3413B324F8933A002942AB /* Localizable.strings */; };
@@ -55,7 +59,7 @@
 		5F34166224F8C3D0002942AB /* Gemfile in Resources */ = {isa = PBXBuildFile; fileRef = 5F34165B24F8C3D0002942AB /* Gemfile */; };
 		5F34166324F8C675002942AB /* LifecycleTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F34157224F89493002942AB /* LifecycleTests.swift */; };
 		5F34166524F8C67D002942AB /* SudoEntitlementsErrorTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F34156C24F89493002942AB /* SudoEntitlementsErrorTests.swift */; };
-		5F34166624F8C67D002942AB /* GetEntitlementsTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F34157824F89493002942AB /* GetEntitlementsTest.swift */; };
+		5F34166624F8C67D002942AB /* DefaultSudoEntitlementsTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F34157824F89493002942AB /* DefaultSudoEntitlementsTest.swift */; };
 		5F34166724F8C67D002942AB /* BaseTestCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F34157A24F89493002942AB /* BaseTestCase.swift */; };
 		5F34166824F8C68C002942AB /* MockGraphQL.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F3414DB24F89492002942AB /* MockGraphQL.swift */; };
 		5F34166924F8C68C002942AB /* MockEntitlementsRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F3414DD24F89492002942AB /* MockEntitlementsRepository.swift */; };
@@ -154,6 +158,10 @@
 		5DA1AB0024F78EBC003B29CA /* SudoEntitlements.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SudoEntitlements.h; sourceTree = "<group>"; };
 		5DA1AB0124F78EBC003B29CA /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		5DA1EB48253CD66100D75F13 /* util */ = {isa = PBXFileReference; lastKnownFileType = folder; path = util; sourceTree = "<group>"; };
+		5DDFF39926B1425600CBCC12 /* GetExternalIdUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetExternalIdUseCase.swift; sourceTree = "<group>"; };
+		5DDFF39D26B158F300CBCC12 /* MockGetEntitlementsConsumptionUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockGetEntitlementsConsumptionUseCase.swift; sourceTree = "<group>"; };
+		5DDFF39F26B1590100CBCC12 /* MockGetExternalIdUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockGetExternalIdUseCase.swift; sourceTree = "<group>"; };
+		5DDFF3A126B15C0D00CBCC12 /* GetExternalIdTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetExternalIdTests.swift; sourceTree = "<group>"; };
 		5F3413A224F870F9002942AB /* CachePolicy.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CachePolicy.swift; sourceTree = "<group>"; };
 		5F3413AB24F8865C002942AB /* Strings.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Strings.swift; sourceTree = "<group>"; };
 		5F3413B424F8933A002942AB /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
@@ -170,7 +178,7 @@
 		5F34153E24F89492002942AB /* GraphQLResultWorkerTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GraphQLResultWorkerTests.swift; sourceTree = "<group>"; };
 		5F34156C24F89493002942AB /* SudoEntitlementsErrorTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SudoEntitlementsErrorTests.swift; sourceTree = "<group>"; };
 		5F34157224F89493002942AB /* LifecycleTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LifecycleTests.swift; sourceTree = "<group>"; };
-		5F34157824F89493002942AB /* GetEntitlementsTest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GetEntitlementsTest.swift; sourceTree = "<group>"; };
+		5F34157824F89493002942AB /* DefaultSudoEntitlementsTest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DefaultSudoEntitlementsTest.swift; sourceTree = "<group>"; };
 		5F34157A24F89493002942AB /* BaseTestCase.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BaseTestCase.swift; sourceTree = "<group>"; };
 		5F34157D24F89493002942AB /* .swiftlint.yml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.yaml; path = .swiftlint.yml; sourceTree = "<group>"; };
 		5F34157F24F89493002942AB /* Logger+Tests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Logger+Tests.swift"; sourceTree = "<group>"; };
@@ -289,6 +297,7 @@
 			children = (
 				5D193EFD258FF82C0044DDED /* GetEntitlementsConsumptionUseCase.swift */,
 				5D408EFD24F791F300259E5F /* GetEntitlementsUseCase.swift */,
+				5DDFF39926B1425600CBCC12 /* GetExternalIdUseCase.swift */,
 				5D408EF824F791F300259E5F /* RedeemEntitlementsUseCase.swift */,
 				5D408F1724F791F300259E5F /* UseCaseFactory.swift */,
 			);
@@ -464,7 +473,9 @@
 		5F3414EC24F89492002942AB /* Use Cases */ = {
 			isa = PBXGroup;
 			children = (
+				5DDFF39D26B158F300CBCC12 /* MockGetEntitlementsConsumptionUseCase.swift */,
 				5F3414F424F89492002942AB /* MockGetEntitlementsUseCase.swift */,
+				5DDFF39F26B1590100CBCC12 /* MockGetExternalIdUseCase.swift */,
 				5F34161424F8B0F8002942AB /* MockRedeemEntitlementsTestCase.swift */,
 			);
 			path = "Use Cases";
@@ -502,6 +513,7 @@
 			children = (
 				5F34152524F89492002942AB /* GetEntitlementsCaseTests.swift */,
 				955F56D925AFEAE100D73CBE /* GetEntitlementsConsumptionUseCaseTests.swift */,
+				5DDFF3A126B15C0D00CBCC12 /* GetExternalIdTests.swift */,
 			);
 			path = "Use Cases";
 			sourceTree = "<group>";
@@ -560,7 +572,7 @@
 			children = (
 				5F34157A24F89493002942AB /* BaseTestCase.swift */,
 				5D70212F25EF399300A4379D /* ConfigNotFoundTest.swift */,
-				5F34157824F89493002942AB /* GetEntitlementsTest.swift */,
+				5F34157824F89493002942AB /* DefaultSudoEntitlementsTest.swift */,
 				5F34157224F89493002942AB /* LifecycleTests.swift */,
 				5F34156C24F89493002942AB /* SudoEntitlementsErrorTests.swift */,
 				5D84347025914C5300FA607E /* VersionUtilitiesTest.swift */,
@@ -1091,6 +1103,7 @@
 				5D408F2B24F791F300259E5F /* EntitlementsTransformer.swift in Sources */,
 				5D193EFE258FF82C0044DDED /* GetEntitlementsConsumptionUseCase.swift in Sources */,
 				5D408F2124F791F300259E5F /* GetEntitlementsUseCase.swift in Sources */,
+				5DDFF39A26B1425600CBCC12 /* GetExternalIdUseCase.swift in Sources */,
 				5D408F2A24F791F300259E5F /* GraphQLAPI.swift in Sources */,
 				5F34168024F8CD72002942AB /* GraphQLResultWorker.swift in Sources */,
 				5D408F2424F791F300259E5F /* OperationArray+Convenience.swift in Sources */,
@@ -1117,16 +1130,19 @@
 				5D70213025EF399300A4379D /* ConfigNotFoundTest.swift in Sources */,
 				5F34167324F8C69B002942AB /* Date+MillisecondsSinceEpochTests.swift in Sources */,
 				5F34167524F8C6AA002942AB /* DefaultDomainRepositoryTests.swift in Sources */,
+				5F34166624F8C67D002942AB /* DefaultSudoEntitlementsTest.swift in Sources */,
 				5F34167924F8C6B6002942AB /* Error+Equality.swift in Sources */,
 				5F34167224F8C697002942AB /* GetEntitlementsCaseTests.swift in Sources */,
 				955F56DA25AFEAE100D73CBE /* GetEntitlementsConsumptionUseCaseTests.swift in Sources */,
-				5F34166624F8C67D002942AB /* GetEntitlementsTest.swift in Sources */,
+				5DDFF3A226B15C0D00CBCC12 /* GetExternalIdTests.swift in Sources */,
 				5F34167624F8C6AF002942AB /* GraphQLResultWorkerTests.swift in Sources */,
 				5F34166324F8C675002942AB /* LifecycleTests.swift in Sources */,
 				5F34167724F8C6B6002942AB /* Logger+Tests.swift in Sources */,
 				5F34166B24F8C68C002942AB /* MockAWSNetworkTransport.swift in Sources */,
 				5F34166924F8C68C002942AB /* MockEntitlementsRepository.swift in Sources */,
+				5DDFF39E26B158F300CBCC12 /* MockGetEntitlementsConsumptionUseCase.swift in Sources */,
 				5F34166D24F8C692002942AB /* MockGetEntitlementsUseCase.swift in Sources */,
+				5DDFF3A026B1590100CBCC12 /* MockGetExternalIdUseCase.swift in Sources */,
 				5F34166824F8C68C002942AB /* MockGraphQL.swift in Sources */,
 				5F34166A24F8C68C002942AB /* MockOperationFactory.swift in Sources */,
 				5F34167124F8C692002942AB /* MockPlatformOperationQueue.swift in Sources */,

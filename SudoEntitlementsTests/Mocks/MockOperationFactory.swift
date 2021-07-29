@@ -18,6 +18,8 @@ class MockOperationFactory: OperationFactory {
     
     var getEntitlementsConsumptionOperation: MockQueryOperation<GetEntitlementsConsumptionQuery>?
 
+    var getExternalIdOperation: MockQueryOperation<GetExternalIdQuery>?
+
     var generateQueryLastProperties: (query: AnyObject, cachePolicy: SudoEntitlements.CachePolicy)?
 
     override func generateQueryOperation<Query>(
@@ -35,6 +37,11 @@ class MockOperationFactory: OperationFactory {
             return op as! PlatformQueryOperation<Query>
         case is GetEntitlementsConsumptionQuery:
             guard let op = getEntitlementsConsumptionOperation else {
+                return super.generateQueryOperation(query: query, graphQLClient: graphQLClient, cachePolicy: cachePolicy, logger: logger)
+            }
+            return op as! PlatformQueryOperation<Query>
+        case is GetExternalIdQuery:
+            guard let op = getExternalIdOperation else {
                 return super.generateQueryOperation(query: query, graphQLClient: graphQLClient, cachePolicy: cachePolicy, logger: logger)
             }
             return op as! PlatformQueryOperation<Query>
@@ -155,6 +162,17 @@ class MockGetEntitlementsConsumptionQuery: MockQueryOperation<GetEntitlementsCon
     init(error: Error? = nil, result: GetEntitlementsConsumptionQuery.Data? = nil) {
         let graphQLClient = MockAWSAppSyncClientGenerator.generateClient()
         let query = GetEntitlementsConsumptionQuery()
+        super.init(graphQLClient: graphQLClient, query: query, cachePolicy: .remoteOnly, logger: .testLogger)
+        self.error = error
+        mockResult = result
+    }
+}
+
+class MockGetExternalIdQuery: MockQueryOperation<GetExternalIdQuery> {
+
+    init(error: Error? = nil, result: GetExternalIdQuery.Data? = nil) {
+        let graphQLClient = MockAWSAppSyncClientGenerator.generateClient()
+        let query = GetExternalIdQuery()
         super.init(graphQLClient: graphQLClient, query: query, cachePolicy: .remoteOnly, logger: .testLogger)
         self.error = error
         mockResult = result

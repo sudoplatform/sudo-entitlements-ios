@@ -134,6 +134,25 @@ public class DefaultSudoEntitlementsClient: SudoEntitlementsClient {
         useCase.execute(completion: useCaseCompletion)
     }
 
+    public func getExternalId(completion: @escaping ClientCompletion<String>) {
+        do {
+            if try !userClient.isSignedIn() {
+                completion(.failure(SudoEntitlementsError.notSignedIn))
+                return
+            }
+        }
+        catch {
+            completion(.failure(error))
+            return
+        }
+  
+        let useCaseCompletion: ClientCompletion<String> = { result in
+            completion(result)
+        }
+        let useCase = useCaseFactory.generateGetExternalIdUseCase()
+        useCase.execute(completion: useCaseCompletion)
+    }
+
     public func getEntitlements(completion: @escaping ClientCompletion<EntitlementsSet?>) {
         do {
             if try !userClient.isSignedIn() {

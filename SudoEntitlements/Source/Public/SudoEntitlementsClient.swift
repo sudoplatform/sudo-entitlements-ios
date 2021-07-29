@@ -30,6 +30,13 @@ public protocol SudoEntitlementsClient: AnyObject {
     ///   - Failure: `SudoEntitlementsError`
     func getEntitlementsConsumption(completion: @escaping ClientCompletion<EntitlementsConsumption>)
 
+    /// Get the external ID as determined by the entitlements service.
+    /// Useful for automated tests
+    /// - Returns:
+    ///   - Success: The external ID of the authenticated user
+    ///   - Failure: `SudoEntitlementsError`
+    func getExternalId(completion: @escaping ClientCompletion<String>)
+
     /// Get the current set of entitlements for the user.
     ///
     /// Deprecated: Use `getEntitlementsConsumption` instead

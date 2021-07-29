@@ -23,6 +23,14 @@ class MockEntitlementsRepository: EntitlementsRepository, Resetable {
         completion(getEntitlementsConsumptionResult)
     }
 
+    var getExternalIdCallCount = 0
+    var getExternalIdResult: Result<String, Error> = .failure(AnyError("Please add base result to `MockEntitlementsRepository.getExternalId`"))
+
+    func getExternalId(completion: @escaping ClientCompletion<String>) {
+        getExternalIdCallCount += 1
+        completion(getExternalIdResult)
+    }
+
     var getEntitlementsCallCount = 0
     var getEntitlementsResult: Result<EntitlementsSet?, Error> = .failure(AnyError("Please add base result to `MockEntitlementsRepository.getEntitlements`"))
 

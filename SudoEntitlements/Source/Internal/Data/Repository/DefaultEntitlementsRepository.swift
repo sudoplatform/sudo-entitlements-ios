@@ -58,6 +58,29 @@ class DefaultEntitlementsRepository: EntitlementsRepository {
         queue.addOperation(operation)
     }
 
+    /// Get the users external ID
+    func getExternalId(completion: @escaping ClientCompletion<String>) {
+        let query = GetExternalIdQuery()
+        let operation = operationFactory.generateQueryOperation(query: query, graphQLClient: graphQLClient, logger: logger)
+        let completionObserver = PlatformBlockObserver(finishHandler: { [unowned operation] _, errors in
+            if let error = errors.first {
+                if error is ApiOperationError {
+                    completion(.failure(SudoEntitlementsError.fromApiOperationError(error: error)))
+                } else {
+                    completion(.failure(error))
+                }
+                return
+            }
+            guard let graphQLResult = operation.result?.getExternalId else {
+                completion(.failure(SudoEntitlementsError.serviceError))
+                return
+            }
+            completion(.success(graphQLResult))
+        })
+        operation.addObserver(completionObserver)
+        queue.addOperation(operation)
+    }
+
     /// Get the users current set of entitlements
     func getEntitlements(completion: @escaping ClientCompletion<EntitlementsSet?>) {
         let query = GetEntitlementsQuery()

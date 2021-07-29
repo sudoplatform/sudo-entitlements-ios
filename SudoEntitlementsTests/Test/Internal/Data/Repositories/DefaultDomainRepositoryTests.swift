@@ -143,6 +143,50 @@ class DefaultEntitlementsRepositoryTests: XCTestCase {
         }
     }
 
+    // MARK: - Tests: getExternalId
+
+    func test_getExternalId_ConstructsOperation() {
+        instanceUnderTest.queue.isSuspended = true
+        instanceUnderTest.getExternalId { _ in }
+        XCTAssertEqual(instanceUnderTest.queue.operationCount, 1)
+        guard let operation = instanceUnderTest.queue.operations.first(whereType: PlatformQueryOperation<GetExternalIdQuery>.self) else {
+            return XCTFail("Expected operation not found")
+        }
+        XCTAssertEqual(operation.cachePolicy, .remoteOnly)
+    }
+
+    func test_getExternalId_RespectsOperationFailure() {
+        mockOperationFactory.getExternalIdOperation = MockGetExternalIdQuery(error: AnyError("Get External ID Failed"))
+        waitUntil { done in
+            self.instanceUnderTest.getExternalId { result in
+                defer { done() }
+                switch result {
+                case let .failure(error as AnyError):
+                    XCTAssertEqual(error, AnyError("Get External ID Failed"))
+                default:
+                    XCTFail("Unexpected result: \(result)")
+                }
+            }
+        }
+    }
+
+    func test_getExternalId_ReturnsOperationSuccessResult() {
+        let outputExternalId = "external-id"
+        let result = GetExternalIdQuery.Data(getExternalId: outputExternalId)
+        mockOperationFactory.getExternalIdOperation = MockGetExternalIdQuery(result: result)
+        waitUntil { done in
+            self.instanceUnderTest.getExternalId { result in
+                defer { done() }
+                switch result {
+                case let .success(externalId):
+                    XCTAssertEqual(externalId, outputExternalId)
+                default:
+                    XCTFail("Unexpected result: \(result)")
+                }
+            }
+        }
+    }
+
     // MARK: - Tests: redeemEntitlements
 
     func test_redeemEntitlements_ConstructsOperation() {

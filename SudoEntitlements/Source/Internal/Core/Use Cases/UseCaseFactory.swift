@@ -23,6 +23,10 @@ class UseCaseFactory {
         return GetEntitlementsConsumptionUseCase(repository: repository)
     }
 
+    func generateGetExternalIdUseCase() -> GetExternalIdUseCase {
+        return GetExternalIdUseCase(repository: repository)
+    }
+
     func generateGetEntitlementsUseCase() -> GetEntitlementsUseCase {
         return GetEntitlementsUseCase(repository: repository)
     }

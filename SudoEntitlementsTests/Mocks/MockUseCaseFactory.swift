@@ -19,6 +19,28 @@ class MockUseCaseFactory: UseCaseFactory {
         return useCase
     }
 
+    var generateGetEntitlementsConsumptionUseCaseCount = 0
+    var generateGetEntitlementsConsumptionUseCaseResult: MockGetEntitlementsConsumptionUseCase?
+    
+    override func generateGetEntitlementsConsumptionUseCase() -> GetEntitlementsConsumptionUseCase {
+        generateGetEntitlementsConsumptionUseCaseCount += 1
+        guard let useCase = generateGetEntitlementsConsumptionUseCaseResult else {
+            return super.generateGetEntitlementsConsumptionUseCase()
+        }
+        return useCase
+    }
+
+    var generateGetExternalIdUseCaseCount = 0
+    var generateGetExternalIdUseCaseResult: MockGetExternalIdUseCase?
+    
+    override func generateGetExternalIdUseCase() -> GetExternalIdUseCase {
+        generateGetExternalIdUseCaseCount += 1
+        guard let useCase = generateGetExternalIdUseCaseResult else {
+            return super.generateGetExternalIdUseCase()
+        }
+        return useCase
+    }
+
     var generateRedeemEntitlementsUseCaseCount = 0
     var generateRedeemEntitlementsUseCaseResult: MockRedeemEntitlementsUseCase?
 
