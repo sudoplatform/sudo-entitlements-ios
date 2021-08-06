@@ -48,4 +48,14 @@ class MockEntitlementsRepository: EntitlementsRepository, Resetable {
         redeemEntitlementsCallCount += 1
         completion(redeemEntitlementsResult)
     }
+
+    var consumeBooleanEntitlementsCallCount = 0
+    var consumeBooleanEntitlementsResult: Result<Void, Error> = .failure(
+        AnyError("Please add base result to `MockEntitlementsRepository.consumeBooleanEntitlements`")
+    )
+
+    func consumeBooleanEntitlements(entitlementNames: [String], completion: @escaping ClientCompletion<Void>) {
+        consumeBooleanEntitlementsCallCount += 1
+        completion(consumeBooleanEntitlementsResult)
+    }
 }

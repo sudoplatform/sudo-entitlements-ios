@@ -130,4 +130,23 @@ class DefaultEntitlementsRepository: EntitlementsRepository {
         operation.addObserver(completionObserver)
         queue.addOperation(operation)
     }
+
+    /// Consume boolean entitlements
+    func consumeBooleanEntitlements(entitlementNames: [String], completion: @escaping ClientCompletion<Void>) {
+        let mutation = ConsumeBooleanEntitlementsMutation(entitlementNames: entitlementNames)
+        let operation = operationFactory.generateMutationOperation(mutation: mutation, graphQLClient: graphQLClient, logger: logger)
+        let completionObserver = PlatformBlockObserver(finishHandler: { _, errors in
+            if let error = errors.first {
+                if error is ApiOperationError {
+                    completion(.failure(SudoEntitlementsError.fromApiOperationError(error: error)))
+                } else {
+                    completion(.failure(error))
+                }
+                return
+            }
+            completion(.success(()))
+        })
+        operation.addObserver(completionObserver)
+        queue.addOperation(operation)
+    }
 }

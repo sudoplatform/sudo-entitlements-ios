@@ -115,6 +115,25 @@ public class DefaultSudoEntitlementsClient: SudoEntitlementsClient {
         useCase.execute(completion: useCaseCompletion)
     }
 
+    public func consumeBooleanEntitlements(entitlementNames: [String], completion: @escaping ClientCompletion<Void>) {
+        do {
+            if try !userClient.isSignedIn() {
+                completion(.failure(SudoEntitlementsError.notSignedIn))
+                return
+            }
+        }
+        catch {
+            completion(.failure(error))
+            return
+        }
+  
+        let useCaseCompletion: ClientCompletion<Void> = { result in
+            completion(result)
+        }
+        let useCase = useCaseFactory.generateConsumeBooleanEntitlementsUseCase()
+        useCase.execute(entitlementNames:entitlementNames, completion: useCaseCompletion)
+    }
+
     public func getEntitlementsConsumption(completion: @escaping ClientCompletion<EntitlementsConsumption>) {
         do {
             if try !userClient.isSignedIn() {

@@ -1,7 +1,7 @@
 #
 Pod::Spec.new do |spec|
   spec.name                  = 'SudoEntitlements'
-  spec.version               = '4.1.0'
+  spec.version               = '5.0.0'
   spec.author                = { 'Sudo Platform Engineering' => 'sudoplatform-engineering@anonyome.com' }
   spec.homepage              = 'https://sudoplatform.com'
 
@@ -18,7 +18,7 @@ Pod::Spec.new do |spec|
   spec.dependency 'SudoUser', '~> 12.1'
   spec.dependency 'SudoLogging', '~> 0.3'
   spec.dependency 'SudoKeyManager', '~> 1.2'
-  spec.dependency 'SudoOperations', '~> 5.0'
-  spec.dependency 'SudoApiClient', '~> 6.1'
+  spec.dependency 'SudoOperations', '~> 6.0'
+  spec.dependency 'SudoApiClient', '~> 7.0'
   spec.dependency 'SudoConfigManager', '~> 1.4'
 end

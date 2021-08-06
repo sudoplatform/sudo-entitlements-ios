@@ -19,4 +19,7 @@ protocol EntitlementsRepository: AnyObject, Resetable {
 
     /// Redeem the entitlements the user is allowed
     func redeemEntitlements(completion: @escaping ClientCompletion<EntitlementsSet>)
+
+    /// Record boolean entitlements as consumed
+    func consumeBooleanEntitlements(entitlementNames: [String], completion: @escaping ClientCompletion<Void>)
 }

@@ -1,6 +1,41 @@
 {
   "warnings": [
     {
+      "file": "/Users/anonyome/builds/c2dfa4ea/0/platform/entitlements/sudo-entitlements-ios/sudo-entitlements-ios-gh/SudoEntitlements/Source/Internal/Data/GraphQLAPI.swift",
+      "line": 5,
+      "symbol": "GetEntitlementsQuery",
+      "symbol_kind": "source.lang.swift.decl.class",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/anonyome/builds/c2dfa4ea/0/platform/entitlements/sudo-entitlements-ios/sudo-entitlements-ios-gh/SudoEntitlements/Source/Internal/Data/GraphQLAPI.swift",
+      "line": 184,
+      "symbol": "GetEntitlementsConsumptionQuery",
+      "symbol_kind": "source.lang.swift.decl.class",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/anonyome/builds/c2dfa4ea/0/platform/entitlements/sudo-entitlements-ios/sudo-entitlements-ios-gh/SudoEntitlements/Source/Internal/Data/GraphQLAPI.swift",
+      "line": 524,
+      "symbol": "GetExternalIdQuery",
+      "symbol_kind": "source.lang.swift.decl.class",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/anonyome/builds/c2dfa4ea/0/platform/entitlements/sudo-entitlements-ios/sudo-entitlements-ios-gh/SudoEntitlements/Source/Internal/Data/GraphQLAPI.swift",
+      "line": 559,
+      "symbol": "RedeemEntitlementsMutation",
+      "symbol_kind": "source.lang.swift.decl.class",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/anonyome/builds/c2dfa4ea/0/platform/entitlements/sudo-entitlements-ios/sudo-entitlements-ios-gh/SudoEntitlements/Source/Internal/Data/GraphQLAPI.swift",
+      "line": 738,
+      "symbol": "ConsumeBooleanEntitlementsMutation",
+      "symbol_kind": "source.lang.swift.decl.class",
+      "warning": "undocumented"
+    },
+    {
       "file": "/Users/anonyome/builds/c2dfa4ea/0/platform/entitlements/sudo-entitlements-ios/sudo-entitlements-ios-gh/SudoEntitlements/Source/Public/Errors/SudoEntitlementsError.swift",
       "line": 69,
       "symbol": "SudoEntitlementsError.internalError(_:)",

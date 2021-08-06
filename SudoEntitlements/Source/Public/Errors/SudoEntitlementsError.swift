@@ -192,7 +192,7 @@ public enum SudoEntitlementsError: Error, Equatable, LocalizedError {
     }
 
     static func fromApiOperationError(error: Error) -> SudoEntitlementsError {
-        // Check if APIOperationERror or SudoPlatformError
+        // Check if ApiOperationError or SudoPlatformError
         switch error {
         case ApiOperationError.accountLocked:
             return .accountLocked
@@ -204,6 +204,8 @@ public enum SudoEntitlementsError: Error, Equatable, LocalizedError {
             return .limitExceeded
         case ApiOperationError.insufficientEntitlements:
             return .insufficientEntitlements
+        case ApiOperationError.invalidArgument:
+            return .invalidArgument(nil)
         case ApiOperationError.serviceError:
             return .serviceError
         case ApiOperationError.versionMismatch:

@@ -246,4 +246,48 @@ class DefaultEntitlementsRepositoryTests: XCTestCase {
             }
         }
     }
-}
+
+    // MARK: - Tests: consumeBooleanEntitlements
+
+    func test_consumeBooleanEntitlements_ConstructsOperation() {
+        instanceUnderTest.queue.isSuspended = true
+        instanceUnderTest.consumeBooleanEntitlements(entitlementNames: ["some-entitlement"]) { _ in }
+        XCTAssertEqual(instanceUnderTest.queue.operationCount, 1)
+        guard let operation = instanceUnderTest.queue.operations.first(whereType: PlatformMutationOperation<ConsumeBooleanEntitlementsMutation>.self) else {
+            return XCTFail("Expected operation not found")
+        }
+        XCTAssertEqual(operation.errors.count, 0)
+    }
+
+    func test_consumeBooleanEntitlements_RespectsOperationFailure() {
+        mockOperationFactory.consumeBooleanEntitlementsOperation = MockConsumeBooleanEntitlementsOperation(error: AnyError("Get Failed"))
+        waitUntil { done in
+            self.instanceUnderTest.consumeBooleanEntitlements(entitlementNames: ["some-entitlement"]) { result in
+                defer { done() }
+                switch result {
+                case let .failure(error as AnyError):
+                    XCTAssertEqual(error, AnyError("Get Failed"))
+                default:
+                    XCTFail("Unexpected result: \(result)")
+                }
+            }
+        }
+    }
+
+    func test_consumeBooleanEntitlements_ReturnsOperationSuccessResult() {
+        let result = ConsumeBooleanEntitlementsMutation.Data(consumeBooleanEntitlements: true)
+        mockOperationFactory.consumeBooleanEntitlementsOperation = MockConsumeBooleanEntitlementsOperation(result: result)
+        waitUntil { done in
+            self.instanceUnderTest.consumeBooleanEntitlements(entitlementNames: ["some-entitlement"]) { result in
+                defer { done() }
+                let logger = Logger.testLogger
+                logger.debug("\(result)")
+                switch result {
+                case  .success(()):
+                    break
+                default:
+                    XCTFail("Unexpected result: \(result)")
+                }
+            }
+        }
+    }}

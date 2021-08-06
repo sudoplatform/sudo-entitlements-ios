@@ -32,7 +32,10 @@ class GetEntitlementsUseCaseTests: XCTestCase {
     func test_execute_CallsCorrectRepositoryMethod() {
         instanceUnderTest.execute { _ in }
         XCTAssertEqual(mockRepository.getEntitlementsCallCount, 1)
+        XCTAssertEqual(mockRepository.getEntitlementsConsumptionCallCount, 0)
+        XCTAssertEqual(mockRepository.consumeBooleanEntitlementsCallCount, 0)
         XCTAssertEqual(mockRepository.redeemEntitlementsCallCount, 0)
+        XCTAssertEqual(mockRepository.getExternalIdCallCount, 0)
     }
 
     func test_execute_RespectsDomainFailure() {

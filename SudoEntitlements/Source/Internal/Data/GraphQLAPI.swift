@@ -1,33 +1,32 @@
-// swiftlint:disable all
 //  This file was automatically generated and should not be edited.
 
 import AWSAppSync
 
-internal final class GetEntitlementsQuery: GraphQLQuery {
-  internal static let operationString =
+public final class GetEntitlementsQuery: GraphQLQuery {
+  public static let operationString =
     "query GetEntitlements {\n  getEntitlements {\n    __typename\n    createdAtEpochMs\n    updatedAtEpochMs\n    version\n    name\n    description\n    entitlements {\n      __typename\n      name\n      description\n      value\n    }\n  }\n}"
 
-  internal init() {
+  public init() {
   }
 
-  internal struct Data: GraphQLSelectionSet {
-    internal static let possibleTypes = ["Query"]
+  public struct Data: GraphQLSelectionSet {
+    public static let possibleTypes = ["Query"]
 
-    internal static let selections: [GraphQLSelection] = [
+    public static let selections: [GraphQLSelection] = [
       GraphQLField("getEntitlements", type: .object(GetEntitlement.selections)),
     ]
 
-    internal var snapshot: Snapshot
+    public var snapshot: Snapshot
 
-    internal init(snapshot: Snapshot) {
+    public init(snapshot: Snapshot) {
       self.snapshot = snapshot
     }
 
-    internal init(getEntitlements: GetEntitlement? = nil) {
+    public init(getEntitlements: GetEntitlement? = nil) {
       self.init(snapshot: ["__typename": "Query", "getEntitlements": getEntitlements.flatMap { $0.snapshot }])
     }
 
-    internal var getEntitlements: GetEntitlement? {
+    public var getEntitlements: GetEntitlement? {
       get {
         return (snapshot["getEntitlements"] as? Snapshot).flatMap { GetEntitlement(snapshot: $0) }
       }
@@ -36,10 +35,10 @@ internal final class GetEntitlementsQuery: GraphQLQuery {
       }
     }
 
-    internal struct GetEntitlement: GraphQLSelectionSet {
-      internal static let possibleTypes = ["EntitlementsSet"]
+    public struct GetEntitlement: GraphQLSelectionSet {
+      public static let possibleTypes = ["EntitlementsSet"]
 
-      internal static let selections: [GraphQLSelection] = [
+      public static let selections: [GraphQLSelection] = [
         GraphQLField("__typename", type: .nonNull(.scalar(String.self))),
         GraphQLField("createdAtEpochMs", type: .nonNull(.scalar(Double.self))),
         GraphQLField("updatedAtEpochMs", type: .nonNull(.scalar(Double.self))),
@@ -49,17 +48,17 @@ internal final class GetEntitlementsQuery: GraphQLQuery {
         GraphQLField("entitlements", type: .nonNull(.list(.nonNull(.object(Entitlement.selections))))),
       ]
 
-      internal var snapshot: Snapshot
+      public var snapshot: Snapshot
 
-      internal init(snapshot: Snapshot) {
+      public init(snapshot: Snapshot) {
         self.snapshot = snapshot
       }
 
-      internal init(createdAtEpochMs: Double, updatedAtEpochMs: Double, version: Double, name: String, description: String? = nil, entitlements: [Entitlement]) {
+      public init(createdAtEpochMs: Double, updatedAtEpochMs: Double, version: Double, name: String, description: String? = nil, entitlements: [Entitlement]) {
         self.init(snapshot: ["__typename": "EntitlementsSet", "createdAtEpochMs": createdAtEpochMs, "updatedAtEpochMs": updatedAtEpochMs, "version": version, "name": name, "description": description, "entitlements": entitlements.map { $0.snapshot }])
       }
 
-      internal var __typename: String {
+      public var __typename: String {
         get {
           return snapshot["__typename"]! as! String
         }
@@ -68,7 +67,7 @@ internal final class GetEntitlementsQuery: GraphQLQuery {
         }
       }
 
-      internal var createdAtEpochMs: Double {
+      public var createdAtEpochMs: Double {
         get {
           return snapshot["createdAtEpochMs"]! as! Double
         }
@@ -77,7 +76,7 @@ internal final class GetEntitlementsQuery: GraphQLQuery {
         }
       }
 
-      internal var updatedAtEpochMs: Double {
+      public var updatedAtEpochMs: Double {
         get {
           return snapshot["updatedAtEpochMs"]! as! Double
         }
@@ -86,7 +85,7 @@ internal final class GetEntitlementsQuery: GraphQLQuery {
         }
       }
 
-      internal var version: Double {
+      public var version: Double {
         get {
           return snapshot["version"]! as! Double
         }
@@ -95,7 +94,7 @@ internal final class GetEntitlementsQuery: GraphQLQuery {
         }
       }
 
-      internal var name: String {
+      public var name: String {
         get {
           return snapshot["name"]! as! String
         }
@@ -104,7 +103,7 @@ internal final class GetEntitlementsQuery: GraphQLQuery {
         }
       }
 
-      internal var description: String? {
+      public var description: String? {
         get {
           return snapshot["description"] as? String
         }
@@ -113,7 +112,7 @@ internal final class GetEntitlementsQuery: GraphQLQuery {
         }
       }
 
-      internal var entitlements: [Entitlement] {
+      public var entitlements: [Entitlement] {
         get {
           return (snapshot["entitlements"] as! [Snapshot]).map { Entitlement(snapshot: $0) }
         }
@@ -122,27 +121,27 @@ internal final class GetEntitlementsQuery: GraphQLQuery {
         }
       }
 
-      internal struct Entitlement: GraphQLSelectionSet {
-        internal static let possibleTypes = ["Entitlement"]
+      public struct Entitlement: GraphQLSelectionSet {
+        public static let possibleTypes = ["Entitlement"]
 
-        internal static let selections: [GraphQLSelection] = [
+        public static let selections: [GraphQLSelection] = [
           GraphQLField("__typename", type: .nonNull(.scalar(String.self))),
           GraphQLField("name", type: .nonNull(.scalar(String.self))),
           GraphQLField("description", type: .scalar(String.self)),
           GraphQLField("value", type: .nonNull(.scalar(Int.self))),
         ]
 
-        internal var snapshot: Snapshot
+        public var snapshot: Snapshot
 
-        internal init(snapshot: Snapshot) {
+        public init(snapshot: Snapshot) {
           self.snapshot = snapshot
         }
 
-        internal init(name: String, description: String? = nil, value: Int) {
+        public init(name: String, description: String? = nil, value: Int) {
           self.init(snapshot: ["__typename": "Entitlement", "name": name, "description": description, "value": value])
         }
 
-        internal var __typename: String {
+        public var __typename: String {
           get {
             return snapshot["__typename"]! as! String
           }
@@ -151,7 +150,7 @@ internal final class GetEntitlementsQuery: GraphQLQuery {
           }
         }
 
-        internal var name: String {
+        public var name: String {
           get {
             return snapshot["name"]! as! String
           }
@@ -160,7 +159,7 @@ internal final class GetEntitlementsQuery: GraphQLQuery {
           }
         }
 
-        internal var description: String? {
+        public var description: String? {
           get {
             return snapshot["description"] as? String
           }
@@ -169,7 +168,7 @@ internal final class GetEntitlementsQuery: GraphQLQuery {
           }
         }
 
-        internal var value: Int {
+        public var value: Int {
           get {
             return snapshot["value"]! as! Int
           }
@@ -182,31 +181,31 @@ internal final class GetEntitlementsQuery: GraphQLQuery {
   }
 }
 
-internal final class GetEntitlementsConsumptionQuery: GraphQLQuery {
-  internal static let operationString =
+public final class GetEntitlementsConsumptionQuery: GraphQLQuery {
+  public static let operationString =
     "query GetEntitlementsConsumption {\n  getEntitlementsConsumption {\n    __typename\n    entitlements {\n      __typename\n      version\n      entitlementsSetName\n      entitlements {\n        __typename\n        name\n        description\n        value\n      }\n    }\n    consumption {\n      __typename\n      consumer {\n        __typename\n        id\n        issuer\n      }\n      name\n      value\n      consumed\n      available\n      firstConsumedAtEpochMs\n      lastConsumedAtEpochMs\n    }\n  }\n}"
 
-  internal init() {
+  public init() {
   }
 
-  internal struct Data: GraphQLSelectionSet {
-    internal static let possibleTypes = ["Query"]
+  public struct Data: GraphQLSelectionSet {
+    public static let possibleTypes = ["Query"]
 
-    internal static let selections: [GraphQLSelection] = [
+    public static let selections: [GraphQLSelection] = [
       GraphQLField("getEntitlementsConsumption", type: .nonNull(.object(GetEntitlementsConsumption.selections))),
     ]
 
-    internal var snapshot: Snapshot
+    public var snapshot: Snapshot
 
-    internal init(snapshot: Snapshot) {
+    public init(snapshot: Snapshot) {
       self.snapshot = snapshot
     }
 
-    internal init(getEntitlementsConsumption: GetEntitlementsConsumption) {
+    public init(getEntitlementsConsumption: GetEntitlementsConsumption) {
       self.init(snapshot: ["__typename": "Query", "getEntitlementsConsumption": getEntitlementsConsumption.snapshot])
     }
 
-    internal var getEntitlementsConsumption: GetEntitlementsConsumption {
+    public var getEntitlementsConsumption: GetEntitlementsConsumption {
       get {
         return GetEntitlementsConsumption(snapshot: snapshot["getEntitlementsConsumption"]! as! Snapshot)
       }
@@ -215,26 +214,26 @@ internal final class GetEntitlementsConsumptionQuery: GraphQLQuery {
       }
     }
 
-    internal struct GetEntitlementsConsumption: GraphQLSelectionSet {
-      internal static let possibleTypes = ["EntitlementsConsumption"]
+    public struct GetEntitlementsConsumption: GraphQLSelectionSet {
+      public static let possibleTypes = ["EntitlementsConsumption"]
 
-      internal static let selections: [GraphQLSelection] = [
+      public static let selections: [GraphQLSelection] = [
         GraphQLField("__typename", type: .nonNull(.scalar(String.self))),
         GraphQLField("entitlements", type: .nonNull(.object(Entitlement.selections))),
         GraphQLField("consumption", type: .nonNull(.list(.nonNull(.object(Consumption.selections))))),
       ]
 
-      internal var snapshot: Snapshot
+      public var snapshot: Snapshot
 
-      internal init(snapshot: Snapshot) {
+      public init(snapshot: Snapshot) {
         self.snapshot = snapshot
       }
 
-      internal init(entitlements: Entitlement, consumption: [Consumption]) {
+      public init(entitlements: Entitlement, consumption: [Consumption]) {
         self.init(snapshot: ["__typename": "EntitlementsConsumption", "entitlements": entitlements.snapshot, "consumption": consumption.map { $0.snapshot }])
       }
 
-      internal var __typename: String {
+      public var __typename: String {
         get {
           return snapshot["__typename"]! as! String
         }
@@ -243,7 +242,7 @@ internal final class GetEntitlementsConsumptionQuery: GraphQLQuery {
         }
       }
 
-      internal var entitlements: Entitlement {
+      public var entitlements: Entitlement {
         get {
           return Entitlement(snapshot: snapshot["entitlements"]! as! Snapshot)
         }
@@ -252,7 +251,7 @@ internal final class GetEntitlementsConsumptionQuery: GraphQLQuery {
         }
       }
 
-      internal var consumption: [Consumption] {
+      public var consumption: [Consumption] {
         get {
           return (snapshot["consumption"] as! [Snapshot]).map { Consumption(snapshot: $0) }
         }
@@ -261,27 +260,27 @@ internal final class GetEntitlementsConsumptionQuery: GraphQLQuery {
         }
       }
 
-      internal struct Entitlement: GraphQLSelectionSet {
-        internal static let possibleTypes = ["UserEntitlements"]
+      public struct Entitlement: GraphQLSelectionSet {
+        public static let possibleTypes = ["UserEntitlements"]
 
-        internal static let selections: [GraphQLSelection] = [
+        public static let selections: [GraphQLSelection] = [
           GraphQLField("__typename", type: .nonNull(.scalar(String.self))),
           GraphQLField("version", type: .nonNull(.scalar(Double.self))),
           GraphQLField("entitlementsSetName", type: .scalar(String.self)),
           GraphQLField("entitlements", type: .nonNull(.list(.nonNull(.object(Entitlement.selections))))),
         ]
 
-        internal var snapshot: Snapshot
+        public var snapshot: Snapshot
 
-        internal init(snapshot: Snapshot) {
+        public init(snapshot: Snapshot) {
           self.snapshot = snapshot
         }
 
-        internal init(version: Double, entitlementsSetName: String? = nil, entitlements: [Entitlement]) {
+        public init(version: Double, entitlementsSetName: String? = nil, entitlements: [Entitlement]) {
           self.init(snapshot: ["__typename": "UserEntitlements", "version": version, "entitlementsSetName": entitlementsSetName, "entitlements": entitlements.map { $0.snapshot }])
         }
 
-        internal var __typename: String {
+        public var __typename: String {
           get {
             return snapshot["__typename"]! as! String
           }
@@ -290,7 +289,7 @@ internal final class GetEntitlementsConsumptionQuery: GraphQLQuery {
           }
         }
 
-        internal var version: Double {
+        public var version: Double {
           get {
             return snapshot["version"]! as! Double
           }
@@ -299,7 +298,7 @@ internal final class GetEntitlementsConsumptionQuery: GraphQLQuery {
           }
         }
 
-        internal var entitlementsSetName: String? {
+        public var entitlementsSetName: String? {
           get {
             return snapshot["entitlementsSetName"] as? String
           }
@@ -308,7 +307,7 @@ internal final class GetEntitlementsConsumptionQuery: GraphQLQuery {
           }
         }
 
-        internal var entitlements: [Entitlement] {
+        public var entitlements: [Entitlement] {
           get {
             return (snapshot["entitlements"] as! [Snapshot]).map { Entitlement(snapshot: $0) }
           }
@@ -317,27 +316,27 @@ internal final class GetEntitlementsConsumptionQuery: GraphQLQuery {
           }
         }
 
-        internal struct Entitlement: GraphQLSelectionSet {
-          internal static let possibleTypes = ["Entitlement"]
+        public struct Entitlement: GraphQLSelectionSet {
+          public static let possibleTypes = ["Entitlement"]
 
-          internal static let selections: [GraphQLSelection] = [
+          public static let selections: [GraphQLSelection] = [
             GraphQLField("__typename", type: .nonNull(.scalar(String.self))),
             GraphQLField("name", type: .nonNull(.scalar(String.self))),
             GraphQLField("description", type: .scalar(String.self)),
             GraphQLField("value", type: .nonNull(.scalar(Int.self))),
           ]
 
-          internal var snapshot: Snapshot
+          public var snapshot: Snapshot
 
-          internal init(snapshot: Snapshot) {
+          public init(snapshot: Snapshot) {
             self.snapshot = snapshot
           }
 
-          internal init(name: String, description: String? = nil, value: Int) {
+          public init(name: String, description: String? = nil, value: Int) {
             self.init(snapshot: ["__typename": "Entitlement", "name": name, "description": description, "value": value])
           }
 
-          internal var __typename: String {
+          public var __typename: String {
             get {
               return snapshot["__typename"]! as! String
             }
@@ -346,7 +345,7 @@ internal final class GetEntitlementsConsumptionQuery: GraphQLQuery {
             }
           }
 
-          internal var name: String {
+          public var name: String {
             get {
               return snapshot["name"]! as! String
             }
@@ -355,7 +354,7 @@ internal final class GetEntitlementsConsumptionQuery: GraphQLQuery {
             }
           }
 
-          internal var description: String? {
+          public var description: String? {
             get {
               return snapshot["description"] as? String
             }
@@ -364,7 +363,7 @@ internal final class GetEntitlementsConsumptionQuery: GraphQLQuery {
             }
           }
 
-          internal var value: Int {
+          public var value: Int {
             get {
               return snapshot["value"]! as! Int
             }
@@ -375,10 +374,10 @@ internal final class GetEntitlementsConsumptionQuery: GraphQLQuery {
         }
       }
 
-      internal struct Consumption: GraphQLSelectionSet {
-        internal static let possibleTypes = ["EntitlementConsumption"]
+      public struct Consumption: GraphQLSelectionSet {
+        public static let possibleTypes = ["EntitlementConsumption"]
 
-        internal static let selections: [GraphQLSelection] = [
+        public static let selections: [GraphQLSelection] = [
           GraphQLField("__typename", type: .nonNull(.scalar(String.self))),
           GraphQLField("consumer", type: .object(Consumer.selections)),
           GraphQLField("name", type: .nonNull(.scalar(String.self))),
@@ -389,17 +388,17 @@ internal final class GetEntitlementsConsumptionQuery: GraphQLQuery {
           GraphQLField("lastConsumedAtEpochMs", type: .scalar(Double.self)),
         ]
 
-        internal var snapshot: Snapshot
+        public var snapshot: Snapshot
 
-        internal init(snapshot: Snapshot) {
+        public init(snapshot: Snapshot) {
           self.snapshot = snapshot
         }
 
-        internal init(consumer: Consumer? = nil, name: String, value: Int, consumed: Int, available: Int, firstConsumedAtEpochMs: Double? = nil, lastConsumedAtEpochMs: Double? = nil) {
+        public init(consumer: Consumer? = nil, name: String, value: Int, consumed: Int, available: Int, firstConsumedAtEpochMs: Double? = nil, lastConsumedAtEpochMs: Double? = nil) {
           self.init(snapshot: ["__typename": "EntitlementConsumption", "consumer": consumer.flatMap { $0.snapshot }, "name": name, "value": value, "consumed": consumed, "available": available, "firstConsumedAtEpochMs": firstConsumedAtEpochMs, "lastConsumedAtEpochMs": lastConsumedAtEpochMs])
         }
 
-        internal var __typename: String {
+        public var __typename: String {
           get {
             return snapshot["__typename"]! as! String
           }
@@ -408,7 +407,7 @@ internal final class GetEntitlementsConsumptionQuery: GraphQLQuery {
           }
         }
 
-        internal var consumer: Consumer? {
+        public var consumer: Consumer? {
           get {
             return (snapshot["consumer"] as? Snapshot).flatMap { Consumer(snapshot: $0) }
           }
@@ -417,7 +416,7 @@ internal final class GetEntitlementsConsumptionQuery: GraphQLQuery {
           }
         }
 
-        internal var name: String {
+        public var name: String {
           get {
             return snapshot["name"]! as! String
           }
@@ -426,7 +425,7 @@ internal final class GetEntitlementsConsumptionQuery: GraphQLQuery {
           }
         }
 
-        internal var value: Int {
+        public var value: Int {
           get {
             return snapshot["value"]! as! Int
           }
@@ -435,7 +434,7 @@ internal final class GetEntitlementsConsumptionQuery: GraphQLQuery {
           }
         }
 
-        internal var consumed: Int {
+        public var consumed: Int {
           get {
             return snapshot["consumed"]! as! Int
           }
@@ -444,7 +443,7 @@ internal final class GetEntitlementsConsumptionQuery: GraphQLQuery {
           }
         }
 
-        internal var available: Int {
+        public var available: Int {
           get {
             return snapshot["available"]! as! Int
           }
@@ -453,7 +452,7 @@ internal final class GetEntitlementsConsumptionQuery: GraphQLQuery {
           }
         }
 
-        internal var firstConsumedAtEpochMs: Double? {
+        public var firstConsumedAtEpochMs: Double? {
           get {
             return snapshot["firstConsumedAtEpochMs"] as? Double
           }
@@ -462,7 +461,7 @@ internal final class GetEntitlementsConsumptionQuery: GraphQLQuery {
           }
         }
 
-        internal var lastConsumedAtEpochMs: Double? {
+        public var lastConsumedAtEpochMs: Double? {
           get {
             return snapshot["lastConsumedAtEpochMs"] as? Double
           }
@@ -471,26 +470,26 @@ internal final class GetEntitlementsConsumptionQuery: GraphQLQuery {
           }
         }
 
-        internal struct Consumer: GraphQLSelectionSet {
-          internal static let possibleTypes = ["EntitlementConsumer"]
+        public struct Consumer: GraphQLSelectionSet {
+          public static let possibleTypes = ["EntitlementConsumer"]
 
-          internal static let selections: [GraphQLSelection] = [
+          public static let selections: [GraphQLSelection] = [
             GraphQLField("__typename", type: .nonNull(.scalar(String.self))),
             GraphQLField("id", type: .nonNull(.scalar(GraphQLID.self))),
             GraphQLField("issuer", type: .nonNull(.scalar(String.self))),
           ]
 
-          internal var snapshot: Snapshot
+          public var snapshot: Snapshot
 
-          internal init(snapshot: Snapshot) {
+          public init(snapshot: Snapshot) {
             self.snapshot = snapshot
           }
 
-          internal init(id: GraphQLID, issuer: String) {
+          public init(id: GraphQLID, issuer: String) {
             self.init(snapshot: ["__typename": "EntitlementConsumer", "id": id, "issuer": issuer])
           }
 
-          internal var __typename: String {
+          public var __typename: String {
             get {
               return snapshot["__typename"]! as! String
             }
@@ -499,7 +498,7 @@ internal final class GetEntitlementsConsumptionQuery: GraphQLQuery {
             }
           }
 
-          internal var id: GraphQLID {
+          public var id: GraphQLID {
             get {
               return snapshot["id"]! as! GraphQLID
             }
@@ -508,7 +507,7 @@ internal final class GetEntitlementsConsumptionQuery: GraphQLQuery {
             }
           }
 
-          internal var issuer: String {
+          public var issuer: String {
             get {
               return snapshot["issuer"]! as! String
             }
@@ -522,31 +521,31 @@ internal final class GetEntitlementsConsumptionQuery: GraphQLQuery {
   }
 }
 
-internal final class GetExternalIdQuery: GraphQLQuery {
-  internal static let operationString =
+public final class GetExternalIdQuery: GraphQLQuery {
+  public static let operationString =
     "query GetExternalId {\n  getExternalId\n}"
 
-  internal init() {
+  public init() {
   }
 
-  internal struct Data: GraphQLSelectionSet {
-    internal static let possibleTypes = ["Query"]
+  public struct Data: GraphQLSelectionSet {
+    public static let possibleTypes = ["Query"]
 
-    internal static let selections: [GraphQLSelection] = [
+    public static let selections: [GraphQLSelection] = [
       GraphQLField("getExternalId", type: .nonNull(.scalar(String.self))),
     ]
 
-    internal var snapshot: Snapshot
+    public var snapshot: Snapshot
 
-    internal init(snapshot: Snapshot) {
+    public init(snapshot: Snapshot) {
       self.snapshot = snapshot
     }
 
-    internal init(getExternalId: String) {
+    public init(getExternalId: String) {
       self.init(snapshot: ["__typename": "Query", "getExternalId": getExternalId])
     }
 
-    internal var getExternalId: String {
+    public var getExternalId: String {
       get {
         return snapshot["getExternalId"]! as! String
       }
@@ -557,31 +556,31 @@ internal final class GetExternalIdQuery: GraphQLQuery {
   }
 }
 
-internal final class RedeemEntitlementsMutation: GraphQLMutation {
-  internal static let operationString =
+public final class RedeemEntitlementsMutation: GraphQLMutation {
+  public static let operationString =
     "mutation RedeemEntitlements {\n  redeemEntitlements {\n    __typename\n    createdAtEpochMs\n    updatedAtEpochMs\n    version\n    name\n    description\n    entitlements {\n      __typename\n      name\n      description\n      value\n    }\n  }\n}"
 
-  internal init() {
+  public init() {
   }
 
-  internal struct Data: GraphQLSelectionSet {
-    internal static let possibleTypes = ["Mutation"]
+  public struct Data: GraphQLSelectionSet {
+    public static let possibleTypes = ["Mutation"]
 
-    internal static let selections: [GraphQLSelection] = [
+    public static let selections: [GraphQLSelection] = [
       GraphQLField("redeemEntitlements", type: .nonNull(.object(RedeemEntitlement.selections))),
     ]
 
-    internal var snapshot: Snapshot
+    public var snapshot: Snapshot
 
-    internal init(snapshot: Snapshot) {
+    public init(snapshot: Snapshot) {
       self.snapshot = snapshot
     }
 
-    internal init(redeemEntitlements: RedeemEntitlement) {
+    public init(redeemEntitlements: RedeemEntitlement) {
       self.init(snapshot: ["__typename": "Mutation", "redeemEntitlements": redeemEntitlements.snapshot])
     }
 
-    internal var redeemEntitlements: RedeemEntitlement {
+    public var redeemEntitlements: RedeemEntitlement {
       get {
         return RedeemEntitlement(snapshot: snapshot["redeemEntitlements"]! as! Snapshot)
       }
@@ -590,10 +589,10 @@ internal final class RedeemEntitlementsMutation: GraphQLMutation {
       }
     }
 
-    internal struct RedeemEntitlement: GraphQLSelectionSet {
-      internal static let possibleTypes = ["EntitlementsSet"]
+    public struct RedeemEntitlement: GraphQLSelectionSet {
+      public static let possibleTypes = ["EntitlementsSet"]
 
-      internal static let selections: [GraphQLSelection] = [
+      public static let selections: [GraphQLSelection] = [
         GraphQLField("__typename", type: .nonNull(.scalar(String.self))),
         GraphQLField("createdAtEpochMs", type: .nonNull(.scalar(Double.self))),
         GraphQLField("updatedAtEpochMs", type: .nonNull(.scalar(Double.self))),
@@ -603,17 +602,17 @@ internal final class RedeemEntitlementsMutation: GraphQLMutation {
         GraphQLField("entitlements", type: .nonNull(.list(.nonNull(.object(Entitlement.selections))))),
       ]
 
-      internal var snapshot: Snapshot
+      public var snapshot: Snapshot
 
-      internal init(snapshot: Snapshot) {
+      public init(snapshot: Snapshot) {
         self.snapshot = snapshot
       }
 
-      internal init(createdAtEpochMs: Double, updatedAtEpochMs: Double, version: Double, name: String, description: String? = nil, entitlements: [Entitlement]) {
+      public init(createdAtEpochMs: Double, updatedAtEpochMs: Double, version: Double, name: String, description: String? = nil, entitlements: [Entitlement]) {
         self.init(snapshot: ["__typename": "EntitlementsSet", "createdAtEpochMs": createdAtEpochMs, "updatedAtEpochMs": updatedAtEpochMs, "version": version, "name": name, "description": description, "entitlements": entitlements.map { $0.snapshot }])
       }
 
-      internal var __typename: String {
+      public var __typename: String {
         get {
           return snapshot["__typename"]! as! String
         }
@@ -622,7 +621,7 @@ internal final class RedeemEntitlementsMutation: GraphQLMutation {
         }
       }
 
-      internal var createdAtEpochMs: Double {
+      public var createdAtEpochMs: Double {
         get {
           return snapshot["createdAtEpochMs"]! as! Double
         }
@@ -631,7 +630,7 @@ internal final class RedeemEntitlementsMutation: GraphQLMutation {
         }
       }
 
-      internal var updatedAtEpochMs: Double {
+      public var updatedAtEpochMs: Double {
         get {
           return snapshot["updatedAtEpochMs"]! as! Double
         }
@@ -640,7 +639,7 @@ internal final class RedeemEntitlementsMutation: GraphQLMutation {
         }
       }
 
-      internal var version: Double {
+      public var version: Double {
         get {
           return snapshot["version"]! as! Double
         }
@@ -649,7 +648,7 @@ internal final class RedeemEntitlementsMutation: GraphQLMutation {
         }
       }
 
-      internal var name: String {
+      public var name: String {
         get {
           return snapshot["name"]! as! String
         }
@@ -658,7 +657,7 @@ internal final class RedeemEntitlementsMutation: GraphQLMutation {
         }
       }
 
-      internal var description: String? {
+      public var description: String? {
         get {
           return snapshot["description"] as? String
         }
@@ -667,7 +666,7 @@ internal final class RedeemEntitlementsMutation: GraphQLMutation {
         }
       }
 
-      internal var entitlements: [Entitlement] {
+      public var entitlements: [Entitlement] {
         get {
           return (snapshot["entitlements"] as! [Snapshot]).map { Entitlement(snapshot: $0) }
         }
@@ -676,27 +675,27 @@ internal final class RedeemEntitlementsMutation: GraphQLMutation {
         }
       }
 
-      internal struct Entitlement: GraphQLSelectionSet {
-        internal static let possibleTypes = ["Entitlement"]
+      public struct Entitlement: GraphQLSelectionSet {
+        public static let possibleTypes = ["Entitlement"]
 
-        internal static let selections: [GraphQLSelection] = [
+        public static let selections: [GraphQLSelection] = [
           GraphQLField("__typename", type: .nonNull(.scalar(String.self))),
           GraphQLField("name", type: .nonNull(.scalar(String.self))),
           GraphQLField("description", type: .scalar(String.self)),
           GraphQLField("value", type: .nonNull(.scalar(Int.self))),
         ]
 
-        internal var snapshot: Snapshot
+        public var snapshot: Snapshot
 
-        internal init(snapshot: Snapshot) {
+        public init(snapshot: Snapshot) {
           self.snapshot = snapshot
         }
 
-        internal init(name: String, description: String? = nil, value: Int) {
+        public init(name: String, description: String? = nil, value: Int) {
           self.init(snapshot: ["__typename": "Entitlement", "name": name, "description": description, "value": value])
         }
 
-        internal var __typename: String {
+        public var __typename: String {
           get {
             return snapshot["__typename"]! as! String
           }
@@ -705,7 +704,7 @@ internal final class RedeemEntitlementsMutation: GraphQLMutation {
           }
         }
 
-        internal var name: String {
+        public var name: String {
           get {
             return snapshot["name"]! as! String
           }
@@ -714,7 +713,7 @@ internal final class RedeemEntitlementsMutation: GraphQLMutation {
           }
         }
 
-        internal var description: String? {
+        public var description: String? {
           get {
             return snapshot["description"] as? String
           }
@@ -723,7 +722,7 @@ internal final class RedeemEntitlementsMutation: GraphQLMutation {
           }
         }
 
-        internal var value: Int {
+        public var value: Int {
           get {
             return snapshot["value"]! as! Int
           }
@@ -731,6 +730,48 @@ internal final class RedeemEntitlementsMutation: GraphQLMutation {
             snapshot.updateValue(newValue, forKey: "value")
           }
         }
+      }
+    }
+  }
+}
+
+public final class ConsumeBooleanEntitlementsMutation: GraphQLMutation {
+  public static let operationString =
+    "mutation ConsumeBooleanEntitlements($entitlementNames: [String!]!) {\n  consumeBooleanEntitlements(entitlementNames: $entitlementNames)\n}"
+
+  public var entitlementNames: [String]
+
+  public init(entitlementNames: [String]) {
+    self.entitlementNames = entitlementNames
+  }
+
+  public var variables: GraphQLMap? {
+    return ["entitlementNames": entitlementNames]
+  }
+
+  public struct Data: GraphQLSelectionSet {
+    public static let possibleTypes = ["Mutation"]
+
+    public static let selections: [GraphQLSelection] = [
+      GraphQLField("consumeBooleanEntitlements", arguments: ["entitlementNames": GraphQLVariable("entitlementNames")], type: .nonNull(.scalar(Bool.self))),
+    ]
+
+    public var snapshot: Snapshot
+
+    public init(snapshot: Snapshot) {
+      self.snapshot = snapshot
+    }
+
+    public init(consumeBooleanEntitlements: Bool) {
+      self.init(snapshot: ["__typename": "Mutation", "consumeBooleanEntitlements": consumeBooleanEntitlements])
+    }
+
+    public var consumeBooleanEntitlements: Bool {
+      get {
+        return snapshot["consumeBooleanEntitlements"]! as! Bool
+      }
+      set {
+        snapshot.updateValue(newValue, forKey: "consumeBooleanEntitlements")
       }
     }
   }

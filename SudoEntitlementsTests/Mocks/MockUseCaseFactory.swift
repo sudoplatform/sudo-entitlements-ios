@@ -51,4 +51,15 @@ class MockUseCaseFactory: UseCaseFactory {
         }
         return useCase
     }
+
+    var generateConsumeBooleanEntitlementsUseCaseCount = 0
+    var generateConsumeBooleanEntitlementsUseCaseResult: MockConsumeBooleanEntitlementsUseCase?
+
+    override func generateConsumeBooleanEntitlementsUseCase() -> ConsumeBooleanEntitlementsUseCase {
+        generateConsumeBooleanEntitlementsUseCaseCount += 1
+        guard let useCase = generateConsumeBooleanEntitlementsUseCaseResult else {
+            return super.generateConsumeBooleanEntitlementsUseCase()
+        }
+        return useCase
+    }
 }

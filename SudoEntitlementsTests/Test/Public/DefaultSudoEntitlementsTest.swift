@@ -20,34 +20,47 @@ class DefaultSudoEntitlementsTest: BaseTestCase {
 
     func test_getEntitlements_CreatesGetUseCase() {
         instanceUnderTest.getEntitlements() { _ in }
+        XCTAssertEqual(mockUseCaseFactory.generateConsumeBooleanEntitlementsUseCaseCount, 0)
         XCTAssertEqual(mockUseCaseFactory.generateGetEntitlementsUseCaseCount, 1)
         XCTAssertEqual(mockUseCaseFactory.generateGetEntitlementsConsumptionUseCaseCount, 0)
         XCTAssertEqual(mockUseCaseFactory.generateGetExternalIdUseCaseCount, 0)
         XCTAssertEqual(mockUseCaseFactory.generateRedeemEntitlementsUseCaseCount, 0)
     }
 
-    func test_getEntitlementsConsumption_CreatesGetUseCase() {
+    func test_getEntitlementsConsumption_CreatesUseCase() {
         instanceUnderTest.getEntitlementsConsumption() { _ in }
+        XCTAssertEqual(mockUseCaseFactory.generateConsumeBooleanEntitlementsUseCaseCount, 0)
         XCTAssertEqual(mockUseCaseFactory.generateGetEntitlementsConsumptionUseCaseCount, 1)
         XCTAssertEqual(mockUseCaseFactory.generateGetEntitlementsUseCaseCount, 0)
         XCTAssertEqual(mockUseCaseFactory.generateGetExternalIdUseCaseCount, 0)
         XCTAssertEqual(mockUseCaseFactory.generateRedeemEntitlementsUseCaseCount, 0)
     }
 
-    func test_getExternalId_CreatesGetUseCase() {
+    func test_getExternalId_CreatesUseCase() {
         instanceUnderTest.getExternalId() { _ in }
+        XCTAssertEqual(mockUseCaseFactory.generateConsumeBooleanEntitlementsUseCaseCount, 0)
         XCTAssertEqual(mockUseCaseFactory.generateGetExternalIdUseCaseCount, 1)
         XCTAssertEqual(mockUseCaseFactory.generateGetEntitlementsConsumptionUseCaseCount, 0)
         XCTAssertEqual(mockUseCaseFactory.generateGetEntitlementsUseCaseCount, 0)
         XCTAssertEqual(mockUseCaseFactory.generateRedeemEntitlementsUseCaseCount, 0)
     }
 
-    func test_redeemEntitlements_CreatesGetUseCase() {
+    func test_redeemEntitlements_CreatesUseCase() {
         instanceUnderTest.redeemEntitlements() { _ in }
+        XCTAssertEqual(mockUseCaseFactory.generateConsumeBooleanEntitlementsUseCaseCount, 0)
         XCTAssertEqual(mockUseCaseFactory.generateGetEntitlementsUseCaseCount, 0)
         XCTAssertEqual(mockUseCaseFactory.generateGetEntitlementsConsumptionUseCaseCount, 0)
         XCTAssertEqual(mockUseCaseFactory.generateGetExternalIdUseCaseCount, 0)
         XCTAssertEqual(mockUseCaseFactory.generateRedeemEntitlementsUseCaseCount, 1)
+    }
+
+    func test_consumeBooleanEntitlements_CreatesUseCase() {
+        instanceUnderTest.consumeBooleanEntitlements(entitlementNames: []) { _ in }
+        XCTAssertEqual(mockUseCaseFactory.generateConsumeBooleanEntitlementsUseCaseCount, 1)
+        XCTAssertEqual(mockUseCaseFactory.generateGetEntitlementsUseCaseCount, 0)
+        XCTAssertEqual(mockUseCaseFactory.generateGetEntitlementsConsumptionUseCaseCount, 0)
+        XCTAssertEqual(mockUseCaseFactory.generateGetExternalIdUseCaseCount, 0)
+        XCTAssertEqual(mockUseCaseFactory.generateRedeemEntitlementsUseCaseCount, 0)
     }
 
     func test_getEntitlements_RespectsUseCaseFailure() {
@@ -107,6 +120,22 @@ class DefaultSudoEntitlementsTest: BaseTestCase {
                 switch result {
                 case let .failure(error as AnyError):
                     XCTAssertEqual(error, AnyError("Redeem entitlements failed"))
+                default:
+                    XCTFail("Unexpected result: \(result)")
+                }
+            }
+        }
+    }
+
+    func test_consumeBooleanEntitlements_RespectsUseCaseFailure() {
+        let mockUseCase = MockConsumeBooleanEntitlementsUseCase(result: .failure(AnyError("Consume boolean entitlements failed")))
+        mockUseCaseFactory.generateConsumeBooleanEntitlementsUseCaseResult = mockUseCase
+        waitUntil { done in
+            self.instanceUnderTest.consumeBooleanEntitlements(entitlementNames: []) { result in
+                defer { done() }
+                switch result {
+                case let .failure(error as AnyError):
+                    XCTAssertEqual(error, AnyError("Consume boolean entitlements failed"))
                 default:
                     XCTFail("Unexpected result: \(result)")
                 }

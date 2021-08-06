@@ -52,6 +52,8 @@ class MockOperationFactory: OperationFactory {
 
     var redeemEntitlementsOperation: MockMutationOperation<RedeemEntitlementsMutation>?
 
+    var consumeBooleanEntitlementsOperation: MockMutationOperation<ConsumeBooleanEntitlementsMutation>?
+
     var generateMutationLastProperty: AnyObject?
 
     override func generateMutationOperation<Mutation>(
@@ -65,6 +67,17 @@ class MockOperationFactory: OperationFactory {
         switch mutation.self {
         case is RedeemEntitlementsMutation:
             guard let op = redeemEntitlementsOperation else {
+                return super.generateMutationOperation(
+                    mutation: mutation,
+                    optimisticUpdate: optimisticUpdate,
+                    optimisticCleanup: optimisticCleanup,
+                    graphQLClient: graphQLClient,
+                    logger: logger
+                )
+            }
+            return op as! PlatformMutationOperation<Mutation>
+        case is ConsumeBooleanEntitlementsMutation:
+            guard let op = consumeBooleanEntitlementsOperation else {
                 return super.generateMutationOperation(
                     mutation: mutation,
                     optimisticUpdate: optimisticUpdate,
@@ -115,6 +128,18 @@ class MockRedeemEntitlementsOperation: MockMutationOperation<RedeemEntitlementsM
     init(error: Error? = nil, result: RedeemEntitlementsMutation.Data? = nil) {
         let graphQLClient = MockAWSAppSyncClientGenerator.generateClient()
         let mutation = RedeemEntitlementsMutation()
+        super.init(graphQLClient: graphQLClient, mutation: mutation, logger: .testLogger)
+        self.error = error
+        mockResult = result
+    }
+
+}
+
+class MockConsumeBooleanEntitlementsOperation: MockMutationOperation<ConsumeBooleanEntitlementsMutation> {
+
+    init(error: Error? = nil, result: ConsumeBooleanEntitlementsMutation.Data? = nil) {
+        let graphQLClient = MockAWSAppSyncClientGenerator.generateClient()
+        let mutation = ConsumeBooleanEntitlementsMutation(entitlementNames: ["some-entitlement"])
         super.init(graphQLClient: graphQLClient, mutation: mutation, logger: .testLogger)
         self.error = error
         mockResult = result
