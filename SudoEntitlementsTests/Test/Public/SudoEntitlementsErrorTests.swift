@@ -8,7 +8,7 @@ import XCTest
 // This is only testable to initialize GraphQLError for testing
 @testable import AWSAppSync
 @testable import SudoEntitlements
-import SudoOperations
+import SudoApiClient
 
 class SudoEntitlementsErrorTests: XCTestCase {
 
@@ -22,63 +22,88 @@ class SudoEntitlementsErrorTests: XCTestCase {
         ]
         return GraphQLError(obj)
     }
-
+    
     // MARK: - Tests: GraphQL Initializer
 
     func test_init_graphQL_NoErrorTypeReturnsInternalError() {
         let graphQLError = constructGraphQLErrorWithErrorType(nil)
         let error = SudoEntitlementsError(graphQLError: graphQLError)
-        XCTAssertEqual(error, .internalError("GraphQL error"))
+        XCTAssertEqual(error, .graphQLError(cause: graphQLError))
     }
 
     func test_init_graphQL_UnsupportedReturnsInternalError() {
         let graphQLError = constructGraphQLErrorWithErrorType("foo-bar")
         let error = SudoEntitlementsError(graphQLError: graphQLError)
-        XCTAssertEqual(error, .internalError("foo-bar - GraphQL error"))
+        XCTAssertEqual(error, .graphQLError(cause: graphQLError))
     }
 
-    // MARK: - Tests: SudoPlatformError Initializer
+    // MARK: - Tests: fromApiOperationError
 
-    func test_init_sudoPlatformError_ServiceError() {
-        let sudoPlatformError: SudoPlatformError = .serviceError
-        let error = SudoEntitlementsError(platformError: sudoPlatformError)
+    func test_fromApiOperationError_ServiceError() {
+        let apiOperationError: ApiOperationError = .serviceError
+        let error = SudoEntitlementsError.fromApiOperationError(error: apiOperationError)
         XCTAssertEqual(error, .serviceError)
     }
 
-    func test_init_sudoPlatformError_PolicyFailed() {
-        let sudoPlatformError: SudoPlatformError = .policyFailed
-        let error = SudoEntitlementsError(platformError: sudoPlatformError)
-        XCTAssertEqual(error, .policyFailed)
+    func test_fromApiOperationError_NotSignedIn() {
+        let apiOperationError: ApiOperationError = .notSignedIn
+        let error = SudoEntitlementsError.fromApiOperationError(error: apiOperationError)
+        XCTAssertEqual(error, .notSignedIn)
     }
 
-    func test_init_sudoPlatformError_InvalidTokenError() {
-        let sudoPlatformError: SudoPlatformError = .invalidTokenError
-        let error = SudoEntitlementsError(platformError: sudoPlatformError)
-        XCTAssertEqual(error, .invalidTokenError)
+    func test_fromApiOperationError_fatalError() {
+        let apiOperationError: ApiOperationError = .fatalError(description: "fatal error")
+        let error = SudoEntitlementsError.fromApiOperationError(error: apiOperationError)
+        XCTAssertEqual(error, .fatalError("fatal error"))
     }
 
-    func test_init_sudoPlatformError_internalError_RespectsNil() {
-        let sudoPlatformError: SudoPlatformError = .internalError(cause: nil)
-        let error = SudoEntitlementsError(platformError: sudoPlatformError)
-        XCTAssertEqual(error, .internalError(nil))
+    func test_fromApiOperationError_invalidRequest() {
+        let apiOperationError: ApiOperationError = .invalidRequest
+        let error = SudoEntitlementsError.fromApiOperationError(error: apiOperationError)
+        XCTAssertEqual(error, .invalidRequest)
     }
 
-    func test_init_sudoPlatformError_internalError() {
-        let sudoPlatformError: SudoPlatformError = .internalError(cause: "foobar")
-        let error = SudoEntitlementsError(platformError: sudoPlatformError)
-        XCTAssertEqual(error, .internalError("foobar"))
+    func test_fromApiOperationError_invalidArgument() {
+        let apiOperationError: ApiOperationError = .invalidArgument
+        let error = SudoEntitlementsError.fromApiOperationError(error: apiOperationError)
+        XCTAssertEqual(error, .invalidArgument)
     }
 
-    func test_init_sudoPlatformError_invalidArgument_RespectsNil() {
-        let sudoPlatformError: SudoPlatformError = .invalidArgument(msg: nil)
-        let error = SudoEntitlementsError(platformError: sudoPlatformError)
-        XCTAssertEqual(error, .invalidArgument(nil))
+    func test_fromApiOperationError_insufficientEntitlements() {
+        let apiOperationError: ApiOperationError = .insufficientEntitlements
+        let error = SudoEntitlementsError.fromApiOperationError(error: apiOperationError)
+        XCTAssertEqual(error, .insufficientEntitlements)
     }
 
-    func invalidArgument() {
-        let sudoPlatformError: SudoPlatformError = .invalidArgument(msg: "foobar")
-        let error = SudoEntitlementsError(platformError: sudoPlatformError)
-        XCTAssertEqual(error, .invalidArgument("foobar"))
+    func test_fromApiOperationError_accountLocked() {
+        let apiOperationError: ApiOperationError = .accountLocked
+        let error = SudoEntitlementsError.fromApiOperationError(error: apiOperationError)
+        XCTAssertEqual(error, .accountLocked)
+    }
+
+    func test_fromApiOperationError_limitExceeded() {
+        let apiOperationError: ApiOperationError = .limitExceeded
+        let error = SudoEntitlementsError.fromApiOperationError(error: apiOperationError)
+        XCTAssertEqual(error, .limitExceeded)
+    }
+
+    func test_fromApiOperationError_notAuthorized() {
+        let apiOperationError: ApiOperationError = .notAuthorized
+        let error = SudoEntitlementsError.fromApiOperationError(error: apiOperationError)
+        XCTAssertEqual(error, .notAuthorized)
+    }
+
+    func test_fromApiOperationError_rateLimitExceeded() {
+        let apiOperationError: ApiOperationError = .rateLimitExceeded
+        let error = SudoEntitlementsError.fromApiOperationError(error: apiOperationError)
+        XCTAssertEqual(error, .rateLimitExceeded)
+    }
+
+    func test_fromApiOperationError_ambiguousEntitlements() {
+        let ambiguousEntitlementsErrorGraphQL = constructGraphQLErrorWithErrorType("sudoplatform.entitlements.AmbiguousEntitlementsError")
+
+        let error = SudoEntitlementsError.fromApiOperationError(error: ApiOperationError.graphQLError(cause: ambiguousEntitlementsErrorGraphQL))
+        XCTAssertEqual(error, .ambiguousEntitlements)
     }
 
     // MARK: - Tests: ErrorDescription
@@ -113,28 +138,15 @@ class SudoEntitlementsErrorTests: XCTestCase {
         XCTAssertEqual(errorDescription, L10Ndescription)
     }
 
-    func test_errorDescription_InternalError_RespectsNil() {
-        let expectedDescription = "Internal Error"
-        let errorDescription = SudoEntitlementsError.internalError(nil).errorDescription
+    func test_errorDescription_FatalError_Cause() {
+        let expectedDescription = "Unexpected fatal error occurred: Foo Bar"
+        let errorDescription = SudoEntitlementsError.fatalError("Foo Bar").errorDescription
         XCTAssertEqual(errorDescription, expectedDescription)
     }
 
-    func test_errorDescription_InternalError_Cause() {
-        let expectedDescription = "Foo Bar"
-        let errorDescription = SudoEntitlementsError.internalError("Foo Bar").errorDescription
-        XCTAssertEqual(errorDescription, expectedDescription)
-    }
-
-    func test_errorDescription_InvalidArgument_RespectsNil() {
+    func test_errorDescription_InvalidArgument() {
         let expectedDescription = "Invalid argument"
-        let errorDescription = SudoEntitlementsError.invalidArgument(nil).errorDescription
+        let errorDescription = SudoEntitlementsError.invalidArgument.errorDescription
         XCTAssertEqual(errorDescription, expectedDescription)
     }
-
-    func test_errorDescription_InternalArgument_Msg() {
-        let expectedDescription = "Invalid argument: Foo Bar"
-        let errorDescription = SudoEntitlementsError.invalidArgument("Foo Bar").errorDescription
-        XCTAssertEqual(errorDescription, expectedDescription)
-    }
-
 }

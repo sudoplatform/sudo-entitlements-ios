@@ -29,31 +29,26 @@ class GetEntitlementsConsumptionUseCaseTests: XCTestCase {
         XCTAssertTrue(instanceUnderTest.repository === mockRepository)
     }
 
-    func test_execute_CallsCorrectRepositoryMethod() {
-        instanceUnderTest.execute { _ in }
+    func test_execute_RespectsDomainFailure() async throws {
+        mockRepository.getEntitlementsConsumptionResult = .failure(AnyError("Failed to get"))
+        do {
+            let result = try await self.instanceUnderTest.execute()
+            XCTFail("Unexpected result: \(result)")
+        }
+        catch (let error as AnyError) {
+            XCTAssertEqual(error, AnyError("Failed to get"))
+        }
+        catch (let error) {
+            XCTFail("Unexpected error \(error)")
+        }
+
         XCTAssertEqual(mockRepository.getEntitlementsConsumptionCallCount, 1)
         XCTAssertEqual(mockRepository.consumeBooleanEntitlementsCallCount, 0)
         XCTAssertEqual(mockRepository.redeemEntitlementsCallCount, 0)
-        XCTAssertEqual(mockRepository.getEntitlementsCallCount, 0)
         XCTAssertEqual(mockRepository.getExternalIdCallCount, 0)
     }
 
-    func test_execute_RespectsDomainFailure() {
-        mockRepository.getEntitlementsConsumptionResult = .failure(AnyError("Failed to get"))
-        waitUntil { done in
-            self.instanceUnderTest.execute { result in
-                defer { done() }
-                switch result {
-                case let .failure(error as AnyError):
-                    XCTAssertEqual(error, AnyError("Failed to get"))
-                default:
-                    XCTFail("Unexpected result: \(result)")
-                }
-            }
-        }
-    }
-
-    func test_execute_ReturnsNonNillSuccess() {
+    func test_execute_ReturnsSuccess() async throws {
         let entitlements = [
             Entitlement(
                 name: "e.name",
@@ -65,18 +60,14 @@ class GetEntitlementsConsumptionUseCaseTests: XCTestCase {
         let consumption = EntitlementConsumption(name: "testConsumption", consumer: nil, value: 10, consumed: 5, available: 5, firstConsumedAtEpochMs: 100.0, lastConsumedAtEpochMs: 200.0)
         let entitlementsConsumption = EntitlementsConsumption(entitlements: userEntitlements, consumption: [consumption])
         mockRepository.getEntitlementsConsumptionResult = .success(entitlementsConsumption)
-        waitUntil { done in
-            self.instanceUnderTest.execute { result in
-                defer { done() }
-                switch result {
-                case let .success(entity):
-                    XCTAssertNotNil(entity)
-                    XCTAssertEqual(entity.entitlements, userEntitlements)
-                    XCTAssertEqual(entity.consumption, entitlementsConsumption.consumption)
-                default:
-                    XCTFail("Unexpected result: \(result)")
-                }
-            }
-        }
+        let result = try await self.instanceUnderTest.execute()
+        XCTAssertNotNil(result)
+        XCTAssertEqual(result.entitlements, userEntitlements)
+        XCTAssertEqual(result.consumption, entitlementsConsumption.consumption)
+
+        XCTAssertEqual(mockRepository.getEntitlementsConsumptionCallCount, 1)
+        XCTAssertEqual(mockRepository.consumeBooleanEntitlementsCallCount, 0)
+        XCTAssertEqual(mockRepository.redeemEntitlementsCallCount, 0)
+        XCTAssertEqual(mockRepository.getExternalIdCallCount, 0)
     }
 }

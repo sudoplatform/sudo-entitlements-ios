@@ -21,8 +21,13 @@ class MockConsumeBooleanEntitlementsUseCase: ConsumeBooleanEntitlementsUseCase {
     var executeCallCount = 0
     var executeResult: ExecuteResult = .failure(AnyError("Please add base result to `MockConsumeBooleanEntitlementsUseCase.execute`"))
 
-    override func execute(entitlementNames: [String], completion: @escaping ClientCompletion<Void>) {
+    override func execute(entitlementNames: [String]) async throws {
         executeCallCount += 1
-        completion(executeResult)
+        switch (executeResult) {
+        case .failure(let error):
+            throw error
+        case .success:
+            return
+        }
     }
 }

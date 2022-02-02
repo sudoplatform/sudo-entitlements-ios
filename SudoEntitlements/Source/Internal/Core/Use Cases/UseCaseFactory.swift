@@ -30,8 +30,4 @@ class UseCaseFactory {
     func generateGetExternalIdUseCase() -> GetExternalIdUseCase {
         return GetExternalIdUseCase(repository: repository)
     }
-
-    func generateGetEntitlementsUseCase() -> GetEntitlementsUseCase {
-        return GetEntitlementsUseCase(repository: repository)
-    }
 }

@@ -6,7 +6,6 @@
 
 import Foundation
 import AWSAppSync
-import SudoOperations
 import SudoLogging
 
 /// Perform a mutation of the entitlements service to redeem the users set of entitlements
@@ -18,7 +17,7 @@ class ConsumeBooleanEntitlementsUseCase {
         self.repository = repository
     }
 
-    func execute(entitlementNames: [String], completion: @escaping ClientCompletion<Void>) {
-        repository.consumeBooleanEntitlements(entitlementNames: entitlementNames, completion: completion)
+    func execute(entitlementNames: [String]) async throws {
+        try await repository.consumeBooleanEntitlements(entitlementNames: entitlementNames)
     }
 }

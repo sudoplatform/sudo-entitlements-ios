@@ -7,7 +7,6 @@
 import AWSAppSync
 import SudoApiClient
 import SudoLogging
-import SudoOperations
 import SudoUser
 import SudoConfigManager
 
@@ -96,98 +95,39 @@ public class DefaultSudoEntitlementsClient: SudoEntitlementsClient {
         try self.graphQLClient.clearCaches(options: .init(clearQueries: true, clearMutations: true, clearSubscriptions: false))
     }
 
-    public func redeemEntitlements(completion: @escaping ClientCompletion<EntitlementsSet>) {
-        do {
-            if try !userClient.isSignedIn() {
-                completion(.failure(SudoEntitlementsError.notSignedIn))
-                return
-            }
+    public func redeemEntitlements() async throws -> EntitlementsSet {
+        guard try await userClient.isSignedIn() else {
+            throw SudoEntitlementsError.notSignedIn
         }
-        catch {
-            completion(.failure(error))
-            return
-        }
-  
-        let useCaseCompletion: ClientCompletion<EntitlementsSet> = { result in
-            completion(result)
-        }
+
         let useCase = useCaseFactory.generateRedeemEntitlementsUseCase()
-        useCase.execute(completion: useCaseCompletion)
+        return try await useCase.execute()
     }
 
-    public func consumeBooleanEntitlements(entitlementNames: [String], completion: @escaping ClientCompletion<Void>) {
-        do {
-            if try !userClient.isSignedIn() {
-                completion(.failure(SudoEntitlementsError.notSignedIn))
-                return
-            }
+    public func consumeBooleanEntitlements(entitlementNames: [String]) async throws {
+        guard try await userClient.isSignedIn() else {
+            throw SudoEntitlementsError.notSignedIn
         }
-        catch {
-            completion(.failure(error))
-            return
-        }
-  
-        let useCaseCompletion: ClientCompletion<Void> = { result in
-            completion(result)
-        }
+
         let useCase = useCaseFactory.generateConsumeBooleanEntitlementsUseCase()
-        useCase.execute(entitlementNames:entitlementNames, completion: useCaseCompletion)
+        return try await useCase.execute(entitlementNames: entitlementNames)
     }
 
-    public func getEntitlementsConsumption(completion: @escaping ClientCompletion<EntitlementsConsumption>) {
-        do {
-            if try !userClient.isSignedIn() {
-                completion(.failure(SudoEntitlementsError.notSignedIn))
-                return
-            }
-        }
-        catch {
-            completion(.failure(error))
-            return
+    public func getEntitlementsConsumption() async throws -> EntitlementsConsumption {
+        guard try await userClient.isSignedIn() else {
+            throw SudoEntitlementsError.notSignedIn
         }
   
-        let useCaseCompletion: ClientCompletion<EntitlementsConsumption> = { result in
-            completion(result)
-        }
         let useCase = useCaseFactory.generateGetEntitlementsConsumptionUseCase()
-        useCase.execute(completion: useCaseCompletion)
+        return try await useCase.execute()
     }
 
-    public func getExternalId(completion: @escaping ClientCompletion<String>) {
-        do {
-            if try !userClient.isSignedIn() {
-                completion(.failure(SudoEntitlementsError.notSignedIn))
-                return
-            }
-        }
-        catch {
-            completion(.failure(error))
-            return
+    public func getExternalId() async throws -> String {
+        guard try await userClient.isSignedIn() else {
+            throw SudoEntitlementsError.notSignedIn
         }
   
-        let useCaseCompletion: ClientCompletion<String> = { result in
-            completion(result)
-        }
         let useCase = useCaseFactory.generateGetExternalIdUseCase()
-        useCase.execute(completion: useCaseCompletion)
-    }
-
-    public func getEntitlements(completion: @escaping ClientCompletion<EntitlementsSet?>) {
-        do {
-            if try !userClient.isSignedIn() {
-                completion(.failure(SudoEntitlementsError.notSignedIn))
-                return
-            }
-        }
-        catch {
-            completion(.failure(error))
-            return
-        }
-  
-        let useCaseCompletion: ClientCompletion<EntitlementsSet?> = { result in
-            completion(result)
-        }
-        let useCase = useCaseFactory.generateGetEntitlementsUseCase()
-        useCase.execute(completion: useCaseCompletion)
+        return try await useCase.execute()
     }
 }

@@ -21,8 +21,14 @@ class MockGetExternalIdUseCase: GetExternalIdUseCase {
     var executeCallCount = 0
     var executeResult: ExecuteResult = .failure(AnyError("Please add base result to `MockGetExternalIdUseCase.execute`"))
 
-    override func execute(completion: @escaping ClientCompletion<String>) {
+    override func execute() async throws -> String {
         executeCallCount += 1
-        completion(executeResult)
+        switch (executeResult) {
+        case .failure(let error):
+            throw error
+        
+        case .success(let result):
+            return result
+        }
     }
 }

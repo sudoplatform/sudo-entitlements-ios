@@ -1,4 +1,7 @@
-platform :ios, '13.0'
+#
+platform :ios, '14.0'
+
+source 'https://github.com/CocoaPods/Specs.git'
 
 workspace 'SudoEntitlements'
 use_frameworks!
@@ -23,6 +26,7 @@ target 'SudoEntitlements' do
 
   target 'SudoEntitlementsIntegrationTests' do
     podspec :name => 'SudoEntitlements'
+    pod 'SudoEntitlementsAdmin'
   end
 end
 
@@ -35,6 +39,6 @@ end
 post_install do |installer|
   installer.pods_project.build_configurations.each do |config|
     config.build_settings['CLANG_ANALYZER_LOCALIZABILITY_NONLOCALIZED'] = 'YES'
-    config.build_settings['IPHONEOS_DEPLOYMENT_TARGET'] = '13.0'
+    config.build_settings['IPHONEOS_DEPLOYMENT_TARGET'] = '14.0'
   end
 end

@@ -7,7 +7,6 @@
 import XCTest
 import AWSAppSync
 import SudoLogging
-import SudoOperations
 import SudoApiClient
 @testable import SudoEntitlements
 
@@ -17,277 +16,156 @@ class DefaultEntitlementsRepositoryTests: XCTestCase {
 
     var instanceUnderTest: DefaultEntitlementsRepository!
 
-    var mockOperationFactory: MockOperationFactory!
+    var sudoApiClient: MockSudoApiClient!
 
-    var graphQLClient: SudoApiClient!
 
+    var entitlements: [Entitlement]!
+    var userEntitlements: UserEntitlements!
+    var consumption: EntitlementConsumption!
+    var entitlementsConsumption: EntitlementsConsumption!
+    var entitlementsSet: EntitlementsSet!
+    
     // MARK: - Lifecycle
 
     override func setUp() {
-        mockOperationFactory = MockOperationFactory()
-        graphQLClient = MockAWSAppSyncClientGenerator.generateClient()
-        instanceUnderTest = DefaultEntitlementsRepository(graphQLClient: graphQLClient, logger: .testLogger)
-        instanceUnderTest.operationFactory = mockOperationFactory
+        entitlements = [
+            Entitlement(
+                name: "e.name",
+                description: "e.description",
+                value: 42
+            )
+        ]
+        userEntitlements = UserEntitlements(version: 1.0, entitlements: entitlements)
+        consumption = EntitlementConsumption(name: "testConsumption", consumer: nil, value: 10, consumed: 5, available: 5, firstConsumedAtEpochMs: 100.0, lastConsumedAtEpochMs: 200.0)
+        entitlementsConsumption = EntitlementsConsumption(entitlements: userEntitlements, consumption: [consumption])
+
+        entitlementsSet = EntitlementsSet(name: "entitlements", entitlements: entitlements, version: 1.0, created: Date(millisecondsSince1970: 1), updated: Date(millisecondsSince1970: 2))
+
+
+        sudoApiClient = MockAWSAppSyncClientGenerator.generateClient()
+        instanceUnderTest = DefaultEntitlementsRepository(graphQLClient: sudoApiClient, logger: .testLogger)
     }
 
     // MARK: - Tests: Lifecycle
 
     func test_initializer() {
         let logger = Logger.testLogger
-        let instanceUnderTest = DefaultEntitlementsRepository(graphQLClient: graphQLClient, logger: logger)
-        XCTAssertTrue(instanceUnderTest.graphQLClient === graphQLClient)
+        let instanceUnderTest = DefaultEntitlementsRepository(
+            graphQLClient: sudoApiClient,
+            logger: logger)
+        XCTAssertTrue(instanceUnderTest.graphQLClient === sudoApiClient)
         XCTAssertTrue(instanceUnderTest.logger === logger)
-    }
-
-    func test_reset() {
-        let mockQueue = MockPlatformOperationQueue()
-        instanceUnderTest.queue = mockQueue
-        instanceUnderTest.reset()
-        XCTAssertEqual(mockQueue.cancelAllOperationsCallCount, 1)
-    }
-
-    // MARK: - Tests: getEntitlements
-
-    func test_getEntitlements_ConstructsOperation() {
-        instanceUnderTest.queue.isSuspended = true
-        instanceUnderTest.getEntitlements { _ in }
-        XCTAssertEqual(instanceUnderTest.queue.operationCount, 1)
-        guard let operation = instanceUnderTest.queue.operations.first(whereType: PlatformQueryOperation<GetEntitlementsQuery>.self) else {
-            return XCTFail("Expected operation not found")
-        }
-        XCTAssertEqual(operation.cachePolicy, .remoteOnly)
-    }
-
-    func test_getEntitlements_RespectsOperationFailure() {
-        mockOperationFactory.getEntitlementsOperation = MockGetEntitlementsQuery(error: AnyError("Get Failed"))
-        waitUntil { done in
-            self.instanceUnderTest.getEntitlements { result in
-                defer { done() }
-                switch result {
-                case let .failure(error as AnyError):
-                    XCTAssertEqual(error, AnyError("Get Failed"))
-                default:
-                    XCTFail("Unexpected result: \(result)")
-                }
-            }
-        }
-    }
-
-    func test_getEntitlements_ReturnsNonNilOperationSuccessResult() {
-        let outputEntitlements = GetEntitlementsQuery.Data.GetEntitlement(
-            createdAtEpochMs: 1.0,
-            updatedAtEpochMs: 1.0,
-            version: 1,
-            name: "TestName",
-            description: nil,
-            entitlements: []
-        )
-        let result = GetEntitlementsQuery.Data(getEntitlements: outputEntitlements)
-        mockOperationFactory.getEntitlementsOperation = MockGetEntitlementsQuery(result: result)
-        waitUntil { done in
-            self.instanceUnderTest.getEntitlements { result in
-                defer { done() }
-                switch result {
-                case let .success(Entitlements):
-                    XCTAssertNotNil(Entitlements)
-                    XCTAssertEqual(Entitlements!.name, "TestName")
-                    XCTAssertEqual(Entitlements!.version, 1)
-                default:
-                    XCTFail("Unexpected result: \(result)")
-                }
-            }
-        }
-    }
-
-    func test_getEntitlements_ReturnsNilOperationSuccessResult() {
-        let result = GetEntitlementsQuery.Data(getEntitlements: nil)
-        mockOperationFactory.getEntitlementsOperation = MockGetEntitlementsQuery(result: result)
-        waitUntil { done in
-            self.instanceUnderTest.getEntitlements { result in
-                defer { done() }
-                switch result {
-                case let .success(Entitlements):
-                    XCTAssertNil(Entitlements)
-                default:
-                    XCTFail("Unexpected result: \(result)")
-                }
-            }
-        }
     }
 
     // MARK: - Tests: getEntitlementsConsumption
 
-    func test_getEntitlementsConsumption_ConstructsOperation() {
-        instanceUnderTest.queue.isSuspended = true
-        instanceUnderTest.getEntitlementsConsumption { _ in }
-        XCTAssertEqual(instanceUnderTest.queue.operationCount, 1)
-        guard let operation = instanceUnderTest.queue.operations.first(whereType: PlatformQueryOperation<GetEntitlementsConsumptionQuery>.self) else {
-            return XCTFail("Expected operation not found")
-        }
-        XCTAssertEqual(operation.cachePolicy, .remoteOnly)
+    func test_getEntitlementsConsumption_ReturnsSuccessfully() async throws {
+        sudoApiClient.fetchGetEntitlementsConsumptionResult = .success(entitlementsConsumption)
+
+        let result = try await instanceUnderTest.getEntitlementsConsumption()
+
+        XCTAssertEqual(result, entitlementsConsumption)
+
+        XCTAssertEqual(sudoApiClient.fetchCallCount, 1)
+        XCTAssertEqual(sudoApiClient.performCallCount, 0)
     }
 
-    func test_getEntitlementsConsumption_RespectsOperationFailure() {
-        mockOperationFactory.getEntitlementsConsumptionOperation =
-            MockGetEntitlementsConsumptionQuery(error: AnyError("Get Failed"))
-        waitUntil { done in
-            self.instanceUnderTest.getEntitlementsConsumption { result in
-                defer { done() }
-                switch result {
-                case let .failure(error as AnyError):
-                    XCTAssertEqual(error, AnyError("Get Failed"))
-                default:
-                    XCTFail("Unexpected result: \(result)")
-                }
-            }
+    func test_getEntitlementsConsumption_RespectsOperationFailure() async throws {
+        sudoApiClient.fetchGetEntitlementsConsumptionResult = .failure(SudoEntitlementsError.accountLocked)
+    
+        do {
+            let result = try await instanceUnderTest.getEntitlementsConsumption()
+            XCTFail("Unexpected result: \(result)")
         }
+        catch(let error as SudoEntitlementsError) {
+            XCTAssertEqual(error, .accountLocked)
+        }
+        catch(let error) {
+            XCTFail("Unexpected error: \(error)")
+        }
+
+        XCTAssertEqual(sudoApiClient.fetchCallCount, 1)
+        XCTAssertEqual(sudoApiClient.performCallCount, 0)
     }
 
     // MARK: - Tests: getExternalId
 
-    func test_getExternalId_ConstructsOperation() {
-        instanceUnderTest.queue.isSuspended = true
-        instanceUnderTest.getExternalId { _ in }
-        XCTAssertEqual(instanceUnderTest.queue.operationCount, 1)
-        guard let operation = instanceUnderTest.queue.operations.first(whereType: PlatformQueryOperation<GetExternalIdQuery>.self) else {
-            return XCTFail("Expected operation not found")
-        }
-        XCTAssertEqual(operation.cachePolicy, .remoteOnly)
+    func test_getExternalId_ReturnsSuccessfully() async throws {
+        sudoApiClient.fetchGetExternalIdResult = .success("external-id")
+        let result = try await instanceUnderTest.getExternalId()
+        XCTAssertEqual(result, "external-id")
+
+        XCTAssertEqual(sudoApiClient.fetchCallCount, 1)
+        XCTAssertEqual(sudoApiClient.performCallCount, 0)
     }
 
-    func test_getExternalId_RespectsOperationFailure() {
-        mockOperationFactory.getExternalIdOperation = MockGetExternalIdQuery(error: AnyError("Get External ID Failed"))
-        waitUntil { done in
-            self.instanceUnderTest.getExternalId { result in
-                defer { done() }
-                switch result {
-                case let .failure(error as AnyError):
-                    XCTAssertEqual(error, AnyError("Get External ID Failed"))
-                default:
-                    XCTFail("Unexpected result: \(result)")
-                }
-            }
+    func test_getExternalId_RespectsOperationFailure() async throws  {
+        sudoApiClient.fetchGetExternalIdResult = .failure(SudoEntitlementsError.accountLocked)
+    
+        do {
+            let result = try await instanceUnderTest.getExternalId()
+            XCTFail("Unexpected result: \(result)")
         }
-    }
-
-    func test_getExternalId_ReturnsOperationSuccessResult() {
-        let outputExternalId = "external-id"
-        let result = GetExternalIdQuery.Data(getExternalId: outputExternalId)
-        mockOperationFactory.getExternalIdOperation = MockGetExternalIdQuery(result: result)
-        waitUntil { done in
-            self.instanceUnderTest.getExternalId { result in
-                defer { done() }
-                switch result {
-                case let .success(externalId):
-                    XCTAssertEqual(externalId, outputExternalId)
-                default:
-                    XCTFail("Unexpected result: \(result)")
-                }
-            }
+        catch(let error as SudoEntitlementsError) {
+            XCTAssertEqual(error, .accountLocked)
         }
+        catch(let error) {
+            XCTFail("Unexpected error: \(error)")
+        }
+        XCTAssertEqual(sudoApiClient.fetchCallCount, 1)
+        XCTAssertEqual(sudoApiClient.performCallCount, 0)
     }
 
     // MARK: - Tests: redeemEntitlements
 
-    func test_redeemEntitlements_ConstructsOperation() {
-        instanceUnderTest.queue.isSuspended = true
-        instanceUnderTest.redeemEntitlements { _ in }
-        XCTAssertEqual(instanceUnderTest.queue.operationCount, 1)
-        guard let operation = instanceUnderTest.queue.operations.first(whereType: PlatformMutationOperation<RedeemEntitlementsMutation>.self) else {
-            return XCTFail("Expected operation not found")
-        }
-        XCTAssertEqual(operation.errors.count, 0)
+    func test_redeemEntitlements_ReturnsSuccessfully() async throws {
+        sudoApiClient.performRedeemEntitlementResult = .success(entitlementsSet)
+        
+        let result = try await instanceUnderTest.redeemEntitlements()
+        
+        XCTAssertEqual(result, entitlementsSet)
+
+        XCTAssertEqual(sudoApiClient.performCallCount, 1)
+        XCTAssertEqual(sudoApiClient.fetchCallCount, 0)
     }
 
-    func test_redeemEntitlements_RespectsOperationFailure() {
-        mockOperationFactory.redeemEntitlementsOperation = MockRedeemEntitlementsOperation(error: AnyError("Get Failed"))
-        waitUntil { done in
-            self.instanceUnderTest.redeemEntitlements { result in
-                defer { done() }
-                switch result {
-                case let .failure(error as AnyError):
-                    XCTAssertEqual(error, AnyError("Get Failed"))
-                default:
-                    XCTFail("Unexpected result: \(result)")
-                }
-            }
+    func test_redeemEntitlements_RespectsOperationFailure() async throws {
+        sudoApiClient.performRedeemEntitlementResult = .failure(SudoEntitlementsError.accountLocked)
+        do {
+            let result = try await instanceUnderTest.redeemEntitlements()
+            XCTFail("Unexpected result: \(result)")
         }
-    }
+        catch(let error as SudoEntitlementsError) {
+            XCTAssertEqual(error, .accountLocked)
+        }
+        catch(let error) {
+            XCTFail("Unexpected error: \(error)")
+        }
 
-    func test_redeemEntitlements_ReturnsOperationSuccessResult() {
-        let outputEntitlement = RedeemEntitlementsMutation.Data.RedeemEntitlement.Entitlement(
-            name: "EntitlementName",
-            description: "EntitlementDescription",
-            value: 1
-        )
-        let redeemEntitlement = RedeemEntitlementsMutation.Data.RedeemEntitlement(
-            createdAtEpochMs: 2.0,
-            updatedAtEpochMs: 4.0,
-            version: 1,
-            name: "RedeemedName",
-            description: "RedeemedDescription",
-            entitlements: [outputEntitlement]
-        )
-        let result = RedeemEntitlementsMutation.Data(redeemEntitlements: redeemEntitlement)
-        mockOperationFactory.redeemEntitlementsOperation = MockRedeemEntitlementsOperation(result: result)
-        waitUntil { done in
-            self.instanceUnderTest.redeemEntitlements { result in
-                defer { done() }
-                let logger = Logger.testLogger
-                logger.debug("\(result)")
-                switch result {
-                case let .success(Entitlements):
-                    XCTAssertEqual(Entitlements.name, "RedeemedName")
-                    XCTAssertEqual(Entitlements.description, "RedeemedDescription")
-                    XCTAssertEqual(Entitlements.entitlements[0].name, "EntitlementName")
-                default:
-                    XCTFail("Unexpected result: \(result)")
-                }
-            }
-        }
+        XCTAssertEqual(sudoApiClient.performCallCount, 1)
+        XCTAssertEqual(sudoApiClient.fetchCallCount, 0)
     }
 
     // MARK: - Tests: consumeBooleanEntitlements
 
-    func test_consumeBooleanEntitlements_ConstructsOperation() {
-        instanceUnderTest.queue.isSuspended = true
-        instanceUnderTest.consumeBooleanEntitlements(entitlementNames: ["some-entitlement"]) { _ in }
-        XCTAssertEqual(instanceUnderTest.queue.operationCount, 1)
-        guard let operation = instanceUnderTest.queue.operations.first(whereType: PlatformMutationOperation<ConsumeBooleanEntitlementsMutation>.self) else {
-            return XCTFail("Expected operation not found")
-        }
-        XCTAssertEqual(operation.errors.count, 0)
+    func test_consumeBooleanEntitlements_ReturnsSuccessfully() async throws {
+        sudoApiClient.performConsumeBooleanEntitlementsResult = .success(())
+        try await instanceUnderTest.consumeBooleanEntitlements(entitlementNames: ["some-entitlement"])
+        XCTAssertEqual(sudoApiClient.performCallCount, 1)
+        XCTAssertEqual(sudoApiClient.fetchCallCount, 0)
     }
 
-    func test_consumeBooleanEntitlements_RespectsOperationFailure() {
-        mockOperationFactory.consumeBooleanEntitlementsOperation = MockConsumeBooleanEntitlementsOperation(error: AnyError("Get Failed"))
-        waitUntil { done in
-            self.instanceUnderTest.consumeBooleanEntitlements(entitlementNames: ["some-entitlement"]) { result in
-                defer { done() }
-                switch result {
-                case let .failure(error as AnyError):
-                    XCTAssertEqual(error, AnyError("Get Failed"))
-                default:
-                    XCTFail("Unexpected result: \(result)")
-                }
-            }
+    func test_consumeBooleanEntitlements_RespectsOperationFailure() async throws {
+        sudoApiClient.performConsumeBooleanEntitlementsResult = .failure(SudoEntitlementsError.accountLocked)
+        do {
+            try await instanceUnderTest.consumeBooleanEntitlements(entitlementNames: ["some-entitlement"])
+            XCTFail("Unexpected succcess")
+        }
+        catch(let error as SudoEntitlementsError) {
+            XCTAssertEqual(error, .accountLocked)
+        }
+        catch(let error) {
+            XCTFail("Unexpected error: \(error)")
         }
     }
-
-    func test_consumeBooleanEntitlements_ReturnsOperationSuccessResult() {
-        let result = ConsumeBooleanEntitlementsMutation.Data(consumeBooleanEntitlements: true)
-        mockOperationFactory.consumeBooleanEntitlementsOperation = MockConsumeBooleanEntitlementsOperation(result: result)
-        waitUntil { done in
-            self.instanceUnderTest.consumeBooleanEntitlements(entitlementNames: ["some-entitlement"]) { result in
-                defer { done() }
-                let logger = Logger.testLogger
-                logger.debug("\(result)")
-                switch result {
-                case  .success(()):
-                    break
-                default:
-                    XCTFail("Unexpected result: \(result)")
-                }
-            }
-        }
-    }}
+}

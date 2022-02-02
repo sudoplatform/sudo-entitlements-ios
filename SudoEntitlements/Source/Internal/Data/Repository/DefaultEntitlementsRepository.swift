@@ -7,7 +7,6 @@
 import Foundation
 import AWSAppSync
 import SudoLogging
-import SudoOperations
 import SudoApiClient
 
 class DefaultEntitlementsRepository: EntitlementsRepository {
@@ -18,135 +17,74 @@ class DefaultEntitlementsRepository: EntitlementsRepository {
     /// Used to log diagnostic and error information.
     var logger: Logger
 
-    /// Utility factory class to generate mutation and query operations.
-    var operationFactory = OperationFactory()
-
-    /// Operation queue for enqueuing asynchronous tasks.
-    var queue = PlatformOperationQueue()
-
     init(graphQLClient: SudoApiClient, logger: Logger = .entitlementsSDKLogger) {
         self.graphQLClient = graphQLClient
         self.logger = logger
     }
 
     func reset() {
-        queue.cancelAllOperations()
     }
     
     /// Get the users current set of entitlements
-    func getEntitlementsConsumption(completion: @escaping ClientCompletion<EntitlementsConsumption>) {
-        let query = GetEntitlementsConsumptionQuery()
-        let operation = operationFactory.generateQueryOperation(query: query, graphQLClient: graphQLClient, logger: logger)
-        let completionObserver = PlatformBlockObserver(finishHandler: { [unowned operation] _, errors in
-            if let error = errors.first {
-                if error is ApiOperationError {
-                    completion(.failure(SudoEntitlementsError.fromApiOperationError(error: error)))
-                } else {
-                    completion(.failure(error))
+    func getEntitlementsConsumption() async throws -> EntitlementsConsumption {
+        let (graphQLResult, graphQLError) = try await self.graphQLClient.fetch(
+                query: GetEntitlementsConsumptionQuery(),
+                cachePolicy: .fetchIgnoringCacheData)
+
+        guard let result = graphQLResult?.data else {
+                guard let error = graphQLError else {
+                    throw SudoEntitlementsError.fatalError("neither result nor error is non-nil after GetEntitlementsConsumption query")
                 }
-                return
+                throw SudoEntitlementsError.fromApiOperationError(error: error)
             }
-            guard let graphQLResult = operation.result?.getEntitlementsConsumption else {
-                completion(.failure(SudoEntitlementsError.serviceError))
-                return
-            }
-            let transformer = EntitlementsTransformer()
-            let result = transformer.transform(graphQLResult)
-            completion(.success(result))
-        })
-        operation.addObserver(completionObserver)
-        queue.addOperation(operation)
+            
+        let transformer = EntitlementsTransformer()
+        return transformer.transform(result.getEntitlementsConsumption)
     }
 
     /// Get the users external ID
-    func getExternalId(completion: @escaping ClientCompletion<String>) {
-        let query = GetExternalIdQuery()
-        let operation = operationFactory.generateQueryOperation(query: query, graphQLClient: graphQLClient, logger: logger)
-        let completionObserver = PlatformBlockObserver(finishHandler: { [unowned operation] _, errors in
-            if let error = errors.first {
-                if error is ApiOperationError {
-                    completion(.failure(SudoEntitlementsError.fromApiOperationError(error: error)))
-                } else {
-                    completion(.failure(error))
-                }
-                return
-            }
-            guard let graphQLResult = operation.result?.getExternalId else {
-                completion(.failure(SudoEntitlementsError.serviceError))
-                return
-            }
-            completion(.success(graphQLResult))
-        })
-        operation.addObserver(completionObserver)
-        queue.addOperation(operation)
-    }
+    func getExternalId() async throws -> String {
+        let (graphQLResult, graphQLError) = try await self.graphQLClient.fetch(
+                query: GetExternalIdQuery(),
+                cachePolicy: .fetchIgnoringCacheData)
 
-    /// Get the users current set of entitlements
-    func getEntitlements(completion: @escaping ClientCompletion<EntitlementsSet?>) {
-        let query = GetEntitlementsQuery()
-        let operation = operationFactory.generateQueryOperation(query: query, graphQLClient: graphQLClient, logger: logger)
-        let completionObserver = PlatformBlockObserver(finishHandler: { [unowned operation] _, errors in
-            if let error = errors.first {
-                if error is ApiOperationError {
-                    completion(.failure(SudoEntitlementsError.fromApiOperationError(error: error)))
-                } else {
-                    completion(.failure(error))
+        guard let result = graphQLResult?.data else {
+                guard let error = graphQLError else {
+                    throw SudoEntitlementsError.fatalError("neither result nor error is non-nil after GetExternalId query")
                 }
-                return
+                throw SudoEntitlementsError.fromApiOperationError(error: error)
             }
-            guard let graphQLResult = operation.result?.getEntitlements else {
-                completion(.success(nil))
-                return
-            }
-            let transformer = EntitlementsTransformer()
-            let result = transformer.transform(graphQLResult)
-            completion(.success(result))
-        })
-        operation.addObserver(completionObserver)
-        queue.addOperation(operation)
+        
+        return result.getExternalId
     }
 
     /// Redeem the entitlements the user is allowed
-    func redeemEntitlements(completion: @escaping ClientCompletion<EntitlementsSet>) {
-        let mutation = RedeemEntitlementsMutation()
-        let operation = operationFactory.generateMutationOperation(mutation: mutation, graphQLClient: graphQLClient, logger: logger)
-        let completionObserver = PlatformBlockObserver(finishHandler: { [unowned operation] _, errors in
-            if let error = errors.first {
-                if error is ApiOperationError {
-                    completion(.failure(SudoEntitlementsError.fromApiOperationError(error: error)))
-                } else {
-                    completion(.failure(error))
+    func redeemEntitlements() async throws -> EntitlementsSet {
+        let (graphQLResult, graphQLError) = try await self.graphQLClient.perform(
+                mutation: RedeemEntitlementsMutation())
+
+        guard let result = graphQLResult?.data else {
+                guard let error = graphQLError else {
+                    throw SudoEntitlementsError.fatalError("neither result nor error is non-nil after RedeemEntitlements mutation")
                 }
-                return
+                throw SudoEntitlementsError.fromApiOperationError(error: error)
             }
-            guard let graphQLResult = operation.result?.redeemEntitlements else {
-                completion(.failure(SudoEntitlementsError.serviceError))
-                return
-            }
-            let transformer = EntitlementsTransformer()
-            let result = transformer.transform(graphQLResult)
-            completion(.success(result))
-        })
-        operation.addObserver(completionObserver)
-        queue.addOperation(operation)
+
+        let transformer = EntitlementsTransformer()
+        return transformer.transform(result.redeemEntitlements)
     }
 
     /// Consume boolean entitlements
-    func consumeBooleanEntitlements(entitlementNames: [String], completion: @escaping ClientCompletion<Void>) {
+    func consumeBooleanEntitlements(entitlementNames: [String]) async throws {
         let mutation = ConsumeBooleanEntitlementsMutation(entitlementNames: entitlementNames)
-        let operation = operationFactory.generateMutationOperation(mutation: mutation, graphQLClient: graphQLClient, logger: logger)
-        let completionObserver = PlatformBlockObserver(finishHandler: { _, errors in
-            if let error = errors.first {
-                if error is ApiOperationError {
-                    completion(.failure(SudoEntitlementsError.fromApiOperationError(error: error)))
-                } else {
-                    completion(.failure(error))
+
+        let (graphQLResult, graphQLError) = try await self.graphQLClient.perform(mutation: mutation)
+
+        guard graphQLResult != nil else {
+                guard let error = graphQLError else {
+                    throw SudoEntitlementsError.fatalError("neither result nor error is non-nil after ConsumeBooleanEntitlements mutation")
                 }
-                return
+                throw SudoEntitlementsError.fromApiOperationError(error: error)
             }
-            completion(.success(()))
-        })
-        operation.addObserver(completionObserver)
-        queue.addOperation(operation)
     }
 }

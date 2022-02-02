@@ -18,25 +18,27 @@ class MockEntitlementsRepository: EntitlementsRepository, Resetable {
     var getEntitlementsConsumptionCallCount = 0
     var getEntitlementsConsumptionResult: Result<EntitlementsConsumption, Error> = .failure(AnyError("Please add base result to `MockEntitlementsRepository.getEntitlementsConsumption`"))
 
-    func getEntitlementsConsumption(completion: @escaping ClientCompletion<EntitlementsConsumption>) {
+    func getEntitlementsConsumption() async throws -> EntitlementsConsumption {
         getEntitlementsConsumptionCallCount += 1
-        completion(getEntitlementsConsumptionResult)
+        switch getEntitlementsConsumptionResult {
+        case .failure(let error):
+            throw error
+        case .success(let result):
+            return result
+        }
     }
 
     var getExternalIdCallCount = 0
     var getExternalIdResult: Result<String, Error> = .failure(AnyError("Please add base result to `MockEntitlementsRepository.getExternalId`"))
 
-    func getExternalId(completion: @escaping ClientCompletion<String>) {
+    func getExternalId() async throws -> String {
         getExternalIdCallCount += 1
-        completion(getExternalIdResult)
-    }
-
-    var getEntitlementsCallCount = 0
-    var getEntitlementsResult: Result<EntitlementsSet?, Error> = .failure(AnyError("Please add base result to `MockEntitlementsRepository.getEntitlements`"))
-
-    func getEntitlements(completion: @escaping ClientCompletion<EntitlementsSet?>) {
-        getEntitlementsCallCount += 1
-        completion(getEntitlementsResult)
+        switch getExternalIdResult {
+        case .failure(let error):
+            throw error
+        case .success(let result):
+            return result
+        }
     }
 
     var redeemEntitlementsCallCount = 0
@@ -44,9 +46,14 @@ class MockEntitlementsRepository: EntitlementsRepository, Resetable {
         AnyError("Please add base result to `MockEntitlementsRepository.redeemEntitlements`")
     )
 
-    func redeemEntitlements(completion: @escaping ClientCompletion<EntitlementsSet>) {
+    func redeemEntitlements() async throws -> EntitlementsSet {
         redeemEntitlementsCallCount += 1
-        completion(redeemEntitlementsResult)
+        switch redeemEntitlementsResult {
+        case .failure(let error):
+            throw error
+        case .success(let result):
+            return result
+        }
     }
 
     var consumeBooleanEntitlementsCallCount = 0
@@ -54,8 +61,13 @@ class MockEntitlementsRepository: EntitlementsRepository, Resetable {
         AnyError("Please add base result to `MockEntitlementsRepository.consumeBooleanEntitlements`")
     )
 
-    func consumeBooleanEntitlements(entitlementNames: [String], completion: @escaping ClientCompletion<Void>) {
+    func consumeBooleanEntitlements(entitlementNames: [String]) async throws {
         consumeBooleanEntitlementsCallCount += 1
-        completion(consumeBooleanEntitlementsResult)
+        switch consumeBooleanEntitlementsResult {
+        case .failure(let error):
+            throw error
+        case .success:
+            return
+        }
     }
 }

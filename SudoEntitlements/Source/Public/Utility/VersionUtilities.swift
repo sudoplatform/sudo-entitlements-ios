@@ -5,7 +5,7 @@
 //
 
 import Foundation
-import SudoOperations
+import SudoApiClient
 
 ///
 /// Split a composite entitlements version in to its user entitlements version and entitlements set
@@ -15,14 +15,14 @@ import SudoOperations
 ///     Version from a UserEntitlements or EntitlementsSet
 /// - Returns:
 ///     A tuple of the user entitlements version and entitlement set version.
-/// - Throws `SudoPlatformError.invalidArgument`:
+/// - Throws `SudoEntitlementsError.invalidArgument`:
 ///     If the version is negative or has precision greater than `Constants.entitlementsSetVersionScalingFactor`
 ///     allows
 ///
 public func splitUserEntitlementsVersion(version: Double) throws -> (Int,Int) {
     
     if (version < 0) {
-        throw SudoPlatformError.invalidArgument(msg: "version negative")
+        throw SudoEntitlementsError.invalidArgument
     }
 
     let userEntitlementsVersion = lround(version)
@@ -32,7 +32,7 @@ public func splitUserEntitlementsVersion(version: Double) throws -> (Int,Int) {
     let reconstructedVersion =
     Double(userEntitlementsVersion) + Double(entitlementsSetVersion)/Constants.entitlementsSetVersionScalingFactor
     if (reconstructedVersion != version) {
-        throw SudoPlatformError.invalidArgument(msg: "version too precise")
+        throw SudoEntitlementsError.invalidArgument
     }
     
     return (userEntitlementsVersion, entitlementsSetVersion)

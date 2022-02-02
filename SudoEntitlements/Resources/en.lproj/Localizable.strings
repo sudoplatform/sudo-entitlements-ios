@@ -37,4 +37,5 @@
 "entitlements.errors.rateLimitExceeded" = "API rate limit exceeded";
 "entitlements.errors.graphQLError" = "Unknown GraphQL error was returned";
 "entitlements.errors.fatalError" = "Unexpected fatal error occurred";
+"entitlements.errors.invalidRequest" = "Invalid request";
 

@@ -5,7 +5,6 @@
 //
 
 import Foundation
-import SudoOperations
 import SudoApiClient
 import AWSAppSync
 
@@ -16,6 +15,7 @@ public enum SudoEntitlementsError: Error, Equatable, LocalizedError {
 
     /// Configuration supplied to `DefaultSudoEntitlementsClient` is invalid.
     case invalidConfig
+
     /// User is not signed in.
     case notSignedIn
 
@@ -23,9 +23,6 @@ public enum SudoEntitlementsError: Error, Equatable, LocalizedError {
     /// This may indicate that the Entitlemetns Service is not deployed into your runtime instance or the
     /// configuration file that you are using is invalid..
     case entitlementsServiceConfigNotFound
-
-    /// Indicates that the input to the API was invalid.
-    case invalidInput
 
     /// Indicates the requested operation failed because the user account is locked.
     case accountLocked
@@ -38,13 +35,6 @@ public enum SudoEntitlementsError: Error, Equatable, LocalizedError {
     /// can occur if the vault size was too big.
     case limitExceeded
 
-    /// Indicates that the user does not have sufficient entitlements to perform the requested operation.
-    case insufficientEntitlements
-
-    /// Indicates the version of the vault that is getting updated does not match the current version of the vault stored
-    /// in the backend. The caller should retrieve the current version of the vault and reconcile the difference.
-    case versionMismatch
-
     /// Indicates that an internal server error caused the operation to fail. The error is possibly transient and
     /// retrying at a later time may cause the operation to complete successfully
     case serviceError
@@ -55,19 +45,20 @@ public enum SudoEntitlementsError: Error, Equatable, LocalizedError {
     /// Indicates that there were too many attempts at sending API requests within a short period of time.
     case rateLimitExceeded
 
-    /// Indicates that a GraphQL error was returned by the backend.
-    case graphQLError(description: String)
+    /// Indicates that an unexpected GraphQL error was returned by the service.
+    case graphQLError(cause: GraphQLError)
 
     /// Indicates that a fatal error occurred. This could be due to coding error, out-of-memory condition or other
     /// conditions that is beyond control of `SudoSecureVaultClient` implementation.
-    case fatalError(description: String)
+    case fatalError(_ description: String)
 
-    // MARK: - SudoPlatformError
+    // MARK: - ApiOperationError
 
-    /// This section contains wrapped erros from `SudoPlatformError`.
+    /// This section contains wrapped errors from `ApiOperationError`.
     case ambiguousEntitlements
-    case internalError(_ cause: String?)
-    case invalidArgument(_ msg: String?)
+    case insufficientEntitlements
+    case invalidArgument
+    case invalidRequest
     case invalidTokenError
     case noEntitlementsError
     case policyFailed
@@ -85,7 +76,6 @@ public enum SudoEntitlementsError: Error, Equatable, LocalizedError {
              (.notAuthorized, .notAuthorized),
              (.limitExceeded, .limitExceeded),
              (.insufficientEntitlements, .insufficientEntitlements),
-             (.versionMismatch, .versionMismatch),
              (.serviceError, .serviceError),
              (.rateLimitExceeded, .rateLimitExceeded),
              (.graphQLError, .graphQLError),
@@ -93,10 +83,10 @@ public enum SudoEntitlementsError: Error, Equatable, LocalizedError {
              (.policyFailed, .policyFailed),
              (.invalidTokenError, .invalidTokenError),
              (.ambiguousEntitlements, ambiguousEntitlements),
-             (.internalError, internalError),
              (.noEntitlementsError, noEntitlementsError),
              (.entitlementsServiceConfigNotFound, entitlementsServiceConfigNotFound),
-             (.invalidArgument, .invalidArgument):
+             (.invalidArgument, .invalidArgument),
+             (.invalidRequest, .invalidRequest):
             return true
         default:
             return false
@@ -110,36 +100,16 @@ public enum SudoEntitlementsError: Error, Equatable, LocalizedError {
     /// If the GraphQLError is unsupported, `nil` will be returned instead.
     init(graphQLError error: GraphQLError) {
         guard let errorType = error["errorType"] as? String else {
-            let sudoPlatformError = SudoPlatformError(error)
-            self = SudoEntitlementsError(platformError:sudoPlatformError)
+            self = .graphQLError(cause: error)
             return
         }
         switch errorType {
         case "sudoplatform.entitlements.AmbiguousEntitlementsError":
             self = .ambiguousEntitlements
-        default:
-            let sudoPlatformError = SudoPlatformError(error)
-            self = SudoEntitlementsError(platformError:sudoPlatformError)
-        }
-    }
-
-    /// Initialize a `SudoEntitlementsError` from a `SudoPlatformError`.
-    init(platformError error: SudoPlatformError) {
-        switch error {
-        case let .internalError(cause):
-            self = .internalError(cause)
-        case .invalidArgument(let msg):
-            self = .invalidArgument(msg)
-        case .invalidTokenError:
-            self = .invalidTokenError
-        case .noEntitlementsError:
+        case "sudoplatform.NoEntitlementsError":
             self = .noEntitlementsError
-        case .policyFailed:
-            self = .policyFailed
-        case .serviceError:
-            self = .serviceError
         default:
-            self = .fatalError(description: "Unexpected platform error: \(error)")
+            self = .graphQLError(cause: error)
         }
     }
 
@@ -151,13 +121,8 @@ public enum SudoEntitlementsError: Error, Equatable, LocalizedError {
             return L10n.Entitlements.Errors.ambiguousEntitlementsError
         case .insufficientEntitlements:
             return L10n.Entitlements.Errors.insufficientEntitlementsError
-        case let .internalError(cause):
-            return cause ?? "Internal Error"
-        case .invalidArgument(let msg):
-            // Breaks all localization rules but good enough for here
-            return msg != nil
-                ? L10n.Entitlements.Errors.invalidArgument + ": \(msg!)"
-                : L10n.Entitlements.Errors.invalidArgument
+        case .invalidArgument:
+            return L10n.Entitlements.Errors.invalidArgument
         case .invalidConfig:
             return L10n.Entitlements.Errors.invalidConfig
         case .invalidTokenError:
@@ -172,54 +137,56 @@ public enum SudoEntitlementsError: Error, Equatable, LocalizedError {
             return L10n.Entitlements.Errors.serviceError
         case .entitlementsServiceConfigNotFound:
             return L10n.Entitlements.Errors.entitlementsServiceConfigNotFound
-        case .invalidInput:
-            return L10n.Entitlements.Errors.invalidInput
         case .notAuthorized:
             return L10n.Entitlements.Errors.notAuthorized
         case .limitExceeded:
             return L10n.Entitlements.Errors.limitExceeded
-        case .versionMismatch:
-            return L10n.Entitlements.Errors.versionMismatch
         case .requestFailed:
             return L10n.Entitlements.Errors.requestFailed
         case .rateLimitExceeded:
             return L10n.Entitlements.Errors.rateLimitExceeded
         case .graphQLError:
             return L10n.Entitlements.Errors.graphQLError
-        case .fatalError:
-            return L10n.Entitlements.Errors.fatalError
+        case .fatalError(let description):
+            return L10n.Entitlements.Errors.fatalError + ": \(description)"
+        case .invalidRequest:
+            return L10n.Entitlements.Errors.invalidRequest
         }
     }
 
     static func fromApiOperationError(error: Error) -> SudoEntitlementsError {
-        // Check if ApiOperationError or SudoPlatformError
-        switch error {
-        case ApiOperationError.accountLocked:
+        // Check if ApiOperationError
+        guard let apiOperationError = error as? ApiOperationError else {
+            return .fatalError("Unexpected error: \(error)")
+        }
+        
+        switch apiOperationError {
+        case .accountLocked:
             return .accountLocked
-        case ApiOperationError.notSignedIn:
+        case .notSignedIn:
             return .notSignedIn
-        case ApiOperationError.notAuthorized:
+        case .notAuthorized:
             return .notAuthorized
-        case ApiOperationError.limitExceeded:
+        case .limitExceeded:
             return .limitExceeded
-        case ApiOperationError.insufficientEntitlements:
+        case .insufficientEntitlements:
             return .insufficientEntitlements
-        case ApiOperationError.invalidArgument:
-            return .invalidArgument(nil)
-        case ApiOperationError.serviceError:
+        case .invalidArgument:
+            return .invalidArgument
+        case .invalidRequest:
+            return .invalidRequest
+        case .serviceError:
             return .serviceError
-        case ApiOperationError.versionMismatch:
-            return .versionMismatch
-        case ApiOperationError.invalidRequest:
-            return .invalidInput
-        case ApiOperationError.rateLimitExceeded:
+        case .rateLimitExceeded:
             return .rateLimitExceeded
-        case ApiOperationError.graphQLError(let cause):
+        case .graphQLError(let cause):
             return SudoEntitlementsError(graphQLError: cause)
-        case ApiOperationError.requestFailed(let response, let cause):
+        case .requestFailed(let response, let cause):
             return .requestFailed(response: response, cause: cause)
+        case .fatalError(let description):
+            return .fatalError(description)
         default:
-            return .fatalError(description: "Unexpected API operation error: \(error)")
+            return .fatalError("Unexpected API operation error: \(error)")
         }
     }
 }

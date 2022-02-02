@@ -100,10 +100,10 @@ struct MockAWSAppSyncClientGenerator {
         return (graphQLClient, transport)
     }
 
-    static func generateClient(transport: MockAWSNetworkTransport = MockAWSNetworkTransport()) -> SudoApiClient {
+    static func generateClient(transport: MockAWSNetworkTransport = MockAWSNetworkTransport()) -> MockSudoApiClient {
         let mockProvider = MockAWSAppSyncServiceConfigProvider()
         let appSyncConfig = AWSAppSyncClientConfiguration(appSyncServiceConfig: mockProvider, networkTransport: transport)
         let appSyncClient = try! AWSAppSyncClient(appSyncConfig: appSyncConfig)
-        return try! SudoApiClient(appSyncClient: appSyncClient)
+        return try! MockSudoApiClient(appSyncClient: appSyncClient)
     }
 }

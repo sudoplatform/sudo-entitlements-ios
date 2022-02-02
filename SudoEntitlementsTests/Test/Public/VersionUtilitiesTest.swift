@@ -6,26 +6,25 @@
 
 import XCTest
 @testable import SudoEntitlements
-import SudoOperations
 
 class VersionUtilitiesTest: XCTestCase {
 
     func test_splitUserEntitlementsVersion_shouldThrowIllegalArgumentForNegativeVersion() {
         XCTAssertThrowsError(try splitUserEntitlementsVersion(version:-1)) {
             error in
-            if (!(error is SudoPlatformError)) {
-                XCTFail("error is not a SudoPlatformError")
+            if (!(error is SudoEntitlementsError)) {
+                XCTFail("error is not a SudoEntitlementsrror")
             }
-            XCTAssertEqual(error as! SudoPlatformError, SudoPlatformError.invalidArgument(msg: "version negative"))}
+            XCTAssertEqual(error as! SudoEntitlementsError, SudoEntitlementsError.invalidArgument)}
     }
     
     func test_splitUserEntitlementsVersion_shouldThrowIllegalArgumentForTooPreciseVersion() {
         XCTAssertThrowsError(try splitUserEntitlementsVersion(version:1.000001)) {
             error in
-            if (!(error is SudoPlatformError)) {
-                XCTFail("error is not a SudoPlatformError")
+            if (!(error is SudoEntitlementsError)) {
+                XCTFail("error is not a SudoEntitlementsError")
             }
-            XCTAssertEqual(error as! SudoPlatformError, SudoPlatformError.invalidArgument(msg: "version too precise"))}
+            XCTAssertEqual(error as! SudoEntitlementsError, SudoEntitlementsError.invalidArgument)}
     }
 
     func test_splitUserEntitlementsVersion_shouldSetEntitlementsSetVersionToZeroWithNoFraction() {

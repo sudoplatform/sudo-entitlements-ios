@@ -9,17 +9,14 @@ import Foundation
 protocol EntitlementsRepository: AnyObject, Resetable {
 
     /// Get the users current set of entitlements and their consumption
-    func getEntitlementsConsumption(completion: @escaping ClientCompletion<EntitlementsConsumption>)
-
-    /// Get the users current set of entitlements
-    func getEntitlements(completion: @escaping ClientCompletion<EntitlementsSet?>)
+    func getEntitlementsConsumption() async throws -> EntitlementsConsumption
 
     /// Get the users external ID
-    func getExternalId(completion: @escaping ClientCompletion<String>)
+    func getExternalId() async throws -> String
 
     /// Redeem the entitlements the user is allowed
-    func redeemEntitlements(completion: @escaping ClientCompletion<EntitlementsSet>)
+    func redeemEntitlements() async throws -> EntitlementsSet
 
     /// Record boolean entitlements as consumed
-    func consumeBooleanEntitlements(entitlementNames: [String], completion: @escaping ClientCompletion<Void>)
+    func consumeBooleanEntitlements(entitlementNames: [String]) async throws
 }

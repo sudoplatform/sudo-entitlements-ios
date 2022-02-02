@@ -6,7 +6,6 @@
 
 import Foundation
 import AWSAppSync
-import SudoOperations
 import SudoLogging
 
 /// Perform a query of the entitlements service to get the current set of entitlements
@@ -18,7 +17,7 @@ class GetEntitlementsConsumptionUseCase {
         self.repository = repository
     }
 
-    func execute(completion: @escaping ClientCompletion<EntitlementsConsumption>) {
-        repository.getEntitlementsConsumption(completion: completion)
+    func execute() async throws -> EntitlementsConsumption {
+        return try await repository.getEntitlementsConsumption()
     }
 }

@@ -27,33 +27,26 @@ public protocol SudoEntitlementsClient: AnyObject {
     /// - Returns:
     ///   - Success: The set of entitlements the user currently has and consumption information for
     ///     the user and its sub-resource consumers, if any
-    ///   - Failure: `SudoEntitlementsError`
-    func getEntitlementsConsumption(completion: @escaping ClientCompletion<EntitlementsConsumption>)
+    /// - Throws:
+    ///   - `SudoEntitlementsError`
+    func getEntitlementsConsumption() async throws -> EntitlementsConsumption
 
     /// Get the external ID as determined by the entitlements service.
     /// Useful for automated tests
     /// - Returns:
-    ///   - Success: The external ID of the authenticated user
-    ///   - Failure: `SudoEntitlementsError`
-    func getExternalId(completion: @escaping ClientCompletion<String>)
-
-    /// Get the current set of entitlements for the user.
-    ///
-    /// Deprecated: Use `getEntitlementsConsumption` instead
-    ///
-    /// - Returns:
-    ///   - Success: The set of entitlements the user currently has or nil if user has no entitlements
-    ///   - Failure: `SudoEntitlementsError`.
-    @available(*, deprecated)
-    func getEntitlements(completion: @escaping ClientCompletion<EntitlementsSet?>)
+    ///   - The external ID of the authenticated user
+    /// - Throws:
+    ///   - `SudoEntitlementsError`
+    func getExternalId() async throws -> String
 
     // MARK: - Mutations
 
     /// Redeem the entitlements for the user.
     /// - Returns:
-    ///   - Success: The current set of entitlements the user has after the redemption has completed.
-    ///   - Failure: `SudoEntitlementsError`.
-    func redeemEntitlements(completion: @escaping ClientCompletion<EntitlementsSet>)
+    ///   - The current set of entitlements the user has after the redemption has completed.
+    /// - Throws:
+    ///     `SudoEntitlementsError`.
+    func redeemEntitlements() async throws -> EntitlementsSet
     
     /// Record consumption of a set of boolean entitlements.
     ///
@@ -61,10 +54,10 @@ public protocol SudoEntitlementsClient: AnyObject {
     /// usage recorded but have no service side enforcement
     /// point.
     ///
-    /// - parameters:
+    /// - Parameters:
     ///   - entitlementNames: Boolean entitlement names to record consumption of
     ///
-    /// - throws:
+    /// - Throws:
     ///   - `NotSignedInException`
     ///        User is not signed in
     ///   - `InsufficientEntitlementsException`
@@ -77,5 +70,5 @@ public protocol SudoEntitlementsClient: AnyObject {
     ///   - `ServiceException`
     ///        An error occurred within the entitlements service that indicates an
     ///        issue with the configuration or operation of the service.
-    func consumeBooleanEntitlements(entitlementNames: [String], completion: @escaping ClientCompletion<Void>)
+    func consumeBooleanEntitlements(entitlementNames: [String]) async throws
 }

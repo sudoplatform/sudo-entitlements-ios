@@ -30,14 +30,13 @@ internal enum L10n {
         internal static let unknownTimezone = L10n.tr("Localizable", "entitlements.errors.unknownTimezone")
         internal static let invalidArgument = L10n.tr("Localizable", "entitlements.errors.invalidArgument")
         internal static let entitlementsServiceConfigNotFound = L10n.tr("Localizable", "entitlements.errors.entitlementsServiceConfigNotFound")
-        internal static let invalidInput = L10n.tr("Localizable", "entitlements.errors.invalidInput")
         internal static let limitExceeded = L10n.tr("Localizable", "entitlements.errors.limitExceeded")
         internal static let notAuthorized = L10n.tr("Localizable", "entitlements.errors.notAuthorized")
-        internal static let versionMismatch = L10n.tr("Localizable", "entitlements.errors.versionMismatch")
         internal static let requestFailed = L10n.tr("Localizable", "entitlements.errors.requestFailed")
         internal static let rateLimitExceeded = L10n.tr("Localizable", "entitlements.errors.rateLimitExceeded")
         internal static let graphQLError = L10n.tr("Localizable", "entitlements.errors.graphQLError")
         internal static let fatalError = L10n.tr("Localizable", "entitlements.errors.fatalError")
+        internal static let invalidRequest = L10n.tr("Localizable", "entitlements.errors.invalidRequest")
       }
     }
 }

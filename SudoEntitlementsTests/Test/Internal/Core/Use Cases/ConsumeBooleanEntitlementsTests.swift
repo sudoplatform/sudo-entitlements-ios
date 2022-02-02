@@ -29,42 +29,26 @@ class ConsumeBooleanEntitlementsUseCaseTests: XCTestCase {
         XCTAssertTrue(instanceUnderTest.repository === mockRepository)
     }
 
-    func test_execute_CallsCorrectRepositoryMethod() {
-        instanceUnderTest.execute(entitlementNames: ["some-entitlement"]) { _ in }
+    func test_execute_CallsCorrectRepositoryMethod() async throws {
+        mockRepository.consumeBooleanEntitlementsResult = .success(())
+        try await instanceUnderTest.execute(entitlementNames: ["some-entitlement"])
         XCTAssertEqual(mockRepository.consumeBooleanEntitlementsCallCount, 1)
         XCTAssertEqual(mockRepository.getExternalIdCallCount, 0)
-        XCTAssertEqual(mockRepository.getEntitlementsCallCount, 0)
         XCTAssertEqual(mockRepository.getEntitlementsConsumptionCallCount, 0)
         XCTAssertEqual(mockRepository.redeemEntitlementsCallCount, 0)
     }
 
-    func test_execute_RespectsDomainFailure() {
+    func test_execute_RespectsDomainFailure() async throws {
         mockRepository.consumeBooleanEntitlementsResult = .failure(AnyError("Failed to get external id"))
-        waitUntil { done in
-            self.instanceUnderTest.execute(entitlementNames: ["some-entitlement"]) { result in
-                defer { done() }
-                switch result {
-                case let .failure(error as AnyError):
-                    XCTAssertEqual(error, AnyError("Failed to get external id"))
-                default:
-                    XCTFail("Unexpected result: \(result)")
-                }
-            }
+        do {
+            try await instanceUnderTest.execute(entitlementNames: ["some-entitlement"])
+            XCTFail("Unexpected success")
         }
-    }
-
-    func test_execute_ReturnsSuccess() {
-        mockRepository.consumeBooleanEntitlementsResult = .success(())
-        waitUntil { done in
-            self.instanceUnderTest.execute(entitlementNames: ["some-entitlement"]) { result in
-                defer { done() }
-                switch result {
-                case .success(()):
-                    break
-                default:
-                    XCTFail("Unexpected result: \(result)")
-                }
-            }
+        catch (let error as AnyError) {
+            XCTAssertEqual(error, AnyError("Failed to get external id"))
+        }
+        catch (let error) {
+            XCTFail("Unexpected error \(error)")
         }
     }
 }
