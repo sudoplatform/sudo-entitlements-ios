@@ -166,7 +166,7 @@ class MockSudoApiClient: SudoApiClient {
             case .insufficientEntitlements:
                 props["errorType"] = "sudoplatform.InsufficientEntitlementsError"
                 props["message"] = props["errorType"]
-            case .noEntitlementsError:
+            case .noEntitlements:
                 props["errorType"] = "sudoplatform.NoEntitlementsError"
                 props["message"] = props["errorType"]
             default:

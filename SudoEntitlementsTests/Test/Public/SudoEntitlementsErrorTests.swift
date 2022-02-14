@@ -106,6 +106,33 @@ class SudoEntitlementsErrorTests: XCTestCase {
         XCTAssertEqual(error, .ambiguousEntitlements)
     }
 
+    func test_fromApiOperationError_noExternalId() {
+        let graphQLError = constructGraphQLErrorWithErrorType("sudoplatform.entitlements.NoExternalIdError")
+
+        let error = SudoEntitlementsError.fromApiOperationError(error: ApiOperationError.graphQLError(cause: graphQLError))
+        XCTAssertEqual(error, .noExternalId)
+    }
+
+    func test_fromApiOperationError_noBillingGroup() {
+        let graphQLError = constructGraphQLErrorWithErrorType("sudoplatform.entitlements.NoBillingGroupError")
+
+        let error = SudoEntitlementsError.fromApiOperationError(error: ApiOperationError.graphQLError(cause: graphQLError))
+        XCTAssertEqual(error, .noBillingGroup)
+    }
+
+    func test_fromApiOperationError_entitlementsSetNotFound() {
+        let graphQLError = constructGraphQLErrorWithErrorType("sudoplatform.entitlements.EntitlementsSetNotFoundError")
+
+        let error = SudoEntitlementsError.fromApiOperationError(error: ApiOperationError.graphQLError(cause: graphQLError))
+        XCTAssertEqual(error, .entitlementsSetNotFound)
+    }
+
+    func test_fromApiOperationError_entitlementsSequenceNotFound() {
+        let graphQLError = constructGraphQLErrorWithErrorType("sudoplatform.entitlements.EntitlementsSequenceNotFoundError")
+
+        let error = SudoEntitlementsError.fromApiOperationError(error: ApiOperationError.graphQLError(cause: graphQLError))
+        XCTAssertEqual(error, .entitlementsSequenceNotFound)
+    }
     // MARK: - Tests: ErrorDescription
 
     func test_errorDescription_InvalidConfig() {
@@ -126,15 +153,27 @@ class SudoEntitlementsErrorTests: XCTestCase {
         XCTAssertEqual(errorDescription, L10Ndescription)
     }
 
-    func test_errorDescription_PolicyFailed() {
-        let L10Ndescription = L10n.Entitlements.Errors.policyFailed
-        let errorDescription = SudoEntitlementsError.policyFailed.errorDescription
+    func test_errorDescription_NoExternalId() {
+        let L10Ndescription = L10n.Entitlements.Errors.noExternalId
+        let errorDescription = SudoEntitlementsError.noExternalId.errorDescription
         XCTAssertEqual(errorDescription, L10Ndescription)
     }
 
-    func test_errorDescription_InvalidTokenError() {
-        let L10Ndescription = L10n.Entitlements.Errors.invalidTokenError
-        let errorDescription = SudoEntitlementsError.invalidTokenError.errorDescription
+    func test_errorDescription_NoBillingGroup() {
+        let L10Ndescription = L10n.Entitlements.Errors.noBillingGroup
+        let errorDescription = SudoEntitlementsError.noBillingGroup.errorDescription
+        XCTAssertEqual(errorDescription, L10Ndescription)
+    }
+
+    func test_errorDescription_EntitlementsSetNotFound() {
+        let L10Ndescription = L10n.Entitlements.Errors.entitlementsSetNotFound
+        let errorDescription = SudoEntitlementsError.entitlementsSetNotFound.errorDescription
+        XCTAssertEqual(errorDescription, L10Ndescription)
+    }
+
+    func test_errorDescription_EntitlementsSequenceNotFound() {
+        let L10Ndescription = L10n.Entitlements.Errors.entitlementsSequenceNotFound
+        let errorDescription = SudoEntitlementsError.entitlementsSequenceNotFound.errorDescription
         XCTAssertEqual(errorDescription, L10Ndescription)
     }
 

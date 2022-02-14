@@ -59,21 +59,35 @@
     {
       "file": "/Users/anonyome/builds/c2dfa4ea/0/platform/entitlements/sudo-entitlements-ios/sudo-entitlements-ios-gh/SudoEntitlements/Source/Public/Errors/SudoEntitlementsError.swift",
       "line": 62,
-      "symbol": "SudoEntitlementsError.invalidTokenError",
+      "symbol": "SudoEntitlementsError.noEntitlements",
       "symbol_kind": "source.lang.swift.decl.enumelement",
       "warning": "undocumented"
     },
     {
       "file": "/Users/anonyome/builds/c2dfa4ea/0/platform/entitlements/sudo-entitlements-ios/sudo-entitlements-ios-gh/SudoEntitlements/Source/Public/Errors/SudoEntitlementsError.swift",
       "line": 63,
-      "symbol": "SudoEntitlementsError.noEntitlementsError",
+      "symbol": "SudoEntitlementsError.noExternalId",
       "symbol_kind": "source.lang.swift.decl.enumelement",
       "warning": "undocumented"
     },
     {
       "file": "/Users/anonyome/builds/c2dfa4ea/0/platform/entitlements/sudo-entitlements-ios/sudo-entitlements-ios-gh/SudoEntitlements/Source/Public/Errors/SudoEntitlementsError.swift",
       "line": 64,
-      "symbol": "SudoEntitlementsError.policyFailed",
+      "symbol": "SudoEntitlementsError.noBillingGroup",
+      "symbol_kind": "source.lang.swift.decl.enumelement",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/anonyome/builds/c2dfa4ea/0/platform/entitlements/sudo-entitlements-ios/sudo-entitlements-ios-gh/SudoEntitlements/Source/Public/Errors/SudoEntitlementsError.swift",
+      "line": 65,
+      "symbol": "SudoEntitlementsError.entitlementsSetNotFound",
+      "symbol_kind": "source.lang.swift.decl.enumelement",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/anonyome/builds/c2dfa4ea/0/platform/entitlements/sudo-entitlements-ios/sudo-entitlements-ios-gh/SudoEntitlements/Source/Public/Errors/SudoEntitlementsError.swift",
+      "line": 66,
+      "symbol": "SudoEntitlementsError.entitlementsSequenceNotFound",
       "symbol_kind": "source.lang.swift.decl.enumelement",
       "warning": "undocumented"
     },

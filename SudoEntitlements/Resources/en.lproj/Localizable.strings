@@ -17,25 +17,19 @@
 // MARK: - Errors: SudoPlatformError
 
 "entitlements.errors.accountLockedError" = "Account is locked";
-"entitlements.errors.decodingError" = "A decoding error has occurred";
-"entitlements.errors.environmentError" = "An environment error has occurred";
-"entitlements.errors.identityInsufficient" = "Identity is insufficient";
-"entitlements.errors.identityNotVerified" = "Identity is not verified";
-"entitlements.errors.invalidArgument" = "Invalid argument";
-"entitlements.errors.invalidTokenError" = "An invalid token error has occurred";
-"entitlements.errors.insufficientEntitlementsError" = "Insufficient entitlements to perform operation";
-"entitlements.errors.noEntitlementsError" = "No entitlements assigned to user";
-"entitlements.errors.policyFailed" = "A policy has failed";
-"entitlements.errors.serviceError" = "Service error has occurred";
-"entitlements.errors.unknownTimezone" = "Unknown time zone";
 "entitlements.errors.entitlementsServiceConfigNotFound" = "Entitlements service configuration not found";
-"entitlements.errors.invalidInput" = "Invalid input provided to API";
-"entitlements.errors.limitExceeded" = "API limit exceeded";
-"entitlements.errors.notAuthorized" = "User is not authorized to perform the requested operation";
-"entitlements.errors.versionMismatch" = "The version of the resource being updated does not match the current version";
-"entitlements.errors.requestFailed" = "The request failed due to connectivity or server error";
-"entitlements.errors.rateLimitExceeded" = "API rate limit exceeded";
-"entitlements.errors.graphQLError" = "Unknown GraphQL error was returned";
+"entitlements.errors.entitlementsSetNotFound" = "Entitlements set specified in token claim not found";
+"entitlements.errors.entitlementsSequenceNotFound" = "Entitlements sequence specified in token claim not found";
 "entitlements.errors.fatalError" = "Unexpected fatal error occurred";
+"entitlements.errors.graphQLError" = "Unknown GraphQL error was returned";
+"entitlements.errors.insufficientEntitlementsError" = "Insufficient entitlements to perform operation";
+"entitlements.errors.invalidArgument" = "Invalid argument";
 "entitlements.errors.invalidRequest" = "Invalid request";
-
+"entitlements.errors.limitExceeded" = "API limit exceeded";
+"entitlements.errors.noEntitlementsError" = "No entitlements assigned to user";
+"entitlements.errors.noBillingGroup" = "No valid billing group claim provided in token";
+"entitlements.errors.noExternalId" = "No valid external ID claim provided in token";
+"entitlements.errors.notAuthorized" = "User is not authorized to perform the requested operation";
+"entitlements.errors.rateLimitExceeded" = "API rate limit exceeded";
+"entitlements.errors.requestFailed" = "The request failed due to connectivity or server error";
+"entitlements.errors.serviceError" = "Service error has occurred";
