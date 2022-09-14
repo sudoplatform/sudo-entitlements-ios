@@ -1,5 +1,5 @@
 #
-platform :ios, '14.0'
+platform :ios, '15.0'
 
 source 'https://github.com/CocoaPods/Specs.git'
 
@@ -39,6 +39,6 @@ end
 post_install do |installer|
   installer.pods_project.build_configurations.each do |config|
     config.build_settings['CLANG_ANALYZER_LOCALIZABILITY_NONLOCALIZED'] = 'YES'
-    config.build_settings['IPHONEOS_DEPLOYMENT_TARGET'] = '14.0'
+    config.build_settings['IPHONEOS_DEPLOYMENT_TARGET'] = '15.0'
   end
 end
