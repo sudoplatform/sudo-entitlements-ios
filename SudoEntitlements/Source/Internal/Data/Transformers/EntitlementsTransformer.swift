@@ -9,7 +9,7 @@ import Foundation
 /// Transformer for GraphQL types to output results of the SDK.
 struct EntitlementsTransformer {
 
-    func transform(_ result: GetEntitlementsConsumptionQuery.Data.GetEntitlementsConsumption) -> EntitlementsConsumption {
+    func transform(_ result: GraphQL.GetEntitlementsConsumptionQuery.Data.GetEntitlementsConsumption) -> EntitlementsConsumption {
         return EntitlementsConsumption(
             entitlements:UserEntitlements(
                 version: result.entitlements.version,
@@ -18,29 +18,29 @@ struct EntitlementsTransformer {
             consumption:transform(result.consumption))
     }
 
-    private func transform(_ items: [GetEntitlementsConsumptionQuery.Data.GetEntitlementsConsumption.Entitlement.Entitlement]) -> [Entitlement] {
+    private func transform(_ items: [GraphQL.GetEntitlementsConsumptionQuery.Data.GetEntitlementsConsumption.Entitlement.Entitlement]) -> [Entitlement] {
         return items.map {
-            Entitlement(name: $0.name, description: $0.description, value: $0.value)
+            Entitlement(name: $0.name, description: $0.description, value: Int64($0.value))
         }
     }
 
-    private func transform(_ items: [GetEntitlementsConsumptionQuery.Data.GetEntitlementsConsumption.Consumption]) -> [EntitlementConsumption] {
+    private func transform(_ items: [GraphQL.GetEntitlementsConsumptionQuery.Data.GetEntitlementsConsumption.Consumption]) -> [EntitlementConsumption] {
         return items.map {
             EntitlementConsumption(
                 name: $0.name,
                 consumer: $0.consumer == nil ? nil : EntitlementConsumer(
                     id: $0.consumer!.id,
                     issuer: $0.consumer!.issuer),
-                value: $0.value,
-                consumed: $0.consumed,
-                available: $0.available,
+                value: Int64($0.value),
+                consumed: Int64($0.consumed),
+                available: Int64($0.available),
                 firstConsumedAtEpochMs: $0.firstConsumedAtEpochMs,
                 lastConsumedAtEpochMs: $0.lastConsumedAtEpochMs
             )
         }
     }
 
-    func transform(_ result: GetEntitlementsQuery.Data.GetEntitlement) -> EntitlementsSet {
+    func transform(_ result: GraphQL.GetEntitlementsQuery.Data.GetEntitlement) -> EntitlementsSet {
         return EntitlementsSet(
             name: result.name,
             description: result.description,
@@ -51,13 +51,13 @@ struct EntitlementsTransformer {
         )
     }
 
-    private func transform(_ items: [GetEntitlementsQuery.Data.GetEntitlement.Entitlement]) -> [Entitlement] {
+    private func transform(_ items: [GraphQL.GetEntitlementsQuery.Data.GetEntitlement.Entitlement]) -> [Entitlement] {
         return items.map {
-            Entitlement(name: $0.name, description: $0.description, value: $0.value)
+            Entitlement(name: $0.name, description: $0.description, value: Int64($0.value))
         }
     }
 
-    func transform(_ result: RedeemEntitlementsMutation.Data.RedeemEntitlement) -> EntitlementsSet {
+    func transform(_ result: GraphQL.RedeemEntitlementsMutation.Data.RedeemEntitlement) -> EntitlementsSet {
         return EntitlementsSet(
             name: result.name,
             description: result.description,
@@ -68,9 +68,9 @@ struct EntitlementsTransformer {
         )
     }
 
-    private func transform(_ items: [RedeemEntitlementsMutation.Data.RedeemEntitlement.Entitlement]) -> [Entitlement] {
+    private func transform(_ items: [GraphQL.RedeemEntitlementsMutation.Data.RedeemEntitlement.Entitlement]) -> [Entitlement] {
         return items.map {
-            Entitlement(name: $0.name, description: $0.description, value: $0.value)
+            Entitlement(name: $0.name, description: $0.description, value: Int64($0.value))
         }
     }
 }

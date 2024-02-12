@@ -28,7 +28,7 @@ class DefaultEntitlementsRepository: EntitlementsRepository {
     /// Get the users current set of entitlements
     func getEntitlementsConsumption() async throws -> EntitlementsConsumption {
         let (graphQLResult, graphQLError) = try await self.graphQLClient.fetch(
-                query: GetEntitlementsConsumptionQuery(),
+            query: GraphQL.GetEntitlementsConsumptionQuery(),
                 cachePolicy: .fetchIgnoringCacheData)
 
         guard let result = graphQLResult?.data else {
@@ -45,7 +45,7 @@ class DefaultEntitlementsRepository: EntitlementsRepository {
     /// Get the users external ID
     func getExternalId() async throws -> String {
         let (graphQLResult, graphQLError) = try await self.graphQLClient.fetch(
-                query: GetExternalIdQuery(),
+            query: GraphQL.GetExternalIdQuery(),
                 cachePolicy: .fetchIgnoringCacheData)
 
         guard let result = graphQLResult?.data else {
@@ -61,7 +61,7 @@ class DefaultEntitlementsRepository: EntitlementsRepository {
     /// Redeem the entitlements the user is allowed
     func redeemEntitlements() async throws -> EntitlementsSet {
         let (graphQLResult, graphQLError) = try await self.graphQLClient.perform(
-                mutation: RedeemEntitlementsMutation())
+            mutation: GraphQL.RedeemEntitlementsMutation())
 
         guard let result = graphQLResult?.data else {
                 guard let error = graphQLError else {
@@ -76,7 +76,7 @@ class DefaultEntitlementsRepository: EntitlementsRepository {
 
     /// Consume boolean entitlements
     func consumeBooleanEntitlements(entitlementNames: [String]) async throws {
-        let mutation = ConsumeBooleanEntitlementsMutation(entitlementNames: entitlementNames)
+        let mutation = GraphQL.ConsumeBooleanEntitlementsMutation(entitlementNames: entitlementNames)
 
         let (graphQLResult, graphQLError) = try await self.graphQLClient.perform(mutation: mutation)
 

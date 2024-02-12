@@ -34,6 +34,9 @@ aws-exports.js
 awsconfiguration.json
 *.swift.bak
 
+# We generate .jazzy.yaml from .jazzy.yaml.tempalte
+.jazzy.yaml
+
 html/*
 Documentation/*
 

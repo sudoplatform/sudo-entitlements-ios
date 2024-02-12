@@ -7,7 +7,7 @@
 import Foundation
 @testable import SudoApiClient
 @testable import AWSAppSync
-import SudoEntitlements
+@testable import SudoEntitlements
 
 class MockSudoApiClient: SudoApiClient {
     
@@ -16,44 +16,44 @@ class MockSudoApiClient: SudoApiClient {
     
     var fetchGetExternalIdResult: Result<String> = .failure(SudoEntitlementsError.fatalError("Please add base result to `MockSudoApiClient.fetchGetExternalIdResult`"))
 
-    func entitlementsConsumptionToGraphQL(_ entitlementsConsumption: EntitlementsConsumption) -> GetEntitlementsConsumptionQuery.Data {
+    func entitlementsConsumptionToGraphQL(_ entitlementsConsumption: EntitlementsConsumption) -> GraphQL.GetEntitlementsConsumptionQuery.Data {
 
-        let entitlements: [GetEntitlementsConsumptionQuery.Data.GetEntitlementsConsumption.Entitlement.Entitlement] =
+        let entitlements: [GraphQL.GetEntitlementsConsumptionQuery.Data.GetEntitlementsConsumption.Entitlement.Entitlement] =
         entitlementsConsumption.entitlements.entitlements.map { .init(name: $0.name,
                 description: $0.description,
-                value: $0.value)
+                value: Double($0.value))
             }
 
-        let consumptionEntitlements: GetEntitlementsConsumptionQuery.Data.GetEntitlementsConsumption.Entitlement = .init(
+        let consumptionEntitlements: GraphQL.GetEntitlementsConsumptionQuery.Data.GetEntitlementsConsumption.Entitlement = .init(
                 version: entitlementsConsumption.entitlements.version,
                 entitlementsSetName: entitlementsConsumption.entitlements.entitlementsSetName,
                 entitlements: entitlements)
 
-        let consumption:[GetEntitlementsConsumptionQuery.Data.GetEntitlementsConsumption.Consumption] = entitlementsConsumption.consumption.map { .init(
-            consumer: $0.consumer != nil ? .init(id: $0.consumer!.id, issuer: $0.consumer!.issuer) : nil,
+        let consumption:[GraphQL.GetEntitlementsConsumptionQuery.Data.GetEntitlementsConsumption.Consumption] = entitlementsConsumption.consumption.map { .init(
             name: $0.name,
-            value: $0.value,
-            consumed: $0.consumed,
-            available: $0.available,
+            consumer: $0.consumer != nil ? .init(id: $0.consumer!.id, issuer: $0.consumer!.issuer) : nil,
+            value: Double($0.value),
+            consumed: Double($0.consumed),
+            available: Double($0.available),
             firstConsumedAtEpochMs: $0.firstConsumedAtEpochMs,
             lastConsumedAtEpochMs: $0.lastConsumedAtEpochMs)
         }
         
         
-        return GetEntitlementsConsumptionQuery.Data(getEntitlementsConsumption: .init(
+        return GraphQL.GetEntitlementsConsumptionQuery.Data(getEntitlementsConsumption: .init(
             entitlements: consumptionEntitlements,
             consumption: consumption))
     }
-    func entitlementsSetToGraphQL(_ entitlementsSet: EntitlementsSet) -> RedeemEntitlementsMutation.Data {
+    func entitlementsSetToGraphQL(_ entitlementsSet: EntitlementsSet) -> GraphQL.RedeemEntitlementsMutation.Data {
 
-        let entitlements:[RedeemEntitlementsMutation.Data.RedeemEntitlement.Entitlement] = entitlementsSet.entitlements.map {
+        let entitlements:[GraphQL.RedeemEntitlementsMutation.Data.RedeemEntitlement.Entitlement] = entitlementsSet.entitlements.map {
                 .init(
                     name: $0.name,
                     description: $0.description,
-                    value: $0.value)
+                    value: Double($0.value))
             }
         
-        return RedeemEntitlementsMutation.Data(redeemEntitlements: .init(
+        return GraphQL.RedeemEntitlementsMutation.Data(redeemEntitlements: .init(
             createdAtEpochMs: entitlementsSet.created.timeIntervalSince1970 * 1000,
             updatedAtEpochMs: entitlementsSet.updated.timeIntervalSince1970 * 1000,
             version: entitlementsSet.version,
@@ -68,7 +68,7 @@ class MockSudoApiClient: SudoApiClient {
         queue: DispatchQueue = DispatchQueue.main
     ) async throws -> (result: GraphQLResult<Query.Data>?, error: Error?) {
         fetchCallCount += 1
-        if (query is GetEntitlementsConsumptionQuery) {
+        if (query is GraphQL.GetEntitlementsConsumptionQuery) {
             switch (fetchGetEntitlementsConsumptionResult) {
             case .success(let result):
                 return (
@@ -82,12 +82,12 @@ class MockSudoApiClient: SudoApiClient {
                 return (result: nil, error: errorToApiOperationError(error))
             }
         }
-        else if (query is GetExternalIdQuery) {
+        else if (query is GraphQL.GetExternalIdQuery) {
             switch (fetchGetExternalIdResult) {
             case .success(let result):
                 return (
                     result: GraphQLResult<Query.Data>(
-                        data: (GetExternalIdQuery.Data(getExternalId: result) as! Query.Data),
+                        data: (GraphQL.GetExternalIdQuery.Data(getExternalId: result) as! Query.Data),
                         errors: [],
                         source: .server,
                         dependentKeys: []),
@@ -115,7 +115,7 @@ class MockSudoApiClient: SudoApiClient {
     ) async throws -> (result: GraphQLResult<Mutation.Data>?, error: Error?) {
         performCallCount += 1
 
-        if (mutation is RedeemEntitlementsMutation) {
+        if (mutation is GraphQL.RedeemEntitlementsMutation) {
             switch (performRedeemEntitlementResult) {
             case .success(let result):
                 return (
@@ -129,7 +129,7 @@ class MockSudoApiClient: SudoApiClient {
                 return (result: nil, error: errorToApiOperationError(error))
             }
         }
-        else if (mutation is ConsumeBooleanEntitlementsMutation) {
+        else if (mutation is GraphQL.ConsumeBooleanEntitlementsMutation) {
             switch (performConsumeBooleanEntitlementsResult) {
             case .success:
                 return (

@@ -22,14 +22,14 @@ public struct EntitlementConsumption: Equatable {
     public var consumer: EntitlementConsumer?
 
     /// The maximum amount of the entitlement that can be consumed by the consumer
-    public var value: Int
+    public var value: Int64
 
     /// The amount of the entitlement that has been consumed
-    public var consumed: Int
+    public var consumed: Int64
 
     /// The amount of the entitlement that is yet to be consumed. Provided for convenience.
     /// `available` + `consumed` always equals `value`
-    public var available: Int
+    public var available: Int64
     
     /// Time at which this entitlement was first consumed
     public var firstConsumedAtEpochMs: Double?
@@ -42,9 +42,9 @@ public struct EntitlementConsumption: Equatable {
     public init(
         name: String,
         consumer: EntitlementConsumer? = nil,
-        value: Int,
-        consumed: Int,
-        available: Int,
+        value: Int64,
+        consumed: Int64,
+        available: Int64,
         firstConsumedAtEpochMs: Double? = nil,
         lastConsumedAtEpochMs: Double? = nil
     ) {
