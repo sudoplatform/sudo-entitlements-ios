@@ -14,10 +14,24 @@
             buildForAnalyzing = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "5DA1AAFC24F78EBC003B29CA"
-               BuildableName = "SudoEntitlements.framework"
-               BlueprintName = "SudoEntitlements"
+               BlueprintIdentifier = "5F34163A24F8BDE9002942AB"
+               BuildableName = "SudoEntitlementsTests.xctest"
+               BlueprintName = "SudoEntitlementsTests"
                ReferencedContainer = "container:SudoEntitlements.xcodeproj">
+            </BuildableReference>
+         </BuildActionEntry>
+         <BuildActionEntry
+            buildForTesting = "YES"
+            buildForRunning = "YES"
+            buildForProfiling = "YES"
+            buildForArchiving = "YES"
+            buildForAnalyzing = "YES">
+            <BuildableReference
+               BuildableIdentifier = "primary"
+               BlueprintIdentifier = "SudoEntitlements"
+               BuildableName = "SudoEntitlements"
+               BlueprintName = "SudoEntitlements"
+               ReferencedContainer = "container:">
             </BuildableReference>
          </BuildActionEntry>
       </BuildActionEntries>
@@ -71,10 +85,10 @@
       <MacroExpansion>
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "5DA1AAFC24F78EBC003B29CA"
-            BuildableName = "SudoEntitlements.framework"
+            BlueprintIdentifier = "SudoEntitlements"
+            BuildableName = "SudoEntitlements"
             BlueprintName = "SudoEntitlements"
-            ReferencedContainer = "container:SudoEntitlements.xcodeproj">
+            ReferencedContainer = "container:">
          </BuildableReference>
       </MacroExpansion>
    </ProfileAction>

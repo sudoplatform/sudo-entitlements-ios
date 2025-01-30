@@ -3,63 +3,21 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 51;
+	objectVersion = 54;
 	objects = {
 
 /* Begin PBXBuildFile section */
-		137F70C8C79ED733A9676112 /* Pods_SudoEntitlements_SudoEntitlementsIntegrationTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 36BDDE9D4B36D9D5FCE6ACB2 /* Pods_SudoEntitlements_SudoEntitlementsIntegrationTests.framework */; };
-		22996072643CE54EB7A67204 /* Pods_TestApp.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 46383087F026D74E8D554690 /* Pods_TestApp.framework */; };
-		23B7BD29DEC432B07F18383D /* Pods_SudoEntitlements.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0165F569C566740E2D3D5EBD /* Pods_SudoEntitlements.framework */; };
-		5D193EC3258FE76C0044DDED /* EntitlementConsumer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D193EC2258FE76C0044DDED /* EntitlementConsumer.swift */; };
-		5D193EC9258FE7EC0044DDED /* EntitlementConsumption.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D193EC8258FE7EC0044DDED /* EntitlementConsumption.swift */; };
-		5D193ECF258FE9580044DDED /* UserEntitlements.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D193ECE258FE9580044DDED /* UserEntitlements.swift */; };
-		5D193ED5258FEF5E0044DDED /* EntitlementsConsumption.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D193ED4258FEF5E0044DDED /* EntitlementsConsumption.swift */; };
-		5D193EFE258FF82C0044DDED /* GetEntitlementsConsumptionUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D193EFD258FF82C0044DDED /* GetEntitlementsConsumptionUseCase.swift */; };
 		5D1C74082537F53300FC76CF /* SudoEntitlementsIntegrationTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D1C74072537F53300FC76CF /* SudoEntitlementsIntegrationTests.swift */; };
-		5D1C740A2537F53300FC76CF /* SudoEntitlements.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5DA1AAFD24F78EBC003B29CA /* SudoEntitlements.framework */; };
 		5D1C74142537F58D00FC76CF /* BaseIntegrationTestCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D1C74132537F58D00FC76CF /* BaseIntegrationTestCase.swift */; };
-		5D408F2024F791F300259E5F /* RedeemEntitlementsUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D408EF824F791F300259E5F /* RedeemEntitlementsUseCase.swift */; };
-		5D408F2224F791F300259E5F /* SudoLogger+Entitlements.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D408F0224F791F300259E5F /* SudoLogger+Entitlements.swift */; };
-		5D408F2324F791F300259E5F /* Date+MillisecondsSinceEpoch.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D408F0324F791F300259E5F /* Date+MillisecondsSinceEpoch.swift */; };
-		5D408F2424F791F300259E5F /* OperationArray+Convenience.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D408F0424F791F300259E5F /* OperationArray+Convenience.swift */; };
-		5D408F2724F791F300259E5F /* Bundle+Static.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D408F0724F791F300259E5F /* Bundle+Static.swift */; };
-		5D408F2A24F791F300259E5F /* GraphQLAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D408F0E24F791F300259E5F /* GraphQLAPI.swift */; };
-		5D408F2B24F791F300259E5F /* EntitlementsTransformer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D408F1024F791F300259E5F /* EntitlementsTransformer.swift */; };
-		5D408F2C24F791F300259E5F /* Resetable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D408F1424F791F300259E5F /* Resetable.swift */; };
-		5D408F2E24F791F300259E5F /* UseCaseFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D408F1724F791F300259E5F /* UseCaseFactory.swift */; };
-		5D408F2F24F791F300259E5F /* Entitlement.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D408F1A24F791F300259E5F /* Entitlement.swift */; };
-		5D408F3024F791F300259E5F /* EntitlementsSet.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D408F1B24F791F300259E5F /* EntitlementsSet.swift */; };
-		5D408F3124F791F300259E5F /* DefaultSudoEntitlementsClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D408F1C24F791F300259E5F /* DefaultSudoEntitlementsClient.swift */; };
-		5D408F3224F791F300259E5F /* SudoEntitlementsError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D408F1E24F791F300259E5F /* SudoEntitlementsError.swift */; };
-		5D408F3324F791F300259E5F /* SudoEntitlementsClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D408F1F24F791F300259E5F /* SudoEntitlementsClient.swift */; };
 		5D70213025EF399300A4379D /* ConfigNotFoundTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D70212F25EF399300A4379D /* ConfigNotFoundTest.swift */; };
 		5D71B09F27A75F3900C45D13 /* MockSudoApiClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D71B09E27A75F3900C45D13 /* MockSudoApiClient.swift */; };
 		5D71DBE4255B6D87005007C3 /* AnyError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D71DBE3255B6D87005007C3 /* AnyError.swift */; };
-		5D8434652591494400FA607E /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D8434642591494400FA607E /* Constants.swift */; };
-		5D84346B259149A100FA607E /* VersionUtilities.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D84346A259149A100FA607E /* VersionUtilities.swift */; };
 		5D84347125914C5300FA607E /* VersionUtilitiesTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D84347025914C5300FA607E /* VersionUtilitiesTest.swift */; };
-		5D8C9F6426BCE9B0004E31D2 /* ConsumeBooleanEntitlementsUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D8C9F6326BCE9B0004E31D2 /* ConsumeBooleanEntitlementsUseCase.swift */; };
 		5D8C9F6626BCF48E004E31D2 /* MockConsumeBooleanEntitlementsUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D8C9F6526BCF48E004E31D2 /* MockConsumeBooleanEntitlementsUseCase.swift */; };
 		5D8C9F6826BCFD28004E31D2 /* ConsumeBooleanEntitlementsTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D8C9F6726BCFD28004E31D2 /* ConsumeBooleanEntitlementsTests.swift */; };
-		5DA1AB0E24F78EBC003B29CA /* SudoEntitlements.h in Headers */ = {isa = PBXBuildFile; fileRef = 5DA1AB0024F78EBC003B29CA /* SudoEntitlements.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		5DA1EB49253CD66200D75F13 /* util in Resources */ = {isa = PBXBuildFile; fileRef = 5DA1EB48253CD66100D75F13 /* util */; };
-		5DDFF39A26B1425600CBCC12 /* GetExternalIdUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5DDFF39926B1425600CBCC12 /* GetExternalIdUseCase.swift */; };
 		5DDFF39E26B158F300CBCC12 /* MockGetEntitlementsConsumptionUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5DDFF39D26B158F300CBCC12 /* MockGetEntitlementsConsumptionUseCase.swift */; };
 		5DDFF3A026B1590100CBCC12 /* MockGetExternalIdUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5DDFF39F26B1590100CBCC12 /* MockGetExternalIdUseCase.swift */; };
 		5DDFF3A226B15C0D00CBCC12 /* GetExternalIdTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5DDFF3A126B15C0D00CBCC12 /* GetExternalIdTests.swift */; };
-		5F3413A324F870F9002942AB /* CachePolicy.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F3413A224F870F9002942AB /* CachePolicy.swift */; };
-		5F3413AC24F8865C002942AB /* Strings.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F3413AB24F8865C002942AB /* Strings.swift */; };
-		5F3413B524F8933A002942AB /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 5F3413B324F8933A002942AB /* Localizable.strings */; };
-		5F34161124F89931002942AB /* EntitlementsRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F34161024F89931002942AB /* EntitlementsRepository.swift */; };
-		5F34161324F89EDF002942AB /* DefaultEntitlementsRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F34161224F89EDF002942AB /* DefaultEntitlementsRepository.swift */; };
-		5F34164024F8BDE9002942AB /* SudoEntitlements.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5DA1AAFD24F78EBC003B29CA /* SudoEntitlements.framework */; };
-		5F34165C24F8C3D0002942AB /* Podfile in Resources */ = {isa = PBXBuildFile; fileRef = 5F34165524F8C3D0002942AB /* Podfile */; };
-		5F34165D24F8C3D0002942AB /* README.md in Resources */ = {isa = PBXBuildFile; fileRef = 5F34165624F8C3D0002942AB /* README.md */; };
-		5F34165E24F8C3D0002942AB /* Podfile.lock in Resources */ = {isa = PBXBuildFile; fileRef = 5F34165724F8C3D0002942AB /* Podfile.lock */; };
-		5F34165F24F8C3D0002942AB /* sonar-project.properties in Resources */ = {isa = PBXBuildFile; fileRef = 5F34165824F8C3D0002942AB /* sonar-project.properties */; };
-		5F34166024F8C3D0002942AB /* Gemfile.lock in Resources */ = {isa = PBXBuildFile; fileRef = 5F34165924F8C3D0002942AB /* Gemfile.lock */; };
-		5F34166124F8C3D0002942AB /* SudoEntitlements.podspec in Resources */ = {isa = PBXBuildFile; fileRef = 5F34165A24F8C3D0002942AB /* SudoEntitlements.podspec */; };
-		5F34166224F8C3D0002942AB /* Gemfile in Resources */ = {isa = PBXBuildFile; fileRef = 5F34165B24F8C3D0002942AB /* Gemfile */; };
 		5F34166324F8C675002942AB /* LifecycleTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F34157224F89493002942AB /* LifecycleTests.swift */; };
 		5F34166524F8C67D002942AB /* SudoEntitlementsErrorTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F34156C24F89493002942AB /* SudoEntitlementsErrorTests.swift */; };
 		5F34166624F8C67D002942AB /* DefaultSudoEntitlementsTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F34157824F89493002942AB /* DefaultSudoEntitlementsTest.swift */; };
@@ -82,24 +40,12 @@
 		84F80A05253D17D0001E3F3C /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 84F80A04253D17D0001E3F3C /* Assets.xcassets */; };
 		84F80A08253D17D0001E3F3C /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 84F80A06253D17D0001E3F3C /* LaunchScreen.storyboard */; };
 		955F56DA25AFEAE100D73CBE /* GetEntitlementsConsumptionUseCaseTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 955F56D925AFEAE100D73CBE /* GetEntitlementsConsumptionUseCaseTests.swift */; };
-		9F7DB46A1CCECE165705A74E /* Pods_SudoEntitlements_SudoEntitlementsTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 17346C2AFD3593594C174C20 /* Pods_SudoEntitlements_SudoEntitlementsTests.framework */; };
+		E2BF3E372D09030D00011739 /* SudoEntitlements in Frameworks */ = {isa = PBXBuildFile; productRef = E2BF3E362D09030D00011739 /* SudoEntitlements */; };
+		E2BF3E392D09031100011739 /* SudoEntitlements in Frameworks */ = {isa = PBXBuildFile; productRef = E2BF3E382D09031100011739 /* SudoEntitlements */; };
+		E2BF3E3C2D09046300011739 /* SudoEntitlementsAdmin in Frameworks */ = {isa = PBXBuildFile; productRef = E2BF3E3B2D09046300011739 /* SudoEntitlementsAdmin */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
-		5D1C740B2537F53300FC76CF /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 5DA1AAF424F78EBC003B29CA /* Project object */;
-			proxyType = 1;
-			remoteGlobalIDString = 5DA1AAFC24F78EBC003B29CA;
-			remoteInfo = SudoEntitlements;
-		};
-		5F34164124F8BDE9002942AB /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 5DA1AAF424F78EBC003B29CA /* Project object */;
-			proxyType = 1;
-			remoteGlobalIDString = 5DA1AAFC24F78EBC003B29CA;
-			remoteInfo = SudoEntitlements;
-		};
 		84F80A0D253D17E5001E3F3C /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = 5DA1AAF424F78EBC003B29CA /* Project object */;
@@ -110,11 +56,6 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		0165F569C566740E2D3D5EBD /* Pods_SudoEntitlements.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_SudoEntitlements.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		17346C2AFD3593594C174C20 /* Pods_SudoEntitlements_SudoEntitlementsTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_SudoEntitlements_SudoEntitlementsTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		36BDDE9D4B36D9D5FCE6ACB2 /* Pods_SudoEntitlements_SudoEntitlementsIntegrationTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_SudoEntitlements_SudoEntitlementsIntegrationTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		38FF865A4AAF7363BCFBECD5 /* Pods-SudoEntitlements-SudoEntitlementsIntegrationTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SudoEntitlements-SudoEntitlementsIntegrationTests.debug.xcconfig"; path = "Target Support Files/Pods-SudoEntitlements-SudoEntitlementsIntegrationTests/Pods-SudoEntitlements-SudoEntitlementsIntegrationTests.debug.xcconfig"; sourceTree = "<group>"; };
-		46383087F026D74E8D554690 /* Pods_TestApp.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_TestApp.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		5D193EC2258FE76C0044DDED /* EntitlementConsumer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EntitlementConsumer.swift; sourceTree = "<group>"; };
 		5D193EC8258FE7EC0044DDED /* EntitlementConsumption.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EntitlementConsumption.swift; sourceTree = "<group>"; };
 		5D193ECE258FE9580044DDED /* UserEntitlements.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserEntitlements.swift; sourceTree = "<group>"; };
@@ -147,7 +88,6 @@
 		5D8C9F6326BCE9B0004E31D2 /* ConsumeBooleanEntitlementsUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConsumeBooleanEntitlementsUseCase.swift; sourceTree = "<group>"; };
 		5D8C9F6526BCF48E004E31D2 /* MockConsumeBooleanEntitlementsUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockConsumeBooleanEntitlementsUseCase.swift; sourceTree = "<group>"; };
 		5D8C9F6726BCFD28004E31D2 /* ConsumeBooleanEntitlementsTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConsumeBooleanEntitlementsTests.swift; sourceTree = "<group>"; };
-		5DA1AAFD24F78EBC003B29CA /* SudoEntitlements.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = SudoEntitlements.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		5DA1AB0024F78EBC003B29CA /* SudoEntitlements.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SudoEntitlements.h; sourceTree = "<group>"; };
 		5DA1AB0124F78EBC003B29CA /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		5DA1EB48253CD66100D75F13 /* util */ = {isa = PBXFileReference; lastKnownFileType = folder; path = util; sourceTree = "<group>"; };
@@ -186,8 +126,6 @@
 		5F34165924F8C3D0002942AB /* Gemfile.lock */ = {isa = PBXFileReference; lastKnownFileType = text; path = Gemfile.lock; sourceTree = "<group>"; };
 		5F34165A24F8C3D0002942AB /* SudoEntitlements.podspec */ = {isa = PBXFileReference; lastKnownFileType = text; path = SudoEntitlements.podspec; sourceTree = "<group>"; };
 		5F34165B24F8C3D0002942AB /* Gemfile */ = {isa = PBXFileReference; lastKnownFileType = text; path = Gemfile; sourceTree = "<group>"; };
-		7351670FDD25906E24D9018E /* Pods-TestApp.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TestApp.release.xcconfig"; path = "Target Support Files/Pods-TestApp/Pods-TestApp.release.xcconfig"; sourceTree = "<group>"; };
-		7DD2D186C87789DBCCEBBB45 /* Pods-SudoEntitlements.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SudoEntitlements.release.xcconfig"; path = "Target Support Files/Pods-SudoEntitlements/Pods-SudoEntitlements.release.xcconfig"; sourceTree = "<group>"; };
 		84F809F9253D17CA001E3F3C /* TestApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TestApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		84F809FB253D17CA001E3F3C /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		84F809FF253D17CA001E3F3C /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -196,11 +134,6 @@
 		84F80A07253D17D0001E3F3C /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		84F80A09253D17D0001E3F3C /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		955F56D925AFEAE100D73CBE /* GetEntitlementsConsumptionUseCaseTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetEntitlementsConsumptionUseCaseTests.swift; sourceTree = "<group>"; };
-		96B8B5E69204AC741712A850 /* Pods-SudoEntitlements-SudoEntitlementsIntegrationTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SudoEntitlements-SudoEntitlementsIntegrationTests.release.xcconfig"; path = "Target Support Files/Pods-SudoEntitlements-SudoEntitlementsIntegrationTests/Pods-SudoEntitlements-SudoEntitlementsIntegrationTests.release.xcconfig"; sourceTree = "<group>"; };
-		AAF697758E064E512AAD246F /* Pods-SudoEntitlements.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SudoEntitlements.debug.xcconfig"; path = "Target Support Files/Pods-SudoEntitlements/Pods-SudoEntitlements.debug.xcconfig"; sourceTree = "<group>"; };
-		B2C051979BBD714A6BA6DFAD /* Pods-SudoEntitlements-SudoEntitlementsTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SudoEntitlements-SudoEntitlementsTests.debug.xcconfig"; path = "Target Support Files/Pods-SudoEntitlements-SudoEntitlementsTests/Pods-SudoEntitlements-SudoEntitlementsTests.debug.xcconfig"; sourceTree = "<group>"; };
-		C00D53467EA04756B2F59F86 /* Pods-SudoEntitlements-SudoEntitlementsTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SudoEntitlements-SudoEntitlementsTests.release.xcconfig"; path = "Target Support Files/Pods-SudoEntitlements-SudoEntitlementsTests/Pods-SudoEntitlements-SudoEntitlementsTests.release.xcconfig"; sourceTree = "<group>"; };
-		CC0938E6EDD0C66DAF51D98D /* Pods-TestApp.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TestApp.debug.xcconfig"; path = "Target Support Files/Pods-TestApp/Pods-TestApp.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -208,16 +141,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				137F70C8C79ED733A9676112 /* Pods_SudoEntitlements_SudoEntitlementsIntegrationTests.framework in Frameworks */,
-				5D1C740A2537F53300FC76CF /* SudoEntitlements.framework in Frameworks */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		5DA1AAFA24F78EBC003B29CA /* Frameworks */ = {
-			isa = PBXFrameworksBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				23B7BD29DEC432B07F18383D /* Pods_SudoEntitlements.framework in Frameworks */,
+				E2BF3E392D09031100011739 /* SudoEntitlements in Frameworks */,
+				E2BF3E3C2D09046300011739 /* SudoEntitlementsAdmin in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -225,8 +150,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				9F7DB46A1CCECE165705A74E /* Pods_SudoEntitlements_SudoEntitlementsTests.framework in Frameworks */,
-				5F34164024F8BDE9002942AB /* SudoEntitlements.framework in Frameworks */,
+				E2BF3E372D09030D00011739 /* SudoEntitlements in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -234,7 +158,6 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				22996072643CE54EB7A67204 /* Pods_TestApp.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -380,14 +303,13 @@
 				84F809FA253D17CA001E3F3C /* TestApp */,
 				5DA1AAFE24F78EBC003B29CA /* Products */,
 				9B3A681727EE6A43F800E34A /* Pods */,
-				940B8A33AC4125B053CA3310 /* Frameworks */,
+				E2BF3E352D09030D00011739 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
 		5DA1AAFE24F78EBC003B29CA /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				5DA1AAFD24F78EBC003B29CA /* SudoEntitlements.framework */,
 				5D1C74052537F53300FC76CF /* SudoEntitlementsIntegrationTests.xctest */,
 				5F34163B24F8BDE9002942AB /* SudoEntitlementsTests.xctest */,
 				84F809F9253D17CA001E3F3C /* TestApp.app */,
@@ -574,17 +496,6 @@
 			path = TestApp;
 			sourceTree = "<group>";
 		};
-		940B8A33AC4125B053CA3310 /* Frameworks */ = {
-			isa = PBXGroup;
-			children = (
-				0165F569C566740E2D3D5EBD /* Pods_SudoEntitlements.framework */,
-				36BDDE9D4B36D9D5FCE6ACB2 /* Pods_SudoEntitlements_SudoEntitlementsIntegrationTests.framework */,
-				17346C2AFD3593594C174C20 /* Pods_SudoEntitlements_SudoEntitlementsTests.framework */,
-				46383087F026D74E8D554690 /* Pods_TestApp.framework */,
-			);
-			name = Frameworks;
-			sourceTree = "<group>";
-		};
 		9566E3C42505C468002A2DD3 /* Core */ = {
 			isa = PBXGroup;
 			children = (
@@ -631,89 +542,59 @@
 		9B3A681727EE6A43F800E34A /* Pods */ = {
 			isa = PBXGroup;
 			children = (
-				38FF865A4AAF7363BCFBECD5 /* Pods-SudoEntitlements-SudoEntitlementsIntegrationTests.debug.xcconfig */,
-				96B8B5E69204AC741712A850 /* Pods-SudoEntitlements-SudoEntitlementsIntegrationTests.release.xcconfig */,
-				B2C051979BBD714A6BA6DFAD /* Pods-SudoEntitlements-SudoEntitlementsTests.debug.xcconfig */,
-				C00D53467EA04756B2F59F86 /* Pods-SudoEntitlements-SudoEntitlementsTests.release.xcconfig */,
-				AAF697758E064E512AAD246F /* Pods-SudoEntitlements.debug.xcconfig */,
-				7DD2D186C87789DBCCEBBB45 /* Pods-SudoEntitlements.release.xcconfig */,
-				CC0938E6EDD0C66DAF51D98D /* Pods-TestApp.debug.xcconfig */,
-				7351670FDD25906E24D9018E /* Pods-TestApp.release.xcconfig */,
 			);
 			path = Pods;
 			sourceTree = "<group>";
 		};
-/* End PBXGroup section */
-
-/* Begin PBXHeadersBuildPhase section */
-		5DA1AAF824F78EBC003B29CA /* Headers */ = {
-			isa = PBXHeadersBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				5DA1AB0E24F78EBC003B29CA /* SudoEntitlements.h in Headers */,
+		E2BF3E352D09030D00011739 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
 			);
-			runOnlyForDeploymentPostprocessing = 0;
+			name = Frameworks;
+			sourceTree = "<group>";
 		};
-/* End PBXHeadersBuildPhase section */
+/* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
 		5D1C74042537F53300FC76CF /* SudoEntitlementsIntegrationTests */ = {
 			isa = PBXNativeTarget;
 			buildConfigurationList = 5D1C740F2537F53300FC76CF /* Build configuration list for PBXNativeTarget "SudoEntitlementsIntegrationTests" */;
 			buildPhases = (
-				1D1EE23B436859B7672E86A2 /* [CP] Check Pods Manifest.lock */,
 				5D1C74012537F53300FC76CF /* Sources */,
 				5D1C74022537F53300FC76CF /* Frameworks */,
 				5D1C74032537F53300FC76CF /* Resources */,
 				5D1C744525385F7E00FC76CF /* Copy Configuration */,
-				3CD7E80B1FE34072EF9AF816 /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
 			dependencies = (
-				5D1C740C2537F53300FC76CF /* PBXTargetDependency */,
 				84F80A0E253D17E5001E3F3C /* PBXTargetDependency */,
 			);
 			name = SudoEntitlementsIntegrationTests;
+			packageProductDependencies = (
+				E2BF3E382D09031100011739 /* SudoEntitlements */,
+				E2BF3E3B2D09046300011739 /* SudoEntitlementsAdmin */,
+			);
 			productName = SudoEntitlementsIntegrationTests;
 			productReference = 5D1C74052537F53300FC76CF /* SudoEntitlementsIntegrationTests.xctest */;
 			productType = "com.apple.product-type.bundle.unit-test";
-		};
-		5DA1AAFC24F78EBC003B29CA /* SudoEntitlements */ = {
-			isa = PBXNativeTarget;
-			buildConfigurationList = 5DA1AB1124F78EBC003B29CA /* Build configuration list for PBXNativeTarget "SudoEntitlements" */;
-			buildPhases = (
-				BEC37737300656C5CDF36717 /* [CP] Check Pods Manifest.lock */,
-				5DA1AAF824F78EBC003B29CA /* Headers */,
-				5DA1AAF924F78EBC003B29CA /* Sources */,
-				5DA1AAFA24F78EBC003B29CA /* Frameworks */,
-				5DA1AAFB24F78EBC003B29CA /* Resources */,
-			);
-			buildRules = (
-			);
-			dependencies = (
-			);
-			name = SudoEntitlements;
-			productName = SudoEntitlements;
-			productReference = 5DA1AAFD24F78EBC003B29CA /* SudoEntitlements.framework */;
-			productType = "com.apple.product-type.framework";
 		};
 		5F34163A24F8BDE9002942AB /* SudoEntitlementsTests */ = {
 			isa = PBXNativeTarget;
 			buildConfigurationList = 5F34164324F8BDE9002942AB /* Build configuration list for PBXNativeTarget "SudoEntitlementsTests" */;
 			buildPhases = (
-				DA813FE19DBED13D76E2F14D /* [CP] Check Pods Manifest.lock */,
 				5F34163724F8BDE9002942AB /* Sources */,
 				5F34163824F8BDE9002942AB /* Frameworks */,
 				5F34163924F8BDE9002942AB /* Resources */,
-				1210933353A69F764D937430 /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
 			dependencies = (
-				5F34164224F8BDE9002942AB /* PBXTargetDependency */,
 			);
 			name = SudoEntitlementsTests;
+			packageProductDependencies = (
+				E2BF3E362D09030D00011739 /* SudoEntitlements */,
+			);
 			productName = SudoEntitlementsTests;
 			productReference = 5F34163B24F8BDE9002942AB /* SudoEntitlementsTests.xctest */;
 			productType = "com.apple.product-type.bundle.unit-test";
@@ -722,12 +603,10 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 84F80A0A253D17D0001E3F3C /* Build configuration list for PBXNativeTarget "TestApp" */;
 			buildPhases = (
-				1A153C6235BC262C67751268 /* [CP] Check Pods Manifest.lock */,
 				84F809F5253D17CA001E3F3C /* Sources */,
 				84F809F6253D17CA001E3F3C /* Frameworks */,
 				84F809F7253D17CA001E3F3C /* Resources */,
 				84F80A0F253D19B6001E3F3C /* Copy Config To Resources */,
-				6F3408D5DAE3786AE81C6B44 /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -752,9 +631,6 @@
 						CreatedOnToolsVersion = 12.0.1;
 						TestTargetID = 84F809F8253D17CA001E3F3C;
 					};
-					5DA1AAFC24F78EBC003B29CA = {
-						CreatedOnToolsVersion = 11.6;
-					};
 					5F34163A24F8BDE9002942AB = {
 						CreatedOnToolsVersion = 11.6;
 					};
@@ -772,11 +648,13 @@
 				Base,
 			);
 			mainGroup = 5DA1AAF324F78EBC003B29CA;
+			packageReferences = (
+				E2BF3E3A2D09046300011739 /* XCRemoteSwiftPackageReference "sudo-entitlements-admin-ios" */,
+			);
 			productRefGroup = 5DA1AAFE24F78EBC003B29CA /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				5DA1AAFC24F78EBC003B29CA /* SudoEntitlements */,
 				5F34163A24F8BDE9002942AB /* SudoEntitlementsTests */,
 				5D1C74042537F53300FC76CF /* SudoEntitlementsIntegrationTests */,
 				84F809F8253D17CA001E3F3C /* TestApp */,
@@ -789,22 +667,6 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		5DA1AAFB24F78EBC003B29CA /* Resources */ = {
-			isa = PBXResourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				5F34166224F8C3D0002942AB /* Gemfile in Resources */,
-				5F34166024F8C3D0002942AB /* Gemfile.lock in Resources */,
-				5F3413B524F8933A002942AB /* Localizable.strings in Resources */,
-				5F34165C24F8C3D0002942AB /* Podfile in Resources */,
-				5F34165E24F8C3D0002942AB /* Podfile.lock in Resources */,
-				5F34165D24F8C3D0002942AB /* README.md in Resources */,
-				5F34165F24F8C3D0002942AB /* sonar-project.properties in Resources */,
-				5F34166124F8C3D0002942AB /* SudoEntitlements.podspec in Resources */,
-				5DA1EB49253CD66200D75F13 /* util in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -828,84 +690,6 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
-		1210933353A69F764D937430 /* [CP] Embed Pods Frameworks */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputFileListPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-SudoEntitlements-SudoEntitlementsTests/Pods-SudoEntitlements-SudoEntitlementsTests-frameworks-${CONFIGURATION}-input-files.xcfilelist",
-			);
-			name = "[CP] Embed Pods Frameworks";
-			outputFileListPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-SudoEntitlements-SudoEntitlementsTests/Pods-SudoEntitlements-SudoEntitlementsTests-frameworks-${CONFIGURATION}-output-files.xcfilelist",
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-SudoEntitlements-SudoEntitlementsTests/Pods-SudoEntitlements-SudoEntitlementsTests-frameworks.sh\"\n";
-			showEnvVarsInLog = 0;
-		};
-		1A153C6235BC262C67751268 /* [CP] Check Pods Manifest.lock */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputFileListPaths = (
-			);
-			inputPaths = (
-				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
-				"${PODS_ROOT}/Manifest.lock",
-			);
-			name = "[CP] Check Pods Manifest.lock";
-			outputFileListPaths = (
-			);
-			outputPaths = (
-				"$(DERIVED_FILE_DIR)/Pods-TestApp-checkManifestLockResult.txt",
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
-			showEnvVarsInLog = 0;
-		};
-		1D1EE23B436859B7672E86A2 /* [CP] Check Pods Manifest.lock */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputFileListPaths = (
-			);
-			inputPaths = (
-				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
-				"${PODS_ROOT}/Manifest.lock",
-			);
-			name = "[CP] Check Pods Manifest.lock";
-			outputFileListPaths = (
-			);
-			outputPaths = (
-				"$(DERIVED_FILE_DIR)/Pods-SudoEntitlements-SudoEntitlementsIntegrationTests-checkManifestLockResult.txt",
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
-			showEnvVarsInLog = 0;
-		};
-		3CD7E80B1FE34072EF9AF816 /* [CP] Embed Pods Frameworks */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputFileListPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-SudoEntitlements-SudoEntitlementsIntegrationTests/Pods-SudoEntitlements-SudoEntitlementsIntegrationTests-frameworks-${CONFIGURATION}-input-files.xcfilelist",
-			);
-			name = "[CP] Embed Pods Frameworks";
-			outputFileListPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-SudoEntitlements-SudoEntitlementsIntegrationTests/Pods-SudoEntitlements-SudoEntitlementsIntegrationTests-frameworks-${CONFIGURATION}-output-files.xcfilelist",
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-SudoEntitlements-SudoEntitlementsIntegrationTests/Pods-SudoEntitlements-SudoEntitlementsIntegrationTests-frameworks.sh\"\n";
-			showEnvVarsInLog = 0;
-		};
 		5D1C744525385F7E00FC76CF /* Copy Configuration */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
@@ -923,23 +707,6 @@
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
 			shellScript = "cp -f /var/anonyome_key/* \"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/\" || :\ncp -f config/register_key.private \"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/\" || :\ncp -f config/register_key.id \"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/\" || :\ncp -f config/api.key \"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/\" || :\n";
-		};
-		6F3408D5DAE3786AE81C6B44 /* [CP] Embed Pods Frameworks */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputFileListPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-TestApp/Pods-TestApp-frameworks-${CONFIGURATION}-input-files.xcfilelist",
-			);
-			name = "[CP] Embed Pods Frameworks";
-			outputFileListPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-TestApp/Pods-TestApp-frameworks-${CONFIGURATION}-output-files.xcfilelist",
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-TestApp/Pods-TestApp-frameworks.sh\"\n";
-			showEnvVarsInLog = 0;
 		};
 		84F80A0F253D19B6001E3F3C /* Copy Config To Resources */ = {
 			isa = PBXShellScriptBuildPhase;
@@ -959,50 +726,6 @@
 			shellPath = /bin/sh;
 			shellScript = "# Type a script or drag a script file from your workspace to insert its path.\ncp -f config/sudoplatformconfig.json \"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/\"\nls ${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}\n";
 		};
-		BEC37737300656C5CDF36717 /* [CP] Check Pods Manifest.lock */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputFileListPaths = (
-			);
-			inputPaths = (
-				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
-				"${PODS_ROOT}/Manifest.lock",
-			);
-			name = "[CP] Check Pods Manifest.lock";
-			outputFileListPaths = (
-			);
-			outputPaths = (
-				"$(DERIVED_FILE_DIR)/Pods-SudoEntitlements-checkManifestLockResult.txt",
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
-			showEnvVarsInLog = 0;
-		};
-		DA813FE19DBED13D76E2F14D /* [CP] Check Pods Manifest.lock */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputFileListPaths = (
-			);
-			inputPaths = (
-				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
-				"${PODS_ROOT}/Manifest.lock",
-			);
-			name = "[CP] Check Pods Manifest.lock";
-			outputFileListPaths = (
-			);
-			outputPaths = (
-				"$(DERIVED_FILE_DIR)/Pods-SudoEntitlements-SudoEntitlementsTests-checkManifestLockResult.txt",
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
-			showEnvVarsInLog = 0;
-		};
 /* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
@@ -1013,40 +736,6 @@
 				5D71DBE4255B6D87005007C3 /* AnyError.swift in Sources */,
 				5D1C74142537F58D00FC76CF /* BaseIntegrationTestCase.swift in Sources */,
 				5D1C74082537F53300FC76CF /* SudoEntitlementsIntegrationTests.swift in Sources */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		5DA1AAF924F78EBC003B29CA /* Sources */ = {
-			isa = PBXSourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				5D408F2724F791F300259E5F /* Bundle+Static.swift in Sources */,
-				5F3413A324F870F9002942AB /* CachePolicy.swift in Sources */,
-				5D8434652591494400FA607E /* Constants.swift in Sources */,
-				5D8C9F6426BCE9B0004E31D2 /* ConsumeBooleanEntitlementsUseCase.swift in Sources */,
-				5D408F2324F791F300259E5F /* Date+MillisecondsSinceEpoch.swift in Sources */,
-				5F34161324F89EDF002942AB /* DefaultEntitlementsRepository.swift in Sources */,
-				5D408F3124F791F300259E5F /* DefaultSudoEntitlementsClient.swift in Sources */,
-				5D408F2F24F791F300259E5F /* Entitlement.swift in Sources */,
-				5D193EC3258FE76C0044DDED /* EntitlementConsumer.swift in Sources */,
-				5D193EC9258FE7EC0044DDED /* EntitlementConsumption.swift in Sources */,
-				5D193ED5258FEF5E0044DDED /* EntitlementsConsumption.swift in Sources */,
-				5F34161124F89931002942AB /* EntitlementsRepository.swift in Sources */,
-				5D408F3024F791F300259E5F /* EntitlementsSet.swift in Sources */,
-				5D408F2B24F791F300259E5F /* EntitlementsTransformer.swift in Sources */,
-				5D193EFE258FF82C0044DDED /* GetEntitlementsConsumptionUseCase.swift in Sources */,
-				5DDFF39A26B1425600CBCC12 /* GetExternalIdUseCase.swift in Sources */,
-				5D408F2A24F791F300259E5F /* GraphQLAPI.swift in Sources */,
-				5D408F2424F791F300259E5F /* OperationArray+Convenience.swift in Sources */,
-				5D408F2024F791F300259E5F /* RedeemEntitlementsUseCase.swift in Sources */,
-				5D408F2C24F791F300259E5F /* Resetable.swift in Sources */,
-				5F3413AC24F8865C002942AB /* Strings.swift in Sources */,
-				5D408F3324F791F300259E5F /* SudoEntitlementsClient.swift in Sources */,
-				5D408F3224F791F300259E5F /* SudoEntitlementsError.swift in Sources */,
-				5D408F2224F791F300259E5F /* SudoLogger+Entitlements.swift in Sources */,
-				5D408F2E24F791F300259E5F /* UseCaseFactory.swift in Sources */,
-				5D193ECF258FE9580044DDED /* UserEntitlements.swift in Sources */,
-				5D84346B259149A100FA607E /* VersionUtilities.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1094,16 +783,6 @@
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
-		5D1C740C2537F53300FC76CF /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			target = 5DA1AAFC24F78EBC003B29CA /* SudoEntitlements */;
-			targetProxy = 5D1C740B2537F53300FC76CF /* PBXContainerItemProxy */;
-		};
-		5F34164224F8BDE9002942AB /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			target = 5DA1AAFC24F78EBC003B29CA /* SudoEntitlements */;
-			targetProxy = 5F34164124F8BDE9002942AB /* PBXContainerItemProxy */;
-		};
 		84F80A0E253D17E5001E3F3C /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			target = 84F809F8253D17CA001E3F3C /* TestApp */;
@@ -1141,7 +820,6 @@
 /* Begin XCBuildConfiguration section */
 		5D1C740D2537F53300FC76CF /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 38FF865A4AAF7363BCFBECD5 /* Pods-SudoEntitlements-SudoEntitlementsIntegrationTests.debug.xcconfig */;
 			buildSettings = {
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = UU2W43R8JA;
@@ -1162,7 +840,6 @@
 		};
 		5D1C740E2537F53300FC76CF /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 96B8B5E69204AC741712A850 /* Pods-SudoEntitlements-SudoEntitlementsIntegrationTests.release.xcconfig */;
 			buildSettings = {
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = UU2W43R8JA;
@@ -1303,59 +980,8 @@
 			};
 			name = Release;
 		};
-		5DA1AB1224F78EBC003B29CA /* Debug */ = {
-			isa = XCBuildConfiguration;
-			baseConfigurationReference = AAF697758E064E512AAD246F /* Pods-SudoEntitlements.debug.xcconfig */;
-			buildSettings = {
-				CODE_SIGN_STYLE = Automatic;
-				DEFINES_MODULE = YES;
-				DYLIB_COMPATIBILITY_VERSION = 1;
-				DYLIB_CURRENT_VERSION = 1;
-				DYLIB_INSTALL_NAME_BASE = "@rpath";
-				INFOPLIST_FILE = SudoEntitlements/Info.plist;
-				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
-				LD_RUNPATH_SEARCH_PATHS = (
-					"$(inherited)",
-					"@executable_path/Frameworks",
-					"@loader_path/Frameworks",
-				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.sudoplatform.SudoEntitlements;
-				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
-				SKIP_INSTALL = YES;
-				SUPPORTS_MACCATALYST = NO;
-				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
-			};
-			name = Debug;
-		};
-		5DA1AB1324F78EBC003B29CA /* Release */ = {
-			isa = XCBuildConfiguration;
-			baseConfigurationReference = 7DD2D186C87789DBCCEBBB45 /* Pods-SudoEntitlements.release.xcconfig */;
-			buildSettings = {
-				CODE_SIGN_STYLE = Automatic;
-				DEFINES_MODULE = YES;
-				DYLIB_COMPATIBILITY_VERSION = 1;
-				DYLIB_CURRENT_VERSION = 1;
-				DYLIB_INSTALL_NAME_BASE = "@rpath";
-				INFOPLIST_FILE = SudoEntitlements/Info.plist;
-				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
-				LD_RUNPATH_SEARCH_PATHS = (
-					"$(inherited)",
-					"@executable_path/Frameworks",
-					"@loader_path/Frameworks",
-				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.sudoplatform.SudoEntitlements;
-				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
-				SKIP_INSTALL = YES;
-				SUPPORTS_MACCATALYST = NO;
-				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
-			};
-			name = Release;
-		};
 		5F34164424F8BDE9002942AB /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = B2C051979BBD714A6BA6DFAD /* Pods-SudoEntitlements-SudoEntitlementsTests.debug.xcconfig */;
 			buildSettings = {
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = UU2W43R8JA;
@@ -1375,7 +1001,6 @@
 		};
 		5F34164524F8BDE9002942AB /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = C00D53467EA04756B2F59F86 /* Pods-SudoEntitlements-SudoEntitlementsTests.release.xcconfig */;
 			buildSettings = {
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = UU2W43R8JA;
@@ -1395,7 +1020,6 @@
 		};
 		84F80A0B253D17D0001E3F3C /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = CC0938E6EDD0C66DAF51D98D /* Pods-TestApp.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
@@ -1414,7 +1038,6 @@
 		};
 		84F80A0C253D17D0001E3F3C /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 7351670FDD25906E24D9018E /* Pods-TestApp.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
@@ -1452,15 +1075,6 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		5DA1AB1124F78EBC003B29CA /* Build configuration list for PBXNativeTarget "SudoEntitlements" */ = {
-			isa = XCConfigurationList;
-			buildConfigurations = (
-				5DA1AB1224F78EBC003B29CA /* Debug */,
-				5DA1AB1324F78EBC003B29CA /* Release */,
-			);
-			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
-		};
 		5F34164324F8BDE9002942AB /* Build configuration list for PBXNativeTarget "SudoEntitlementsTests" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
@@ -1480,6 +1094,33 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		E2BF3E3A2D09046300011739 /* XCRemoteSwiftPackageReference "sudo-entitlements-admin-ios" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/sudoplatform/sudo-entitlements-admin-ios";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 7.0.0;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		E2BF3E362D09030D00011739 /* SudoEntitlements */ = {
+			isa = XCSwiftPackageProductDependency;
+			productName = SudoEntitlements;
+		};
+		E2BF3E382D09031100011739 /* SudoEntitlements */ = {
+			isa = XCSwiftPackageProductDependency;
+			productName = SudoEntitlements;
+		};
+		E2BF3E3B2D09046300011739 /* SudoEntitlementsAdmin */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = E2BF3E3A2D09046300011739 /* XCRemoteSwiftPackageReference "sudo-entitlements-admin-ios" */;
+			productName = SudoEntitlementsAdmin;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = 5DA1AAF424F78EBC003B29CA /* Project object */;
 }

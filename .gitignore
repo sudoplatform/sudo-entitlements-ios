@@ -42,3 +42,6 @@ Documentation/*
 
 .idea/
 
+.swiftpm
+Build/
+
