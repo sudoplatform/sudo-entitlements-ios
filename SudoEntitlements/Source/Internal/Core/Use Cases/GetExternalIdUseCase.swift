@@ -5,7 +5,6 @@
 //
 
 import Foundation
-import AWSAppSync
 import SudoLogging
 
 /// Perform a query of the entitlements service to get the current set of entitlements

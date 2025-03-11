@@ -4,9 +4,9 @@
 // SPDX-License-Identifier: Apache-2.0
 //
 
+import Amplify
 import Foundation
 import SudoApiClient
-import AWSAppSync
 
 /// Errors that occur in SudoEntitlements.
 public enum SudoEntitlementsError: Error, Equatable, LocalizedError {
@@ -46,7 +46,7 @@ public enum SudoEntitlementsError: Error, Equatable, LocalizedError {
     case rateLimitExceeded
 
     /// Indicates that an unexpected GraphQL error was returned by the service.
-    case graphQLError(cause: GraphQLError)
+    case graphQLError(cause: Error)
 
     /// Indicates that a fatal error occurred. This could be due to coding error, out-of-memory condition or other
     /// conditions that is beyond control of `SudoSecureVaultClient` implementation.
@@ -101,11 +101,9 @@ public enum SudoEntitlementsError: Error, Equatable, LocalizedError {
     // MARK: - Lifecycle
 
     /// Initialize a `SudoEntitlementsError` from a `GraphQLError`.
-    ///
-    /// If the GraphQLError is unsupported, `nil` will be returned instead.
-    init(graphQLError error: GraphQLError) {
-        guard let errorType = error["errorType"] as? String else {
-            self = .graphQLError(cause: error)
+    init(graphQLError: Error) {
+        guard let error = graphQLError as? GraphQLError, let errorType = error.extensions?["errorType"]?.stringValue else {
+            self = .graphQLError(cause: graphQLError)
             return
         }
         switch errorType {
@@ -122,7 +120,7 @@ public enum SudoEntitlementsError: Error, Equatable, LocalizedError {
         case "sudoplatform.entitlements.EntitlementsSequenceNotFoundError":
             self = .entitlementsSequenceNotFound
         default:
-            self = .graphQLError(cause: error)
+            self = .graphQLError(cause: graphQLError)
         }
     }
 
@@ -172,11 +170,9 @@ public enum SudoEntitlementsError: Error, Equatable, LocalizedError {
     }
 
     static func fromApiOperationError(error: Error) -> SudoEntitlementsError {
-        // Check if ApiOperationError
         guard let apiOperationError = error as? ApiOperationError else {
             return .fatalError("Unexpected error: \(error)")
         }
-        
         switch apiOperationError {
         case .accountLocked:
             return .accountLocked

@@ -4,8 +4,7 @@
 // SPDX-License-Identifier: Apache-2.0
 //
 
-import SudoUser
-import SudoLogging
+import Foundation
 
 /// Client used to interface with the Sudo Entitlements Platform service.
 ///

@@ -4,184 +4,96 @@
 // SPDX-License-Identifier: Apache-2.0
 //
 
+import Amplify
 import Foundation
 @testable import SudoApiClient
-@testable import AWSAppSync
 @testable import SudoEntitlements
 
 class MockSudoApiClient: SudoApiClient {
-    
+
+    var fetchCalled = false
     var fetchCallCount = 0
-    var fetchGetEntitlementsConsumptionResult: Result<EntitlementsConsumption> = .failure(SudoEntitlementsError.fatalError("Please add base result to `MockSudoApiClient.fetchGetEntitlementsConsumptionResult`"))
-    
-    var fetchGetExternalIdResult: Result<String> = .failure(SudoEntitlementsError.fatalError("Please add base result to `MockSudoApiClient.fetchGetExternalIdResult`"))
+    var fetchParameters: (query: Any, Void)?
+    var fetchParameterList: [(query: Any, Void)] = []
+    var fetchResult: Result<Any, Error> = .failure(ApiOperationError.fatalError(description: "Not assigned"))
 
-    func entitlementsConsumptionToGraphQL(_ entitlementsConsumption: EntitlementsConsumption) -> GraphQL.GetEntitlementsConsumptionQuery.Data {
-
-        let entitlements: [GraphQL.GetEntitlementsConsumptionQuery.Data.GetEntitlementsConsumption.Entitlement.Entitlement] =
-        entitlementsConsumption.entitlements.entitlements.map { .init(name: $0.name,
-                description: $0.description,
-                value: Double($0.value))
-            }
-
-        let consumptionEntitlements: GraphQL.GetEntitlementsConsumptionQuery.Data.GetEntitlementsConsumption.Entitlement = .init(
-                version: entitlementsConsumption.entitlements.version,
-                entitlementsSetName: entitlementsConsumption.entitlements.entitlementsSetName,
-                entitlements: entitlements)
-
-        let consumption:[GraphQL.GetEntitlementsConsumptionQuery.Data.GetEntitlementsConsumption.Consumption] = entitlementsConsumption.consumption.map { .init(
-            name: $0.name,
-            consumer: $0.consumer != nil ? .init(id: $0.consumer!.id, issuer: $0.consumer!.issuer) : nil,
-            value: Double($0.value),
-            consumed: Double($0.consumed),
-            available: Double($0.available),
-            firstConsumedAtEpochMs: $0.firstConsumedAtEpochMs,
-            lastConsumedAtEpochMs: $0.lastConsumedAtEpochMs)
-        }
-        
-        
-        return GraphQL.GetEntitlementsConsumptionQuery.Data(getEntitlementsConsumption: .init(
-            entitlements: consumptionEntitlements,
-            consumption: consumption))
-    }
-    func entitlementsSetToGraphQL(_ entitlementsSet: EntitlementsSet) -> GraphQL.RedeemEntitlementsMutation.Data {
-
-        let entitlements:[GraphQL.RedeemEntitlementsMutation.Data.RedeemEntitlement.Entitlement] = entitlementsSet.entitlements.map {
-                .init(
-                    name: $0.name,
-                    description: $0.description,
-                    value: Double($0.value))
-            }
-        
-        return GraphQL.RedeemEntitlementsMutation.Data(redeemEntitlements: .init(
-            createdAtEpochMs: entitlementsSet.created.timeIntervalSince1970 * 1000,
-            updatedAtEpochMs: entitlementsSet.updated.timeIntervalSince1970 * 1000,
-            version: entitlementsSet.version,
-            name: entitlementsSet.name,
-            description: entitlementsSet.description,
-            entitlements: entitlements))
-    }
-
-    override func fetch<Query: GraphQLQuery>(
-        query: Query,
-        cachePolicy: AWSAppSync.CachePolicy = .returnCacheDataElseFetch,
-        queue: DispatchQueue = DispatchQueue.main
-    ) async throws -> (result: GraphQLResult<Query.Data>?, error: Error?) {
+    func fetch<Query>(query: Query) async throws -> Query.Data where Query : GraphQLQuery {
+        fetchCalled = true
         fetchCallCount += 1
-        if (query is GraphQL.GetEntitlementsConsumptionQuery) {
-            switch (fetchGetEntitlementsConsumptionResult) {
-            case .success(let result):
-                return (
-                    result: GraphQLResult<Query.Data>(
-                        data: (entitlementsConsumptionToGraphQL(result) as! Query.Data),
-                        errors: [],
-                        source: .server,
-                        dependentKeys: []),
-                    error: nil)
-            case .failure(let error):
-                return (result: nil, error: errorToApiOperationError(error))
-            }
+        fetchParameters = (query, ())
+        fetchParameterList.append((query, ()))
+        guard let data = try fetchResult.get() as? Query.Data else {
+            throw ApiOperationError.fatalError(description: "Incorrect result type assigned")
         }
-        else if (query is GraphQL.GetExternalIdQuery) {
-            switch (fetchGetExternalIdResult) {
-            case .success(let result):
-                return (
-                    result: GraphQLResult<Query.Data>(
-                        data: (GraphQL.GetExternalIdQuery.Data(getExternalId: result) as! Query.Data),
-                        errors: [],
-                        source: .server,
-                        dependentKeys: []),
-                    error: nil)
-            case .failure(let error):
-                return (result: nil, error: errorToApiOperationError(error))
-            }
-        }
-        else {
-            throw AnyError("Unkown mutation \(query)")
-        }
+        return data
     }
-    
+
+    var performCalled = false
     var performCallCount = 0
-    var performRedeemEntitlementResult: Result<EntitlementsSet> = .failure(SudoEntitlementsError.fatalError("Please add base result to `MockSudoApiClient.performRedeemEntitlementResult`"))
-    var performConsumeBooleanEntitlementsResult: Result<Void> =
-        .failure(SudoEntitlementsError.fatalError("Please add base result to `MockSudoApiClient.performConsumeBooleanEntitlementsResult`"))
+    var performParameters: (mutation: Any, operationTimeout: Int?)?
+    var performParameterList: [(mutation: Any, operationTimeout: Int?)] = []
+    var performResult: Result<Any, Error> = .failure(ApiOperationError.fatalError(description: "Not assigned"))
 
-    override func perform<Mutation: GraphQLMutation>(
+    func perform<Mutation>(
         mutation: Mutation,
-        queue: DispatchQueue = .main,
-        optimisticUpdate: OptimisticResponseBlock? = nil,
-        conflictResolutionBlock: MutationConflictHandler<Mutation>? = nil,
         operationTimeout: Int? = nil
-    ) async throws -> (result: GraphQLResult<Mutation.Data>?, error: Error?) {
+    ) async throws -> Mutation.Data where Mutation : GraphQLMutation {
+        performCalled = true
         performCallCount += 1
-
-        if (mutation is GraphQL.RedeemEntitlementsMutation) {
-            switch (performRedeemEntitlementResult) {
-            case .success(let result):
-                return (
-                    result: GraphQLResult<Mutation.Data>(
-                        data: (entitlementsSetToGraphQL(result) as! Mutation.Data),
-                        errors: [],
-                        source: .server,
-                        dependentKeys: []),
-                    error: nil)
-            case .failure(let error):
-                return (result: nil, error: errorToApiOperationError(error))
-            }
+        performParameters = (mutation, operationTimeout)
+        performParameterList.append((mutation, operationTimeout))
+        guard let data = try performResult.get() as? Mutation.Data else {
+            throw ApiOperationError.fatalError(description: "Incorrect result type assigned")
         }
-        else if (mutation is GraphQL.ConsumeBooleanEntitlementsMutation) {
-            switch (performConsumeBooleanEntitlementsResult) {
-            case .success:
-                return (
-                    result: GraphQLResult<Mutation.Data>(
-                        data: nil,
-                        errors: [],
-                        source: .server,
-                        dependentKeys: []),
-                    error: nil)
-            case .failure(let error):
-                return (result: nil, error: errorToApiOperationError(error))
-            }
-        }
-        else {
-            throw AnyError("Unkown mutation \(mutation)")
-        }
+        return data
     }
-    
-    func errorToApiOperationError(_ error: Error?) -> ApiOperationError {
-        
-        var props: [String:String] = [:]
-        
-        let sudoEntitlementsError = error as? SudoEntitlementsError
-        if (sudoEntitlementsError != nil) {
-            switch (sudoEntitlementsError) {
-            case .accountLocked:
-                props["errorType"] = "sudoplatform.AccountLockedError"
-                props["message"] = props["errorType"]
-            case .serviceError:
-                props["errorType"] = "sudoplatform.ServiceError"
-                props["message"] = props["errorType"]
-            case .ambiguousEntitlements:
-                props["errorType"] = "sudoplatform.entitlements.AmbiguousEntitlementsError"
-                props["message"] = props["errorType"]
-            case .insufficientEntitlements:
-                props["errorType"] = "sudoplatform.InsufficientEntitlementsError"
-                props["message"] = props["errorType"]
-            case .noEntitlements:
-                props["errorType"] = "sudoplatform.NoEntitlementsError"
-                props["message"] = props["errorType"]
-            default:
-                props["message"] = "\(error!)"
-            }
-        
-        }
-        else if (error != nil) {
-            props["message"] = "\(error!)"
-        }
-        else {
-            props["message"] = "<no error>"
-        }
 
-        return ApiOperationError.fromGraphQLError(error: GraphQLError(props))
+    var subscribeCalled = false
+    var subscribeCallCount = 0
+    var subscribeParameters: (subscription: Any, queue: DispatchQueue)?
+    var subscribeStatusChangeResult: GraphQLClientConnectionState?
+    var subscribeCompletionResult: Result<Void, Error>?
+    var subscribeResult: Result<Any, Error>?
+    var subscribeSubscription = GraphQLClientSubscriptionMock()
+
+    func subscribe<Subscription: GraphQLSubscription>(
+        subscription: Subscription,
+        queue: DispatchQueue,
+        statusChangeHandler: ((GraphQLClientConnectionState) -> Void)?,
+        completionHandler: ((Result<Void, Error>) -> Void)?,
+        resultHandler: @escaping (Result<Subscription.Data, Error>) -> Void
+    ) -> GraphQLClientSubscription {
+        subscribeCalled = true
+        subscribeCallCount += 1
+        subscribeParameters = (subscription, queue)
+        if let status = subscribeStatusChangeResult {
+            statusChangeHandler?(status)
+        }
+        if let completionResult = subscribeCompletionResult {
+            completionHandler?(completionResult)
+        }
+        do {
+            if let data = try subscribeResult?.get() as? Subscription.Data {
+                resultHandler(.success(data))
+            }
+        } catch {
+            resultHandler(.failure(error))
+        }
+        return subscribeSubscription
+    }
+
+    func getGraphQLClient() -> any GraphQLClient {
+        fatalError("Not implemented")
+    }
+}
+
+class GraphQLClientSubscriptionMock: GraphQLClientSubscription {
+
+    var cancelCalled = false
+    var cancelCallCount = 0
+
+    func cancel() {
+        cancelCalled = true
+        cancelCallCount += 1
     }
 }

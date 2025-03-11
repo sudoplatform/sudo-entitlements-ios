@@ -4,7 +4,6 @@
 // SPDX-License-Identifier: Apache-2.0
 //
 
-import AWSAppSync
 import SudoApiClient
 import SudoLogging
 import SudoUser
@@ -92,7 +91,6 @@ public class DefaultSudoEntitlementsClient: SudoEntitlementsClient {
 
     public func reset() throws {
         allResetables.forEach { $0.reset() }
-        try self.graphQLClient.clearCaches(options: .init(clearQueries: true, clearMutations: true, clearSubscriptions: false))
     }
 
     public func redeemEntitlements() async throws -> EntitlementsSet {

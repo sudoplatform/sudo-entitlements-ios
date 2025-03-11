@@ -5,7 +5,6 @@
 //
 
 import Foundation
-import AWSAppSync
 import SudoLogging
 
 /// Perform a mutation of the entitlements service to redeem the users set of entitlements

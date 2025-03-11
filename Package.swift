@@ -13,26 +13,25 @@ let package = Package(
             targets: ["SudoEntitlements"]),
     ],
     dependencies: [
-        .package(url: "https://github.com/sudoplatform/sudo-api-client-ios", from: "12.0.0"),
-        .package(url: "https://github.com/sudoplatform/sudo-config-manager-ios", from: "4.0.0"),
+        .package(url: "https://github.com/sudoplatform/sudo-api-client-ios", from: "13.0.0"),
+        .package(url: "https://github.com/sudoplatform/sudo-config-manager-ios", from: "5.0.0"),
         .package(url: "https://github.com/sudoplatform/sudo-key-manager-ios", from: "4.0.0"),
         .package(url: "https://github.com/sudoplatform/sudo-logging-ios", from: "2.0.0"),
-        .package(url: "https://github.com/sudoplatform/sudo-user-ios", from: "17.0.3"),
-        .package(url: "https://github.com/sudoplatform/aws-mobile-appsync-sdk-ios.git", exact: "3.7.2"),
+        .package(url: "https://github.com/sudoplatform/sudo-user-ios", from: "18.0.0"),
+        .package(url: "https://github.com/aws-amplify/amplify-swift", from: "2.45.4"),
     ],
     targets: [
         .target(
             name: "SudoEntitlements",
             dependencies: [
-                .product(name: "AWSAppSync", package: "aws-mobile-appsync-sdk-ios"),
+                .product(name: "Amplify", package: "amplify-swift"),
                 .product(name: "SudoUser", package: "sudo-user-ios"),
                 .product(name: "SudoLogging", package: "sudo-logging-ios"),
                 .product(name: "SudoKeyManager", package: "sudo-key-manager-ios"),
                 .product(name: "SudoApiClient", package: "sudo-api-client-ios"),
                 .product(name: "SudoConfigManager", package: "sudo-config-manager-ios"),
             ],
-            path: "SudoEntitlements/"
-        ),
+            path: "SudoEntitlements"
+        )
    ]
 )
-

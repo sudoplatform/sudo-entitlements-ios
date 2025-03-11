@@ -5,86 +5,72 @@
 //
 
 import Foundation
-import AWSAppSync
 import SudoLogging
 import SudoApiClient
 
 class DefaultEntitlementsRepository: EntitlementsRepository {
 
-    /// GraphQL client for peforming operations against the entitlements service.
+    // MARK: - Properties
+
+    /// GraphQL client for performing operations against the entitlements service.
     var graphQLClient: SudoApiClient
+    
+    /// Utility for transforming GraphQL output entities to the public types defined in this SDK.
+    let transformer = EntitlementsTransformer()
 
     /// Used to log diagnostic and error information.
     var logger: Logger
+
+    // MARK: - Lifecycle
 
     init(graphQLClient: SudoApiClient, logger: Logger = .entitlementsSDKLogger) {
         self.graphQLClient = graphQLClient
         self.logger = logger
     }
 
+    // MARK: - Conformance: EntitlementsRepository
+
     func reset() {
+        // no-op
     }
     
     /// Get the users current set of entitlements
     func getEntitlementsConsumption() async throws -> EntitlementsConsumption {
-        let (graphQLResult, graphQLError) = try await self.graphQLClient.fetch(
-            query: GraphQL.GetEntitlementsConsumptionQuery(),
-                cachePolicy: .fetchIgnoringCacheData)
-
-        guard let result = graphQLResult?.data else {
-                guard let error = graphQLError else {
-                    throw SudoEntitlementsError.fatalError("neither result nor error is non-nil after GetEntitlementsConsumption query")
-                }
-                throw SudoEntitlementsError.fromApiOperationError(error: error)
-            }
-            
-        let transformer = EntitlementsTransformer()
-        return transformer.transform(result.getEntitlementsConsumption)
+        do {
+            let graphQLResult = try await graphQLClient.fetch(query: GraphQL.GetEntitlementsConsumptionQuery())
+            return transformer.transform(graphQLResult.getEntitlementsConsumption)
+        } catch {
+            throw SudoEntitlementsError.fromApiOperationError(error: error)
+        }
     }
 
     /// Get the users external ID
     func getExternalId() async throws -> String {
-        let (graphQLResult, graphQLError) = try await self.graphQLClient.fetch(
-            query: GraphQL.GetExternalIdQuery(),
-                cachePolicy: .fetchIgnoringCacheData)
-
-        guard let result = graphQLResult?.data else {
-                guard let error = graphQLError else {
-                    throw SudoEntitlementsError.fatalError("neither result nor error is non-nil after GetExternalId query")
-                }
-                throw SudoEntitlementsError.fromApiOperationError(error: error)
-            }
-        
-        return result.getExternalId
+        do {
+            let graphQLResult = try await graphQLClient.fetch(query: GraphQL.GetExternalIdQuery())
+            return graphQLResult.getExternalId
+        } catch {
+            throw SudoEntitlementsError.fromApiOperationError(error: error)
+        }
     }
 
     /// Redeem the entitlements the user is allowed
     func redeemEntitlements() async throws -> EntitlementsSet {
-        let (graphQLResult, graphQLError) = try await self.graphQLClient.perform(
-            mutation: GraphQL.RedeemEntitlementsMutation())
-
-        guard let result = graphQLResult?.data else {
-                guard let error = graphQLError else {
-                    throw SudoEntitlementsError.fatalError("neither result nor error is non-nil after RedeemEntitlements mutation")
-                }
-                throw SudoEntitlementsError.fromApiOperationError(error: error)
-            }
-
-        let transformer = EntitlementsTransformer()
-        return transformer.transform(result.redeemEntitlements)
+        do {
+            let graphQLResult = try await graphQLClient.perform(mutation: GraphQL.RedeemEntitlementsMutation())
+            return transformer.transform(graphQLResult.redeemEntitlements)
+        } catch {
+            throw SudoEntitlementsError.fromApiOperationError(error: error)
+        }
     }
 
     /// Consume boolean entitlements
     func consumeBooleanEntitlements(entitlementNames: [String]) async throws {
-        let mutation = GraphQL.ConsumeBooleanEntitlementsMutation(entitlementNames: entitlementNames)
-
-        let (graphQLResult, graphQLError) = try await self.graphQLClient.perform(mutation: mutation)
-
-        guard graphQLResult != nil else {
-                guard let error = graphQLError else {
-                    throw SudoEntitlementsError.fatalError("neither result nor error is non-nil after ConsumeBooleanEntitlements mutation")
-                }
-                throw SudoEntitlementsError.fromApiOperationError(error: error)
-            }
+        do {
+            let mutation = GraphQL.ConsumeBooleanEntitlementsMutation(entitlementNames: entitlementNames)
+            _ = try await graphQLClient.perform(mutation: mutation)
+        } catch {
+            throw SudoEntitlementsError.fromApiOperationError(error: error)
+        }
     }
 }

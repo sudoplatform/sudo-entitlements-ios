@@ -1,7 +1,14 @@
 // swiftlint:disable all
 //  This file was automatically generated and should not be edited.
 
-import AWSAppSync
+import Amplify
+import SudoApiClient
+
+extension Dictionary {
+  static func += (lhs: inout Dictionary, rhs: Dictionary) {
+    lhs.merge(rhs) { (_, new) in new }
+  }
+}
 
 struct GraphQL {
 

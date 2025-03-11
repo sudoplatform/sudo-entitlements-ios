@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		417F51672D7FB90E00683870 /* SudoEntitlementsAdmin in Frameworks */ = {isa = PBXBuildFile; productRef = 417F51662D7FB90E00683870 /* SudoEntitlementsAdmin */; };
 		5D1C74082537F53300FC76CF /* SudoEntitlementsIntegrationTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D1C74072537F53300FC76CF /* SudoEntitlementsIntegrationTests.swift */; };
 		5D1C74142537F58D00FC76CF /* BaseIntegrationTestCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D1C74132537F58D00FC76CF /* BaseIntegrationTestCase.swift */; };
 		5D70213025EF399300A4379D /* ConfigNotFoundTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D70212F25EF399300A4379D /* ConfigNotFoundTest.swift */; };
@@ -24,7 +25,6 @@
 		5F34166724F8C67D002942AB /* BaseTestCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F34157A24F89493002942AB /* BaseTestCase.swift */; };
 		5F34166824F8C68C002942AB /* MockGraphQL.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F3414DB24F89492002942AB /* MockGraphQL.swift */; };
 		5F34166924F8C68C002942AB /* MockEntitlementsRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F3414DD24F89492002942AB /* MockEntitlementsRepository.swift */; };
-		5F34166B24F8C68C002942AB /* MockAWSNetworkTransport.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F3414EA24F89492002942AB /* MockAWSNetworkTransport.swift */; };
 		5F34166E24F8C692002942AB /* MockRedeemEntitlementsTestCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F34161424F8B0F8002942AB /* MockRedeemEntitlementsTestCase.swift */; };
 		5F34167024F8C692002942AB /* MockUseCaseFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F34150224F89492002942AB /* MockUseCaseFactory.swift */; };
 		5F34167324F8C69B002942AB /* Date+MillisecondsSinceEpochTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F34152B24F89492002942AB /* Date+MillisecondsSinceEpochTests.swift */; };
@@ -42,7 +42,6 @@
 		955F56DA25AFEAE100D73CBE /* GetEntitlementsConsumptionUseCaseTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 955F56D925AFEAE100D73CBE /* GetEntitlementsConsumptionUseCaseTests.swift */; };
 		E2BF3E372D09030D00011739 /* SudoEntitlements in Frameworks */ = {isa = PBXBuildFile; productRef = E2BF3E362D09030D00011739 /* SudoEntitlements */; };
 		E2BF3E392D09031100011739 /* SudoEntitlements in Frameworks */ = {isa = PBXBuildFile; productRef = E2BF3E382D09031100011739 /* SudoEntitlements */; };
-		E2BF3E3C2D09046300011739 /* SudoEntitlementsAdmin in Frameworks */ = {isa = PBXBuildFile; productRef = E2BF3E3B2D09046300011739 /* SudoEntitlementsAdmin */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -90,7 +89,6 @@
 		5D8C9F6726BCFD28004E31D2 /* ConsumeBooleanEntitlementsTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConsumeBooleanEntitlementsTests.swift; sourceTree = "<group>"; };
 		5DA1AB0024F78EBC003B29CA /* SudoEntitlements.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SudoEntitlements.h; sourceTree = "<group>"; };
 		5DA1AB0124F78EBC003B29CA /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		5DA1EB48253CD66100D75F13 /* util */ = {isa = PBXFileReference; lastKnownFileType = folder; path = util; sourceTree = "<group>"; };
 		5DDFF39926B1425600CBCC12 /* GetExternalIdUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetExternalIdUseCase.swift; sourceTree = "<group>"; };
 		5DDFF39D26B158F300CBCC12 /* MockGetEntitlementsConsumptionUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockGetEntitlementsConsumptionUseCase.swift; sourceTree = "<group>"; };
 		5DDFF39F26B1590100CBCC12 /* MockGetExternalIdUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockGetExternalIdUseCase.swift; sourceTree = "<group>"; };
@@ -100,7 +98,6 @@
 		5F3413B424F8933A002942AB /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
 		5F3414DB24F89492002942AB /* MockGraphQL.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MockGraphQL.swift; sourceTree = "<group>"; };
 		5F3414DD24F89492002942AB /* MockEntitlementsRepository.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MockEntitlementsRepository.swift; sourceTree = "<group>"; };
-		5F3414EA24F89492002942AB /* MockAWSNetworkTransport.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MockAWSNetworkTransport.swift; sourceTree = "<group>"; };
 		5F34150224F89492002942AB /* MockUseCaseFactory.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MockUseCaseFactory.swift; sourceTree = "<group>"; };
 		5F34152B24F89492002942AB /* Date+MillisecondsSinceEpochTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Date+MillisecondsSinceEpochTests.swift"; sourceTree = "<group>"; };
 		5F34153924F89492002942AB /* DefaultDomainRepositoryTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DefaultDomainRepositoryTests.swift; sourceTree = "<group>"; };
@@ -119,13 +116,6 @@
 		5F34161224F89EDF002942AB /* DefaultEntitlementsRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DefaultEntitlementsRepository.swift; sourceTree = "<group>"; };
 		5F34161424F8B0F8002942AB /* MockRedeemEntitlementsTestCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockRedeemEntitlementsTestCase.swift; sourceTree = "<group>"; };
 		5F34163B24F8BDE9002942AB /* SudoEntitlementsTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = SudoEntitlementsTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		5F34165524F8C3D0002942AB /* Podfile */ = {isa = PBXFileReference; lastKnownFileType = text; path = Podfile; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
-		5F34165624F8C3D0002942AB /* README.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
-		5F34165724F8C3D0002942AB /* Podfile.lock */ = {isa = PBXFileReference; lastKnownFileType = text; path = Podfile.lock; sourceTree = "<group>"; };
-		5F34165824F8C3D0002942AB /* sonar-project.properties */ = {isa = PBXFileReference; lastKnownFileType = text; path = "sonar-project.properties"; sourceTree = "<group>"; };
-		5F34165924F8C3D0002942AB /* Gemfile.lock */ = {isa = PBXFileReference; lastKnownFileType = text; path = Gemfile.lock; sourceTree = "<group>"; };
-		5F34165A24F8C3D0002942AB /* SudoEntitlements.podspec */ = {isa = PBXFileReference; lastKnownFileType = text; path = SudoEntitlements.podspec; sourceTree = "<group>"; };
-		5F34165B24F8C3D0002942AB /* Gemfile */ = {isa = PBXFileReference; lastKnownFileType = text; path = Gemfile; sourceTree = "<group>"; };
 		84F809F9253D17CA001E3F3C /* TestApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TestApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		84F809FB253D17CA001E3F3C /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		84F809FF253D17CA001E3F3C /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -142,7 +132,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				E2BF3E392D09031100011739 /* SudoEntitlements in Frameworks */,
-				E2BF3E3C2D09046300011739 /* SudoEntitlementsAdmin in Frameworks */,
+				417F51672D7FB90E00683870 /* SudoEntitlementsAdmin in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -296,13 +286,11 @@
 		5DA1AAF324F78EBC003B29CA = {
 			isa = PBXGroup;
 			children = (
-				9566E3C92505C880002A2DD3 /* Other Files */,
 				5DA1AAFF24F78EBC003B29CA /* SudoEntitlements */,
 				5F3414D824F89492002942AB /* SudoEntitlementsTests */,
 				5D1C74062537F53300FC76CF /* SudoEntitlementsIntegrationTests */,
 				84F809FA253D17CA001E3F3C /* TestApp */,
 				5DA1AAFE24F78EBC003B29CA /* Products */,
-				9B3A681727EE6A43F800E34A /* Pods */,
 				E2BF3E352D09030D00011739 /* Frameworks */,
 			);
 			sourceTree = "<group>";
@@ -350,7 +338,6 @@
 			children = (
 				5F34157E24F89493002942AB /* Extensions */,
 				5F3414D924F89492002942AB /* Mocks */,
-				5F34150424F89492002942AB /* Test */,
 				5F34158424F89493002942AB /* Utility */,
 				5F34157D24F89493002942AB /* .swiftlint.yml */,
 				5F34158324F89493002942AB /* Info.plist */,
@@ -361,8 +348,8 @@
 		5F3414D924F89492002942AB /* Mocks */ = {
 			isa = PBXGroup;
 			children = (
+				5F34150424F89492002942AB /* Test */,
 				5F3414EC24F89492002942AB /* Use Cases */,
-				5F3414EA24F89492002942AB /* MockAWSNetworkTransport.swift */,
 				5F3414DD24F89492002942AB /* MockEntitlementsRepository.swift */,
 				5F3414DB24F89492002942AB /* MockGraphQL.swift */,
 				5D71B09E27A75F3900C45D13 /* MockSudoApiClient.swift */,
@@ -524,28 +511,6 @@
 			path = Repository;
 			sourceTree = "<group>";
 		};
-		9566E3C92505C880002A2DD3 /* Other Files */ = {
-			isa = PBXGroup;
-			children = (
-				5F34165B24F8C3D0002942AB /* Gemfile */,
-				5F34165524F8C3D0002942AB /* Podfile */,
-				5DA1EB48253CD66100D75F13 /* util */,
-				5F34165924F8C3D0002942AB /* Gemfile.lock */,
-				5F34165724F8C3D0002942AB /* Podfile.lock */,
-				5F34165624F8C3D0002942AB /* README.md */,
-				5F34165824F8C3D0002942AB /* sonar-project.properties */,
-				5F34165A24F8C3D0002942AB /* SudoEntitlements.podspec */,
-			);
-			name = "Other Files";
-			sourceTree = "<group>";
-		};
-		9B3A681727EE6A43F800E34A /* Pods */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = Pods;
-			sourceTree = "<group>";
-		};
 		E2BF3E352D09030D00011739 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
@@ -573,7 +538,7 @@
 			name = SudoEntitlementsIntegrationTests;
 			packageProductDependencies = (
 				E2BF3E382D09031100011739 /* SudoEntitlements */,
-				E2BF3E3B2D09046300011739 /* SudoEntitlementsAdmin */,
+				417F51662D7FB90E00683870 /* SudoEntitlementsAdmin */,
 			);
 			productName = SudoEntitlementsIntegrationTests;
 			productReference = 5D1C74052537F53300FC76CF /* SudoEntitlementsIntegrationTests.xctest */;
@@ -649,7 +614,7 @@
 			);
 			mainGroup = 5DA1AAF324F78EBC003B29CA;
 			packageReferences = (
-				E2BF3E3A2D09046300011739 /* XCRemoteSwiftPackageReference "sudo-entitlements-admin-ios" */,
+				417F51652D7FB90E00683870 /* XCRemoteSwiftPackageReference "sudo-entitlements-admin-ios" */,
 			);
 			productRefGroup = 5DA1AAFE24F78EBC003B29CA /* Products */;
 			projectDirPath = "";
@@ -756,7 +721,6 @@
 				5DDFF3A226B15C0D00CBCC12 /* GetExternalIdTests.swift in Sources */,
 				5F34166324F8C675002942AB /* LifecycleTests.swift in Sources */,
 				5F34167724F8C6B6002942AB /* Logger+Tests.swift in Sources */,
-				5F34166B24F8C68C002942AB /* MockAWSNetworkTransport.swift in Sources */,
 				5D8C9F6626BCF48E004E31D2 /* MockConsumeBooleanEntitlementsUseCase.swift in Sources */,
 				5F34166924F8C68C002942AB /* MockEntitlementsRepository.swift in Sources */,
 				5DDFF39E26B158F300CBCC12 /* MockGetEntitlementsConsumptionUseCase.swift in Sources */,
@@ -1096,17 +1060,22 @@
 /* End XCConfigurationList section */
 
 /* Begin XCRemoteSwiftPackageReference section */
-		E2BF3E3A2D09046300011739 /* XCRemoteSwiftPackageReference "sudo-entitlements-admin-ios" */ = {
+		417F51652D7FB90E00683870 /* XCRemoteSwiftPackageReference "sudo-entitlements-admin-ios" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/sudoplatform/sudo-entitlements-admin-ios";
 			requirement = {
 				kind = upToNextMajorVersion;
-				minimumVersion = 7.0.0;
+				minimumVersion = 8.0.0;
 			};
 		};
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
+		417F51662D7FB90E00683870 /* SudoEntitlementsAdmin */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 417F51652D7FB90E00683870 /* XCRemoteSwiftPackageReference "sudo-entitlements-admin-ios" */;
+			productName = SudoEntitlementsAdmin;
+		};
 		E2BF3E362D09030D00011739 /* SudoEntitlements */ = {
 			isa = XCSwiftPackageProductDependency;
 			productName = SudoEntitlements;
@@ -1114,11 +1083,6 @@
 		E2BF3E382D09031100011739 /* SudoEntitlements */ = {
 			isa = XCSwiftPackageProductDependency;
 			productName = SudoEntitlements;
-		};
-		E2BF3E3B2D09046300011739 /* SudoEntitlementsAdmin */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = E2BF3E3A2D09046300011739 /* XCRemoteSwiftPackageReference "sudo-entitlements-admin-ios" */;
-			productName = SudoEntitlementsAdmin;
 		};
 /* End XCSwiftPackageProductDependency section */
 	};
